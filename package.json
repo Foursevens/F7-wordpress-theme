@@ -9,8 +9,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "lint": "eslint --cache --ext js --ext jsx src/",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "lint": "eslint --cache --ext js --ext jsx *.js src/",
+    "format": "prettier --write *.js src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
