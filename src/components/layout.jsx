@@ -7,7 +7,7 @@ import './layout.css';
 
 const Layout = ({ children }) => {
   const { wordpressSiteMetadata } = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query LayoutQuery {
       wordpressSiteMetadata {
         name
       }
