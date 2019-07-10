@@ -1,7 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: `Foursevens Theme Starter`,
-  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -28,5 +25,16 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-source-wordpress',
+      options: {
+        baseUrl: 'foursevens.be',
+        protocol: 'https',
+        // It is not hosted on wordpress.com
+        hostingWPCOM: false,
+        // We do use "Advanced Custom Fields" Plugin
+        useACF: true,
+      },
+    },
   ],
 };

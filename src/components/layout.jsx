@@ -6,19 +6,17 @@ import Header from './header';
 import './layout.css';
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+  const { wordpressSiteMetadata } = useStaticQuery(graphql`
     query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+      wordpressSiteMetadata {
+        name
       }
     }
   `);
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={wordpressSiteMetadata.name} />
       <div
         style={{
           margin: `0 auto`,
