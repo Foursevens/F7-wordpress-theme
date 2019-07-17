@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const IndexPage = () => {
+export default function IndexPage() {
   const {
     allWordpressWpApproach: { nodes: approaches },
   } = useStaticQuery(graphql`
@@ -31,6 +31,4 @@ const IndexPage = () => {
       </ul>
     </Layout>
   );
-};
-
-export default IndexPage;
+}
