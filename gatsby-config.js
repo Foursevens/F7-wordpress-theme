@@ -38,8 +38,8 @@ module.exports = {
         protocol: 'https',
         // It is not hosted on wordpress.com
         hostingWPCOM: false,
-        // We do use "Advanced Custom Fields" Plugin
-        useACF: true,
+        // Don't fetch the "Advanced Custom Fields" fields.
+        useACF: false,
       },
     },
   ],
