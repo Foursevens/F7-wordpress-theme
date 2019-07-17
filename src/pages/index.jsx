@@ -1,14 +1,12 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
+import Img from 'gatsby-image';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 export default function IndexPage() {
-  const {
-    approaches: { nodes: approaches },
-    cases: { nodes: cases },
-  } = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query IndexQuery {
       approaches: allWordpressWpApproach(
         filter: { status: { eq: "publish" } }
@@ -36,8 +34,32 @@ export default function IndexPage() {
           }
         }
       }
+      members: allWordpressWpMembers(
+        filter: { status: { eq: "publish" } }
+        limit: 3
+        sort: { fields: date, order: DESC }
+      ) {
+        nodes {
+          id
+          portret {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          function
+          skills
+          title
+        }
+      }
     }
   `);
+  const {
+    approaches: { nodes: approaches },
+    cases: { nodes: cases },
+    members: { nodes: members },
+  } = data;
   return (
     <Layout>
       <SEO title="Home" />
@@ -61,6 +83,16 @@ export default function IndexPage() {
             <sub>
               {wpCase.technologies.name} for {wpCase.sections.name}
             </sub>
+          </li>
+        ))}
+      </ul>
+      <h2>Team</h2>
+      <ul style={{ display: 'flex' }}>
+        {members.map((member) => (
+          <li key={member.id}>
+            <h3>{member.title}</h3>
+            <Img fluid={member.portret.childImageSharp.fluid} />
+            <sub>{member.function}</sub>
           </li>
         ))}
       </ul>

@@ -1,6 +1,12 @@
 const { resolve: resolvePath } = require('path');
 
-const casePageTemplate = resolvePath('src/templates/case.jsx');
+const { createRemoteFileNode } = require('gatsby-source-filesystem');
+
+const casePageTemplate = resolvePath('./src/templates/case.jsx');
+
+const WORDPRESS_IMAGES = [
+  { type: 'wordpress__wp_members', fields: ['portret'] },
+];
 
 exports.createPages = async function createPages({
   actions: { createPage },
@@ -31,4 +37,34 @@ exports.createPages = async function createPages({
       context: { slug },
     });
   });
+};
+
+exports.onCreateNode = async function onCreateNode({
+  actions: { createNode, createNodeField },
+  cache,
+  createNodeId,
+  node,
+  store,
+}) {
+  /* eslint no-param-reassign: "off" */
+  await Promise.all(
+    WORDPRESS_IMAGES.map(async ({ type, fields }) => {
+      if (node.internal.type === type) {
+        await Promise.all(
+          fields.map(async (field) => {
+            const fileNode = await createRemoteFileNode({
+              cache,
+              createNode,
+              createNodeId,
+              parentNodeId: node.id,
+              store,
+              url: node[field].url,
+            });
+            createNodeField({ node, name: field, value: fileNode });
+            node[`${field}___NODE`] = fileNode.id;
+          }),
+        );
+      }
+    }),
+  );
 };
