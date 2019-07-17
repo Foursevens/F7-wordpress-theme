@@ -29,6 +29,12 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         baseUrl: 'foursevens.be',
+        excludedRoutes: [
+          '**/search',
+          '**/settings',
+          '**/themes',
+          '**/users/me',
+        ],
         protocol: 'https',
         // It is not hosted on wordpress.com
         hostingWPCOM: false,
