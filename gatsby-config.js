@@ -25,21 +25,30 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    {
+    ...['en', 'fr', 'nl'].map((language) => ({
       resolve: 'gatsby-source-wordpress',
       options: {
-        baseUrl: 'foursevens.be',
+        baseUrl: `foursevens.be/${language}`,
         excludedRoutes: [
           '**/search',
           '**/settings',
           '**/themes',
           '**/users/me',
         ],
+        hostingWPCOM: false, // It is not hosted on wordpress.com
+        normalizer: ({ entities }) =>
+          entities.map((entity) => Object.assign(entity, { language })),
         protocol: 'https',
-        // It is not hosted on wordpress.com
-        hostingWPCOM: false,
-        // Don't fetch the "Advanced Custom Fields" fields.
-        useACF: false,
+        useACF: false, // Don't fetch the "Advanced Custom Fields" fields.
+      },
+    })),
+    {
+      resolve: 'gatsby-plugin-intl',
+      options: {
+        defaultLanguage: 'en',
+        languages: ['en', 'fr', 'nl'],
+        // path: `${__dirname}/src/intl`,
+        redirect: true,
       },
     },
   ],

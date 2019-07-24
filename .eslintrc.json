@@ -1,4 +1,12 @@
 {
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
-  "root": true
+  "root": true,
+  "rules": {
+    "react/prop-types": [
+      "error",
+      {
+        "ignore": ["data"]
+      }
+    ]
+  }
 }

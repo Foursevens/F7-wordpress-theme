@@ -1,9 +1,11 @@
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+import { IntlContextConsumer, Link } from 'gatsby-plugin-intl';
 import React from 'react';
 import Img from 'gatsby-image';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import { byLanguage } from '../utils';
 
 export default function IndexPage() {
   const data = useStaticQuery(graphql`
@@ -14,6 +16,7 @@ export default function IndexPage() {
         nodes {
           id
           approach_intro
+          language
           title
         }
       }
@@ -24,6 +27,7 @@ export default function IndexPage() {
       ) {
         nodes {
           id
+          language
           path
           sections {
             name
@@ -41,6 +45,7 @@ export default function IndexPage() {
       ) {
         nodes {
           id
+          language
           portret {
             childImageSharp {
               fluid(maxWidth: 300) {
@@ -61,41 +66,45 @@ export default function IndexPage() {
     members: { nodes: members },
   } = data;
   return (
-    <Layout>
-      <SEO title="Home" />
-      <h2>Approach</h2>
-      <ul>
-        {approaches.map((approach) => (
-          <li key={approach.id}>
-            <h3>{approach.title}</h3>
-            <p>{approach.approach_intro}</p>
-          </li>
-        ))}
-      </ul>
-      <h2>Cases</h2>
-      <ul>
-        {cases.map((wpCase) => (
-          <li key={wpCase.id}>
-            <h3>{wpCase.title}</h3>
-            <p>
-              <Link to={wpCase.path}>details</Link>
-            </p>
-            <sub>
-              {wpCase.technologies.name} for {wpCase.sections.name}
-            </sub>
-          </li>
-        ))}
-      </ul>
-      <h2>Team</h2>
-      <ul style={{ display: 'flex' }}>
-        {members.map((member) => (
-          <li key={member.id}>
-            <h3>{member.title}</h3>
-            <Img fluid={member.portret.childImageSharp.fluid} />
-            <sub>{member.function}</sub>
-          </li>
-        ))}
-      </ul>
-    </Layout>
+    <IntlContextConsumer>
+      {({ language }) => (
+        <Layout>
+          <SEO title="Home" />
+          <h2>Approach</h2>
+          <ul>
+            {approaches.filter(byLanguage(language)).map((approach) => (
+              <li key={approach.id}>
+                <h3>{approach.title}</h3>
+                <p>{approach.approach_intro}</p>
+              </li>
+            ))}
+          </ul>
+          <h2>Cases</h2>
+          <ul>
+            {cases.filter(byLanguage(language)).map((wpCase) => (
+              <li key={wpCase.id}>
+                <h3>{wpCase.title}</h3>
+                <p>
+                  <Link to={wpCase.path}>details</Link>
+                </p>
+                <sub>
+                  {wpCase.technologies.name} for {wpCase.sections.name}
+                </sub>
+              </li>
+            ))}
+          </ul>
+          <h2>Team</h2>
+          <ul style={{ display: 'flex' }}>
+            {members.filter(byLanguage(language)).map((member) => (
+              <li key={member.id}>
+                <h3>{member.title}</h3>
+                <Img fluid={member.portret.childImageSharp.fluid} />
+                <sub>{member.function}</sub>
+              </li>
+            ))}
+          </ul>
+        </Layout>
+      )}
+    </IntlContextConsumer>
   );
 }
