@@ -9,7 +9,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "lint": "eslint --cache --ext js --ext jsx *.js src/",
+    "lint": "eslint --cache --ext js --ext jsx --fix *.js src/",
     "format": "prettier --write *.js src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
