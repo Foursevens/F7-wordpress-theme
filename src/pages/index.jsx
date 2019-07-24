@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { byLanguage } from '../utils';
+import Cases from '../components/Cases';
 
 export default function IndexPage() {
   const data = useStaticQuery(graphql`

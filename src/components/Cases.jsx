@@ -9,11 +9,9 @@ class Cases extends React.Component {
             filter: this.props.filter,
 
         };
-        console.log(this.props)
     }
 
     componentWillReceiveProps(nextProps, prevState) {
-        console.log(nextProps, 'nextProps');
         if (this.state.filter !== undefined && nextProps.filter !== prevState.filter ) {
             this.setState({
                 filter: nextProps.filter,
@@ -26,8 +24,6 @@ class Cases extends React.Component {
     }
 
     filter = () =>{
-
-        console.log(this.state.filter, 'filter');
         if ( this.state.filter !== 'All') {
             let filteredCases = [];
             this.state.cases.forEach(e2 => {
@@ -48,7 +44,6 @@ class Cases extends React.Component {
     };
 
     render() {
-        console.log(this.state, 'state from cases');
         return (
             <div className="cases">
                 {this.state.filtered === undefined  ? this.state.cases.map((wpCase, index) => (
