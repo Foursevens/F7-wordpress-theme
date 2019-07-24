@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Header from './header';
 import './layout.css';
 
-const Layout = ({ children }) => {
+export default function Layout({ children }) {
   const { wordpressSiteMetadata } = useStaticQuery(graphql`
     query LayoutQuery {
       wordpressSiteMetadata {
@@ -28,10 +28,8 @@ const Layout = ({ children }) => {
       </div>
     </>
   );
-};
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Layout;
