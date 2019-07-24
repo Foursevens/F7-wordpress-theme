@@ -1,8 +1,7 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { IntlContextConsumer, Link } from 'gatsby-plugin-intl';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import { IntlContextConsumer } from 'gatsby-plugin-intl';
 import React from 'react';
 import Img from 'gatsby-image';
-
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { byLanguage } from '../utils';
@@ -23,7 +22,6 @@ export default function IndexPage() {
       cases: allWordpressWpCases(
         filter: { status: { eq: "publish" } }
         limit: 6
-        sort: { fields: date, order: DESC }
       ) {
         nodes {
           id
@@ -36,6 +34,15 @@ export default function IndexPage() {
           technologies {
             name
           }
+          thumbnail_image {
+            url
+            alt
+            sizes {
+              medium_height
+              medium_width
+            }
+          }
+          type
         }
       }
       members: allWordpressWpMembers(

@@ -4,6 +4,7 @@ import Img from 'gatsby-image';
 import Layout from "../components/layout";
 import '../components/layout.css';
 import CasesLinks from '../components/CasesLinks';
+import Cases from '../components/CasesC'
 
 
 
@@ -49,8 +50,9 @@ const CasesPage = () => {
     <Layout>
     <div className="mainCases">
         <h3>Cases</h3>
-        <CasesLinks cases={cases} sections={sections}/>
+        <CasesLinks sections={sections} cases={cases}/>
         </div>
+
     </Layout>
     )
 };
