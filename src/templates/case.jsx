@@ -1,32 +1,23 @@
 import { graphql } from 'gatsby';
-import { injectIntl } from 'gatsby-plugin-intl';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 import Layout from '../components/layout';
 
 export const query = graphql`
-  query($slug: String!) {
-    allWordpressWpCases(filter: { slug: { eq: $slug } }) {
-      nodes {
-        content
-        hero_image
-        language
-        title
-      }
+  query($language: String!, $slug: String!) {
+    wordpressWpCases(language: { eq: $language }, slug: { eq: $slug }) {
+      content
+      hero_image
+      title
     }
   }
 `;
 
-function CasePageTemplate({
+export default function CasePageTemplate({
   data: {
-    allWordpressWpCases: { nodes: cases },
+    wordpressWpCases: { content, hero_image, title },
   },
-  intl,
 }) {
-  const { content, hero_image, title } = cases.find(
-    ({ language }) => language === intl.locale,
-  );
   return (
     <Layout>
       <h2>{title}</h2>
@@ -35,16 +26,3 @@ function CasePageTemplate({
     </Layout>
   );
 }
-
-CasePageTemplate.propTypes = {
-  data: PropTypes.shape({
-    allWordpressWpCases: PropTypes.shape({
-      content: PropTypes.string.isRequired,
-      hero_image: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  intl: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
-};
-
-export default injectIntl(CasePageTemplate);
