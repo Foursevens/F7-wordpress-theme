@@ -1,10 +1,10 @@
-import {graphql, Link, useStaticQuery} from 'gatsby';
+import {graphql, useStaticQuery} from 'gatsby';
 import React from 'react';
 import Img from 'gatsby-image';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import Cases from "../components/CasesC";
+import Cases from "../components/Cases";
 
 export default function IndexPage() {
     const data = useStaticQuery(graphql`

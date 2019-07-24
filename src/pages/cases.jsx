@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 import Layout from "../components/layout";
 import '../components/layout.css';
 import CasesLinks from '../components/CasesLinks';
-import Cases from '../components/CasesC'
+import Cases from '../components/Cases'
 
 
 

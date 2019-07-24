@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'gatsby';
-import Cases from './CasesC'
+import Cases from './Cases'
 class CasesLinks extends React.Component {
     constructor(props) {
         super(props);
