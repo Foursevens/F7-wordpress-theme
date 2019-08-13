@@ -5,6 +5,8 @@ import React from 'react';
 import Cases from '../components/cases/cases';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import BlogPosts from '../components/blog/blogPosts';
+// import Posts from '../components/posts';
 
 export const query = graphql`
   query IndexQuery($language: String!) {
@@ -67,6 +69,10 @@ export default function IndexPage({ data }) {
             <sub>{member.function}</sub>
           </li>
         ))}
+      </ul>
+      <ul>
+        <h2>blog</h2>
+        <BlogPosts limit={6} />
       </ul>
     </Layout>
   );
