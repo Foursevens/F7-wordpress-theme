@@ -4,7 +4,7 @@ const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
 const casePageTemplate = resolvePath('./src/templates/case.jsx');
 
-const blogPageTemplate = resolvePath('./src/templates/Post');
+const blogPageTemplate = resolvePath('./src/templates/post.jsx');
 
 const WORDPRESS_IMAGES = [
   { type: 'wordpress__wp_members', fields: ['portret'] },
