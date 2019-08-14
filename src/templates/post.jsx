@@ -11,6 +11,7 @@ export const query = graphql`
         content
         language
         title
+        hero_image
         video
       }
     }
@@ -23,12 +24,17 @@ function BlogPageTemplate({
   },
   intl,
 }) {
-  const { content, title, video } = posts.find(
+  // eslint-disable-next-line camelcase
+  const { content, title, video, hero_image } = posts.find(
     ({ language }) => language === intl.locale,
   );
   return (
     <Layout>
       <h2>{title}</h2>
+      <div>
+        {/* eslint-disable-next-line camelcase,jsx-a11y/alt-text */}
+        {video === null ? <img src={`${hero_image}`} /> : null}
+      </div>
       <div dangerouslySetInnerHTML={{ __html: video }} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
