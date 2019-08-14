@@ -11,10 +11,13 @@ export default function Post(props) {
         {postInfo.hero_image === null ? (
           <img
             src="https://dummyimage.com/400x300/000/fff&text=Thumbnail+image"
-            alt="img"
+            alt={`Foursevens blog ${postInfo.title}`}
           />
         ) : (
-          <img src={`${postInfo.hero_image}`} alt="img" />
+          <img
+            src={`${postInfo.hero_image}`}
+            alt={`Foursevens blog ${postInfo.title}`}
+          />
         )}
         {postInfo.tags !== null ? (
           <p>

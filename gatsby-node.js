@@ -35,6 +35,7 @@ exports.createPages = async function createPages({
       }
     `,
   );
+
   if (errors) {
     throw errors;
   }
