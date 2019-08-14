@@ -7,7 +7,6 @@ import Post from './post';
 
 export default function BlogPosts(props) {
   const { limit } = props;
-  // eslint-disable-next-line no-console
   const data = useStaticQuery(graphql`
     {
       posts: allWordpressPost(

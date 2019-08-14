@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export default function Post(props) {
-  // eslint-disable-next-line no-console
   const { postInfo } = props;
   return (
     <Link to={`/${postInfo.path}`}>
