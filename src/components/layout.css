@@ -624,14 +624,7 @@ pre tt:after {
 .mainCases{
   text-align: center;
 }
-.sectionsLinks{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.sectionsLinks div{
-  margin-left: 20px;
-}
+
 .cases{
   margin: 100px auto;
   display: flex ;
