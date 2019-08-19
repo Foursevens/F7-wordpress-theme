@@ -1,11 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { IntlContextConsumer, Link } from 'gatsby-plugin-intl';
+import { IntlContextConsumer } from 'gatsby-plugin-intl';
 import React from 'react';
 import Img from 'gatsby-image';
-
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { byLanguage } from '../utils';
+import Cases from '../components/cases/cases';
 
 export default function IndexPage() {
   const data = useStaticQuery(graphql`
@@ -18,24 +18,6 @@ export default function IndexPage() {
           approach_intro
           language
           title
-        }
-      }
-      cases: allWordpressWpCases(
-        filter: { status: { eq: "publish" } }
-        limit: 6
-        sort: { fields: date, order: DESC }
-      ) {
-        nodes {
-          id
-          language
-          path
-          sections {
-            name
-          }
-          title
-          technologies {
-            name
-          }
         }
       }
       members: allWordpressWpMembers(
@@ -62,7 +44,6 @@ export default function IndexPage() {
   `);
   const {
     approaches: { nodes: approaches },
-    cases: { nodes: cases },
     members: { nodes: members },
   } = data;
   return (
@@ -80,19 +61,7 @@ export default function IndexPage() {
             ))}
           </ul>
           <h2>Cases</h2>
-          <ul>
-            {cases.filter(byLanguage(language)).map((wpCase) => (
-              <li key={wpCase.id}>
-                <h3>{wpCase.title}</h3>
-                <p>
-                  <Link to={wpCase.path}>details</Link>
-                </p>
-                <sub>
-                  {wpCase.technologies.name} for {wpCase.sections.name}
-                </sub>
-              </li>
-            ))}
-          </ul>
+          <Cases limit={6} />
           <h2>Team</h2>
           <ul style={{ display: 'flex' }}>
             {members.filter(byLanguage(language)).map((member) => (

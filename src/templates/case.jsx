@@ -10,6 +10,7 @@ export const query = graphql`
     allWordpressWpCases(filter: { slug: { eq: $slug } }) {
       nodes {
         content
+        hero_image
         language
         title
       }
@@ -23,18 +24,26 @@ function CasePageTemplate({
   },
   intl,
 }) {
-  const { content, title } = cases.find(
+  const { content, hero_image, title } = cases.find(
     ({ language }) => language === intl.locale,
   );
   return (
     <Layout>
       <h2>{title}</h2>
+      <img src={hero_image} alt={`Foursevens ${title}`} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
   );
 }
 
 CasePageTemplate.propTypes = {
+  data: PropTypes.shape({
+    allWordpressWpCases: PropTypes.shape({
+      content: PropTypes.string.isRequired,
+      hero_image: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
   intl: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 

@@ -620,3 +620,35 @@ pre tt:after {
     font-size: 100%;
   }
 }
+/*CASES*/
+.mainCases{
+  text-align: center;
+}
+
+.cases{
+  margin: 100px auto;
+  display: flex ;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+
+}
+.cases img{
+  width: 290px;
+  height: 290px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+
+
+}
+.cases-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  background-color: #bce784;
+  margin-left: 10px;
+  color: white;
+  margin-top: -17px;
+  margin-bottom: 12px;
+}

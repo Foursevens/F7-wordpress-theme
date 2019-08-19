@@ -2,6 +2,7 @@
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
   "root": true,
   "rules": {
+    "camelcase": "off",
     "react/prop-types": [
       "error",
       {
