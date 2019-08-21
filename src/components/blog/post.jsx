@@ -19,17 +19,14 @@ export default function Post(props) {
             alt={`Foursevens blog ${postInfo.title}`}
           />
         )}
-        {postInfo.tags !== null ? (
-          <p>
-            <span>{postInfo.tags[0].name}</span> {''}
-            <span>{postInfo.date}</span>
-          </p>
-        ) : (
-          <p>
-            <span>Article</span> {''}
-            <span>{postInfo.date}</span>
-          </p>
-        )}
+        <p>
+          {postInfo.tags === null ? (
+            <span>Article</span>
+          ) : (
+            <span>{postInfo.tags[0].name}</span>
+          )}
+          <span>{new Date(postInfo.date).toLocaleDateString()}</span>
+        </p>
         <h3 dangerouslySetInnerHTML={{ __html: postInfo.title }} />
         <p dangerouslySetInnerHTML={{ __html: postInfo.intro }} />
       </div>

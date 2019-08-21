@@ -1,5 +1,5 @@
 import React from 'react';
-import BlogPosts from '../components/blog/blogPosts';
+import BlogPosts from '../components/blog/blog-posts';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 

@@ -5,8 +5,7 @@ import React from 'react';
 import Cases from '../components/cases/cases';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import BlogPosts from '../components/blog/blogPosts';
-// import Posts from '../components/posts';
+import BlogPosts from '../components/blog/blog-posts';
 
 export const query = graphql`
   query IndexQuery($language: String!) {

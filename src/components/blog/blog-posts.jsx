@@ -15,19 +15,13 @@ export default function BlogPosts(props) {
       ) {
         nodes {
           id
-          slug
           path
-          status
-          date(formatString: "DD/MM/YYYY")
+          date
           language
           title
           intro
           hero_image
-          video
           tags {
-            name
-          }
-          categories {
             name
           }
         }

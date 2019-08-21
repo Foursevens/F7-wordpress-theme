@@ -9,9 +9,9 @@ export const query = graphql`
     allWordpressPost(filter: { slug: { eq: $slug } }) {
       nodes {
         content
+        hero_image
         language
         title
-        hero_image
         video
       }
     }
@@ -24,21 +24,16 @@ function BlogPageTemplate({
   },
   intl,
 }) {
-  // eslint-disable-next-line camelcase
   const { content, title, video, hero_image } = posts.find(
     ({ language }) => language === intl.locale,
   );
   return (
     <Layout>
       <h2>{title}</h2>
-      <div>
-        {video === null ? (
-          /* eslint-disable-next-line camelcase,jsx-a11y/alt-text */
-          <div>
-            <img src={`${hero_image}`} alt={`Foursevens blog ${title}`} />
-          </div>
-        ) : null}
-      </div>
+      {video && (
+        /* eslint-disable-next-line jsx-a11y/alt-text */
+        <img src={`${hero_image}`} alt={`Foursevens blog ${title}`} />
+      )}
       <div dangerouslySetInnerHTML={{ __html: video }} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>

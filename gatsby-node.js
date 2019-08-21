@@ -2,9 +2,8 @@ const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
+const blogPostPageTemplate = resolvePath('./src/templates/blog-post.jsx');
 const casePageTemplate = resolvePath('./src/templates/case.jsx');
-
-const blogPageTemplate = resolvePath('./src/templates/post.jsx');
 
 const WORDPRESS_IMAGES = [
   { type: 'wordpress__wp_members', fields: ['portret'] },
@@ -49,7 +48,7 @@ exports.createPages = async function createPages({
   allWordpressPost.nodes.forEach(({ path, slug }) => {
     createPage({
       path,
-      component: blogPageTemplate,
+      component: blogPostPageTemplate,
       context: { slug },
     });
   });
