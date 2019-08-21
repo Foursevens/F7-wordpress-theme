@@ -11,14 +11,11 @@ export default function PostsGridListItem(props) {
       <div key={postInfo.id} className="post">
         {postInfo.hero_image === null ? (
           <img
+            alt={postInfo.title}
             src="https://dummyimage.com/400x300/000/fff&text=Thumbnail+image"
-            alt={`Foursevens blog ${postInfo.title}`}
           />
         ) : (
-          <img
-            src={`${postInfo.hero_image}`}
-            alt={`Foursevens blog ${postInfo.title}`}
-          />
+          <img alt={postInfo.title} src={`${postInfo.hero_image}`} />
         )}
         <p>
           {postInfo.tags === null ? (

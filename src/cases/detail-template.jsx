@@ -16,13 +16,18 @@ export const query = graphql`
 
 export default function CaseDetailTemplate({
   data: {
-    caseDetail: { content, hero_image, title },
+    caseDetail: { content, hero_image, title, thumbnail_image },
   },
 }) {
   return (
     <Layout>
       <h2 dangerouslySetInnerHTML={{ __html: title }} />
-      <img src={hero_image} alt={`Foursevens ${title}`} />
+      {hero_image && (
+        <img
+          alt={(thumbnail_image && thumbnail_image.alt) || title}
+          src={hero_image}
+        />
+      )}
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
   );

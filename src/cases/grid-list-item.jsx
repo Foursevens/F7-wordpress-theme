@@ -8,10 +8,12 @@ export default function CasesGridListItem(props) {
   const { caseInfo } = props;
   return (
     <Link to={caseInfo.path} key={caseInfo.id}>
-      <img
-        src={caseInfo.thumbnail_image.url}
-        alt={`foursevens case ${caseInfo.title}`}
-      />
+      {caseInfo.thumbnail_image && (
+        <img
+          alt={caseInfo.thumbnail_image.alt || caseInfo.title}
+          src={caseInfo.thumbnail_image.url}
+        />
+      )}
       <div className="cases-card">
         <span dangerouslySetInnerHTML={{ __html: caseInfo.title }} />
         <span>{caseInfo.technologies.name}</span>

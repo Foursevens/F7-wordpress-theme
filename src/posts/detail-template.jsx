@@ -22,9 +22,7 @@ export default function PostDetailTemplate({
   return (
     <Layout>
       <h2 dangerouslySetInnerHTML={{ __html: title }} />
-      {hero_image && (
-        <img src={`${hero_image}`} alt={`Foursevens blog ${title}`} />
-      )}
+      {hero_image && <img alt={title} src={`${hero_image}`} />}
       {video && <div dangerouslySetInnerHTML={{ __html: video }} />}
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>

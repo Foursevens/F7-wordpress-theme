@@ -14,6 +14,7 @@ export const caseFragment = graphql`
       name
     }
     thumbnail_image {
+      alt
       url
     }
     title
