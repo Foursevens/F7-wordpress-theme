@@ -47,13 +47,14 @@ export const query = graphql`
   }
 `;
 
-export default function IndexPage({ data }) {
-  const {
+export default function IndexPage({
+  data: {
     allApproaches: { nodes: allApproaches },
     firstCases: { nodes: firstCases },
     firstMembers: { nodes: firstMembers },
     firstPosts: { nodes: firstPosts },
-  } = data;
+  },
+}) {
   return (
     <Layout>
       <SEO title="Home" />

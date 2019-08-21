@@ -4,8 +4,7 @@ import React from 'react';
 
 import { postShape } from './model';
 
-export default function PostsGridListItem(props) {
-  const { postInfo } = props;
+export default function PostsGridListItem({ postInfo }) {
   return (
     <Link to={`/${postInfo.path}`}>
       <div key={postInfo.id} className="post">

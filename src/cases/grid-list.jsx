@@ -4,8 +4,7 @@ import React from 'react';
 import { caseShape } from './model';
 import CasesGridListItem from './grid-list-item';
 
-export default function CasesGridList(props) {
-  const { cases } = props;
+export default function CasesGridList({ cases }) {
   return (
     <div className="cases">
       {cases.map((wpCase) => (

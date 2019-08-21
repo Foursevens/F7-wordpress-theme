@@ -4,8 +4,7 @@ import React from 'react';
 
 import { caseShape } from './model';
 
-export default function CasesGridListItem(props) {
-  const { caseInfo } = props;
+export default function CasesGridListItem({ caseInfo }) {
   return (
     <Link to={caseInfo.path} key={caseInfo.id}>
       {caseInfo.thumbnail_image && (
