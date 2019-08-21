@@ -2,8 +2,8 @@ const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
-const blogPostPageTemplate = resolvePath('./src/posts/detail-template.jsx');
-const casePageTemplate = resolvePath('./src/cases/detail-template.jsx');
+const caseDetailTemplate = resolvePath('./src/cases/detail-template.jsx');
+const postDetailTemplate = resolvePath('./src/posts/detail-template.jsx');
 
 const WORDPRESS_IMAGES = [
   { type: 'wordpress__wp_members', fields: ['portret'] },
@@ -34,21 +34,20 @@ exports.createPages = async function createPages({
       }
     `,
   );
-
   if (errors) {
     throw errors;
   }
   allWordpressWpCases.nodes.forEach(({ path, slug }) => {
     createPage({
       path,
-      component: casePageTemplate,
+      component: caseDetailTemplate,
       context: { slug },
     });
   });
   allWordpressPost.nodes.forEach(({ path, slug }) => {
     createPage({
       path,
-      component: blogPostPageTemplate,
+      component: postDetailTemplate,
       context: { slug },
     });
   });
