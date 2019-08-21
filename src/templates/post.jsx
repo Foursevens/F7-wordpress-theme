@@ -34,7 +34,9 @@ function BlogPageTemplate({
       <div>
         {video === null ? (
           /* eslint-disable-next-line camelcase,jsx-a11y/alt-text */
-          <img src={`${hero_image}`} alt={`Foursevens blog ${title}`} />
+          <div>
+            <img src={`${hero_image}`} alt={`Foursevens blog ${title}`} />
+          </div>
         ) : null}
       </div>
       <div dangerouslySetInnerHTML={{ __html: video }} />
