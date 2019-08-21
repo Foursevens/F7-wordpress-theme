@@ -15,7 +15,7 @@ export default function PostsGridListItem(props) {
             src="https://dummyimage.com/400x300/000/fff&text=Thumbnail+image"
           />
         ) : (
-          <img alt={postInfo.title} src={`${postInfo.hero_image}`} />
+          <img alt={postInfo.title} src={postInfo.hero_image} />
         )}
         <p>
           {postInfo.tags === null ? (
