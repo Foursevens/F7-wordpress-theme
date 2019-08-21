@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Case from './case';
+import CaseGridListItem from './grid-list-item';
 
 export default function Cases(props) {
   const { limit } = props;
@@ -39,7 +39,7 @@ export default function Cases(props) {
   return (
     <div className="cases">
       {cases.splice(0, limit).map((wpCase) => (
-        <Case caseInfo={wpCase} key={wpCase.id} />
+        <CaseGridListItem caseInfo={wpCase} key={wpCase.id} />
       ))}
     </div>
   );

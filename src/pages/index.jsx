@@ -2,10 +2,10 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 
-import Cases from '../components/cases/cases';
+import CasesGridList from '../cases/grid-list';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import BlogPosts from '../components/blog/blog-posts';
+import PostsGridList from '../posts/grid-list';
 
 export const query = graphql`
   query IndexQuery($language: String!) {
@@ -58,7 +58,7 @@ export default function IndexPage({ data }) {
         ))}
       </ul>
       <h2>Cases</h2>
-      <Cases limit={6} />
+      <CasesGridList limit={6} />
       <h2>Team</h2>
       <ul style={{ display: 'flex' }}>
         {firstMembers.map((member) => (
@@ -71,7 +71,7 @@ export default function IndexPage({ data }) {
       </ul>
       <ul>
         <h2>blog</h2>
-        <BlogPosts limit={6} />
+        <PostsGridList limit={6} />
       </ul>
     </Layout>
   );

@@ -2,9 +2,9 @@ import { Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { blogPostShape } from '../../models';
+import { blogPostShape } from '../models';
 
-export default function Post(props) {
+export default function PostGridListItem(props) {
   const { postInfo } = props;
   return (
     <Link to={`/${postInfo.path}`}>
@@ -35,6 +35,6 @@ export default function Post(props) {
   );
 }
 
-Post.propTypes = {
+PostGridListItem.propTypes = {
   postInfo: PropTypes.shape(blogPostShape).isRequired,
 };

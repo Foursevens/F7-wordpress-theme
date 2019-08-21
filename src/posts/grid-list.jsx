@@ -1,9 +1,10 @@
-import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { IntlContextConsumer } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
-import { byLanguage } from '../../utils';
-import Post from './post';
+import React from 'react';
+
+import { byLanguage } from '../utils';
+import PostGridListItem from './grid-list-item';
 
 export default function BlogPosts(props) {
   const { limit } = props;
@@ -39,7 +40,7 @@ export default function BlogPosts(props) {
             .filter(byLanguage(language))
             .slice(0, limit)
             .map((post) => (
-              <Post postInfo={post} key={post.id} />
+              <PostGridListItem postInfo={post} key={post.id} />
             ))}
         </div>
       )}
