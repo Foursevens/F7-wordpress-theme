@@ -5,17 +5,18 @@ import Layout from '../components/layout';
 
 export const query = graphql`
   query($language: String!, $slug: String!) {
-    wordpressWpCases(language: { eq: $language }, slug: { eq: $slug }) {
-      content
-      hero_image
-      title
+    caseDetail: wordpressWpCases(
+      language: { eq: $language }
+      slug: { eq: $slug }
+    ) {
+      ...CaseData
     }
   }
 `;
 
 export default function CaseDetailTemplate({
   data: {
-    wordpressWpCases: { content, hero_image, title },
+    caseDetail: { content, hero_image, title },
   },
 }) {
   return (

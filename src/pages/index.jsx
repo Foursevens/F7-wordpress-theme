@@ -18,6 +18,14 @@ export const query = graphql`
         title
       }
     }
+    firstCases: allWordpressWpCases(
+      filter: { language: { eq: $language } }
+      limit: 6
+    ) {
+      nodes {
+        ...CaseData
+      }
+    }
     firstMembers: allWordpressWpMembers(
       filter: { status: { eq: "publish" }, language: { eq: $language } }
       limit: 3
@@ -37,13 +45,24 @@ export const query = graphql`
         title
       }
     }
+    firstPosts: allWordpressPost(
+      filter: { status: { eq: "publish" }, language: { eq: $language } }
+      limit: 6
+      sort: { fields: date, order: DESC }
+    ) {
+      nodes {
+        ...PostData
+      }
+    }
   }
 `;
 
 export default function IndexPage({ data }) {
   const {
     allApproaches: { nodes: allApproaches },
+    firstCases: { nodes: firstCases },
     firstMembers: { nodes: firstMembers },
+    firstPosts: { nodes: firstPosts },
   } = data;
   return (
     <Layout>
@@ -58,7 +77,7 @@ export default function IndexPage({ data }) {
         ))}
       </ul>
       <h2>Cases</h2>
-      <CasesGridList limit={6} />
+      <CasesGridList cases={firstCases} />
       <h2>Team</h2>
       <ul style={{ display: 'flex' }}>
         {firstMembers.map((member) => (
@@ -71,7 +90,7 @@ export default function IndexPage({ data }) {
       </ul>
       <ul>
         <h2>blog</h2>
-        <PostsGridList limit={6} />
+        <PostsGridList posts={firstPosts} />
       </ul>
     </Layout>
   );
