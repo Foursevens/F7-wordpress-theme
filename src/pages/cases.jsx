@@ -6,7 +6,7 @@ import CasesGridList from '../cases/grid-list';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const CasesPage = () => {
+export default function CasesPage() {
   return (
     <Layout>
       <SEO title="Cases" />
@@ -16,6 +16,4 @@ const CasesPage = () => {
       </div>
     </Layout>
   );
-};
-
-export default CasesPage;
+}
