@@ -30,7 +30,7 @@ function BlogPageTemplate({
   );
   return (
     <Layout>
-      <h2>{title}</h2>
+      <h2 dangerouslySetInnerHTML={{ __html: title }} />
       {video && <img src={`${hero_image}`} alt={`Foursevens blog ${title}`} />}
       <div dangerouslySetInnerHTML={{ __html: video }} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
