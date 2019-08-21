@@ -46,6 +46,11 @@ export default function BlogPosts(props) {
     </IntlContextConsumer>
   );
 }
+
+BlogPosts.defaultProps = {
+  limit: Infinity,
+};
+
 BlogPosts.propTypes = {
-  limit: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+  limit: PropTypes.number,
 };

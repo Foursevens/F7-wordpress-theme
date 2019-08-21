@@ -44,6 +44,11 @@ export default function Cases(props) {
     </div>
   );
 }
+
+Cases.defaultProps = {
+  limit: Infinity,
+};
+
 Cases.propTypes = {
-  limit: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+  limit: PropTypes.number,
 };

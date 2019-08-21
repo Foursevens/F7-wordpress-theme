@@ -1,7 +1,8 @@
 import { Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
-
 import React from 'react';
+
+import { blogPostShape } from '../../models';
 
 export default function Post(props) {
   const { postInfo } = props;
@@ -33,6 +34,7 @@ export default function Post(props) {
     </Link>
   );
 }
+
 Post.propTypes = {
-  postInfo: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+  postInfo: PropTypes.shape(blogPostShape).isRequired,
 };

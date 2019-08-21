@@ -1,7 +1,8 @@
-import React from 'react';
 import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 import { injectIntl } from 'gatsby-plugin-intl';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import Layout from '../components/layout';
 
 export const query = graphql`
@@ -30,10 +31,7 @@ function BlogPageTemplate({
   return (
     <Layout>
       <h2>{title}</h2>
-      {video && (
-        /* eslint-disable-next-line jsx-a11y/alt-text */
-        <img src={`${hero_image}`} alt={`Foursevens blog ${title}`} />
-      )}
+      {video && <img src={`${hero_image}`} alt={`Foursevens blog ${title}`} />}
       <div dangerouslySetInnerHTML={{ __html: video }} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>

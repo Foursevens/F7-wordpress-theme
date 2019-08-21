@@ -1,6 +1,8 @@
-import React from 'react';
 import { Link } from 'gatsby';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+import { caseShape } from '../../models';
 
 export default function Case(props) {
   const { caseInfo } = props;
@@ -18,6 +20,7 @@ export default function Case(props) {
     </Link>
   );
 }
+
 Case.propTypes = {
-  caseInfo: propTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+  caseInfo: PropTypes.shape(caseShape).isRequired,
 };
