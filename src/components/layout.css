@@ -652,3 +652,28 @@ pre tt:after {
   margin-top: -17px;
   margin-bottom: 12px;
 }
+/*Blog styles*/
+.mainBlog{
+width: 1200px}
+.blogItems {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.blogItems img{
+  height: 200px;
+  width: 100%;
+}
+.blogItems a{
+  text-decoration: none;
+  color: black;
+}
+.post{
+  border:1px solid;
+  margin: 5px;
+  width: 380px;
+  height: 490px;
+  padding: 5px;
+}
+/*Blog styles*/

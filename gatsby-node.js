@@ -2,6 +2,7 @@ const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
+const blogPostPageTemplate = resolvePath('./src/templates/blog-post.jsx');
 const casePageTemplate = resolvePath('./src/templates/case.jsx');
 
 const WORDPRESS_IMAGES = [
@@ -13,7 +14,7 @@ exports.createPages = async function createPages({
   graphql,
 }) {
   const {
-    data: { allWordpressWpCases },
+    data: { allWordpressWpCases, allWordpressPost },
     errors,
   } = await graphql(
     `
@@ -24,9 +25,16 @@ exports.createPages = async function createPages({
             slug
           }
         }
+        allWordpressPost(filter: { status: { eq: "publish" } }) {
+          nodes {
+            path
+            slug
+          }
+        }
       }
     `,
   );
+
   if (errors) {
     throw errors;
   }
@@ -34,6 +42,13 @@ exports.createPages = async function createPages({
     createPage({
       path,
       component: casePageTemplate,
+      context: { slug },
+    });
+  });
+  allWordpressPost.nodes.forEach(({ path, slug }) => {
+    createPage({
+      path,
+      component: blogPostPageTemplate,
       context: { slug },
     });
   });
