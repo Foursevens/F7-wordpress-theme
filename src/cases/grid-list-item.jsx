@@ -13,7 +13,7 @@ export default function CaseGridListItem(props) {
         alt={`foursevens case ${caseInfo.title}`}
       />
       <div className="cases-card">
-        <span>{caseInfo.title}</span>
+        <span dangerouslySetInnerHTML={{ __html: caseInfo.title }} />
         <span>{caseInfo.technologies.name}</span>
         <span>{caseInfo.sections.name}</span>
       </div>
