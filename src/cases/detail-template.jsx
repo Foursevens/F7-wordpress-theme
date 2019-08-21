@@ -13,7 +13,7 @@ export const query = graphql`
   }
 `;
 
-export default function CasePageTemplate({
+export default function CaseDetailTemplate({
   data: {
     wordpressWpCases: { content, hero_image, title },
   },

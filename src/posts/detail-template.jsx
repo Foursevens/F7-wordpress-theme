@@ -19,7 +19,7 @@ export const query = graphql`
   }
 `;
 
-function BlogPageTemplate({
+function PostDetailTemplate({
   data: {
     allWordpressPost: { nodes: posts },
   },
@@ -38,8 +38,8 @@ function BlogPageTemplate({
   );
 }
 
-BlogPageTemplate.propTypes = {
+PostDetailTemplate.propTypes = {
   intl: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default injectIntl(BlogPageTemplate);
+export default injectIntl(PostDetailTemplate);
