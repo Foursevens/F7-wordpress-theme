@@ -20,7 +20,7 @@ export default function CasePageTemplate({
 }) {
   return (
     <Layout>
-      <h2>{title}</h2>
+      <h2 dangerouslySetInnerHTML={{ __html: title }} />
       <img src={hero_image} alt={`Foursevens ${title}`} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
