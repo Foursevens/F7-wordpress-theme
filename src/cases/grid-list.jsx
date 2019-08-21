@@ -1,54 +1,20 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import CaseGridListItem from './grid-list-item';
+import { caseShape } from './model';
+import CasesGridListItem from './grid-list-item';
 
-export default function Cases(props) {
-  const { limit } = props;
-  const data = useStaticQuery(graphql`
-    query {
-      cases: allWordpressWpCases(filter: { status: { eq: "publish" } }) {
-        nodes {
-          id
-          path
-          sections {
-            name
-          }
-          title
-          technologies {
-            name
-          }
-          thumbnail_image {
-            url
-            alt
-            sizes {
-              medium_height
-              medium_width
-            }
-          }
-          type
-        }
-      }
-    }
-  `);
-  const {
-    cases: { nodes: cases },
-  } = data;
-
+export default function CasesGridList(props) {
+  const { cases } = props;
   return (
     <div className="cases">
-      {cases.splice(0, limit).map((wpCase) => (
-        <CaseGridListItem caseInfo={wpCase} key={wpCase.id} />
+      {cases.map((wpCase) => (
+        <CasesGridListItem caseInfo={wpCase} key={wpCase.id} />
       ))}
     </div>
   );
 }
 
-Cases.defaultProps = {
-  limit: Infinity,
-};
-
-Cases.propTypes = {
-  limit: PropTypes.number,
+CasesGridList.propTypes = {
+  cases: PropTypes.arrayOf(PropTypes.shape(caseShape).isRequired).isRequired,
 };

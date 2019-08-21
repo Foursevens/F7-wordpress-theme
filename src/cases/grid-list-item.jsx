@@ -2,9 +2,9 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { caseShape } from '../models';
+import { caseShape } from './model';
 
-export default function CaseGridListItem(props) {
+export default function CasesGridListItem(props) {
   const { caseInfo } = props;
   return (
     <Link to={caseInfo.path} key={caseInfo.id}>
@@ -21,6 +21,6 @@ export default function CaseGridListItem(props) {
   );
 }
 
-CaseGridListItem.propTypes = {
+CasesGridListItem.propTypes = {
   caseInfo: PropTypes.shape(caseShape).isRequired,
 };
