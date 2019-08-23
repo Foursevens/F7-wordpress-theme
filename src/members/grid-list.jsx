@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { memberShape } from './model';
 import MembersGridListItem from './grid-list-item';
+import { memberShape } from './model';
 
 export default function MembersGridList({ members }) {
   return (
-    <div className="members">
+    <ul className="members">
       {members.map((member) => (
         <MembersGridListItem memberInfo={member} key={member.id} />
       ))}
-    </div>
+    </ul>
   );
 }
 

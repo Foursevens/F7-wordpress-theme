@@ -6,11 +6,11 @@ import { postShape } from './model';
 
 export default function PostsGridList({ posts }) {
   return (
-    <div className="blogItems">
+    <ul className="blogItems">
       {posts.map((post) => (
         <PostsGridListItem postInfo={post} key={post.id} />
       ))}
-    </div>
+    </ul>
   );
 }
 

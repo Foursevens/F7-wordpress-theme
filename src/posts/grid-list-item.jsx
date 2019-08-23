@@ -6,8 +6,8 @@ import { postShape } from './model';
 
 export default function PostsGridListItem({ postInfo }) {
   return (
-    <Link to={`/${postInfo.path}`}>
-      <div key={postInfo.id} className="post">
+    <li className="post">
+      <Link to={`/${postInfo.path}`}>
         {postInfo.hero_image === null ? (
           <img
             alt={postInfo.title}
@@ -26,8 +26,8 @@ export default function PostsGridListItem({ postInfo }) {
         </p>
         <h3 dangerouslySetInnerHTML={{ __html: postInfo.title }} />
         <p dangerouslySetInnerHTML={{ __html: postInfo.intro }} />
-      </div>
-    </Link>
+      </Link>
+    </li>
   );
 }
 

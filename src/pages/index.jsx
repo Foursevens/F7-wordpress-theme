@@ -70,13 +70,9 @@ export default function IndexPage({
       <h2>Cases</h2>
       <CasesGridList cases={firstCases} />
       <h2>Team</h2>
-      <ul>
-        <MembersGridList members={firstMembers} />
-      </ul>
+      <MembersGridList members={firstMembers} />
       <h2>Blog</h2>
-      <ul>
-        <PostsGridList posts={firstPosts} />
-      </ul>
+      <PostsGridList posts={firstPosts} />
     </Layout>
   );
 }
