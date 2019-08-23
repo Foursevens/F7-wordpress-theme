@@ -4,8 +4,7 @@ import React from 'react';
 import { memberShape } from './model';
 import MembersGridListItem from './grid-list-item';
 
-export default function MembersGridList(props) {
-  const { members } = props;
+export default function MembersGridList({ members }) {
   return (
     <div className="members">
       {members.map((member) => (

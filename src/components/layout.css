@@ -687,7 +687,7 @@ width: 1200px}
 .member{
   margin-top: 10px;
   width: 259px;
- border: solid 1px black;
+  border: solid 1px black;
 }
 .member h4, h6{
   text-align: center;
