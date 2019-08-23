@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import React from 'react';
 
 import CasesGridList from '../cases/grid-list';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostsGridList from '../posts/grid-list';
+import MembersGridList from '../members/grid-list';
 
 export const query = graphql`
   query IndexQuery($language: String!) {
@@ -32,17 +32,7 @@ export const query = graphql`
       sort: { fields: date, order: DESC }
     ) {
       nodes {
-        id
-        portret {
-          childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        function
-        skills
-        title
+        ...MemberData
       }
     }
     firstPosts: allWordpressPost(
@@ -79,17 +69,11 @@ export default function IndexPage({ data }) {
       <h2>Cases</h2>
       <CasesGridList cases={firstCases} />
       <h2>Team</h2>
-      <ul style={{ display: 'flex' }}>
-        {firstMembers.map((member) => (
-          <li key={member.id}>
-            <h3>{member.title}</h3>
-            <Img fluid={member.portret.childImageSharp.fluid} />
-            <sub>{member.function}</sub>
-          </li>
-        ))}
-      </ul>
       <ul>
-        <h2>blog</h2>
+        <MembersGridList members={firstMembers} />
+      </ul>
+      <h2>Blog</h2>
+      <ul>
         <PostsGridList posts={firstPosts} />
       </ul>
     </Layout>
