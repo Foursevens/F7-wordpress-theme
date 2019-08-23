@@ -3,19 +3,16 @@ import React from 'react';
 
 import { memberShape } from './model';
 
-export default function MembersGridListItem({ memberInfo }) {
+export default function MembersGridListItem({ member }) {
   return (
     <li className="member">
-      <img
-        src={memberInfo.portret.childImageSharp.fluid.src}
-        alt={memberInfo.title}
-      />
-      <h4> {memberInfo.title}</h4>
-      <h6>{memberInfo.function}</h6>
+      <img src={member.portret.childImageSharp.fluid.src} alt={member.title} />
+      <h4> {member.title}</h4>
+      <h6>{member.function}</h6>
     </li>
   );
 }
 
 MembersGridListItem.propTypes = {
-  memberInfo: PropTypes.shape(memberShape).isRequired,
+  member: PropTypes.shape(memberShape).isRequired,
 };

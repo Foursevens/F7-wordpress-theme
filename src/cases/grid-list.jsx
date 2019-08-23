@@ -8,7 +8,7 @@ export default function CasesGridList({ cases }) {
   return (
     <ul className="cases">
       {cases.map((wpCase) => (
-        <CasesGridListItem caseInfo={wpCase} key={wpCase.id} />
+        <CasesGridListItem wpCase={wpCase} key={wpCase.id} />
       ))}
     </ul>
   );

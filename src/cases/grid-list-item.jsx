@@ -4,20 +4,20 @@ import React from 'react';
 
 import { caseShape } from './model';
 
-export default function CasesGridListItem({ caseInfo }) {
+export default function CasesGridListItem({ wpCase }) {
   return (
     <li>
-      <Link to={caseInfo.path} key={caseInfo.id}>
-        {caseInfo.thumbnail_image && (
+      <Link to={wpCase.path} key={wpCase.id}>
+        {wpCase.thumbnail_image && (
           <img
-            alt={caseInfo.thumbnail_image.alt || caseInfo.title}
-            src={caseInfo.thumbnail_image.url}
+            alt={wpCase.thumbnail_image.alt || wpCase.title}
+            src={wpCase.thumbnail_image.url}
           />
         )}
         <div className="cases-card">
-          <span dangerouslySetInnerHTML={{ __html: caseInfo.title }} />
-          <span>{caseInfo.technologies.name}</span>
-          <span>{caseInfo.sections.name}</span>
+          <span dangerouslySetInnerHTML={{ __html: wpCase.title }} />
+          <span>{wpCase.technologies.name}</span>
+          <span>{wpCase.sections.name}</span>
         </div>
       </Link>
     </li>
@@ -25,5 +25,5 @@ export default function CasesGridListItem({ caseInfo }) {
 }
 
 CasesGridListItem.propTypes = {
-  caseInfo: PropTypes.shape(caseShape).isRequired,
+  wpCase: PropTypes.shape(caseShape).isRequired,
 };

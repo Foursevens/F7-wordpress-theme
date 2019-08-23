@@ -8,7 +8,7 @@ export default function PostsGridList({ posts }) {
   return (
     <ul className="blogItems">
       {posts.map((post) => (
-        <PostsGridListItem postInfo={post} key={post.id} />
+        <PostsGridListItem post={post} key={post.id} />
       ))}
     </ul>
   );

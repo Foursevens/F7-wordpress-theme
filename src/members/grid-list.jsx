@@ -8,7 +8,7 @@ export default function MembersGridList({ members }) {
   return (
     <ul className="members">
       {members.map((member) => (
-        <MembersGridListItem memberInfo={member} key={member.id} />
+        <MembersGridListItem member={member} key={member.id} />
       ))}
     </ul>
   );
