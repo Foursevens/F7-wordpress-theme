@@ -676,4 +676,20 @@ width: 1200px}
   height: 490px;
   padding: 5px;
 }
-/*Blog styles*/
+/*Team styles*/
+.members{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+.member{
+  margin-top: 10px;
+  width: 259px;
+ border: solid 1px black;
+}
+.member h4, h6{
+  text-align: center;
+}
+
