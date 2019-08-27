@@ -3,6 +3,7 @@ const { resolve: resolvePath } = require('path');
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
 const caseDetailTemplate = resolvePath('./src/cases/detail-template.jsx');
+const jobDetailTemplate = resolvePath('./src/jobs/detail-template.jsx');
 const postDetailTemplate = resolvePath('./src/posts/detail-template.jsx');
 
 const WORDPRESS_IMAGES = [
@@ -14,12 +15,18 @@ exports.createPages = async function createPages({
   graphql,
 }) {
   const {
-    data: { allWordpressWpCases, allWordpressPost },
+    data: { allWordpressWpCases, allWordpressWpJobs, allWordpressPost },
     errors,
   } = await graphql(
     `
       query {
         allWordpressWpCases(filter: { status: { eq: "publish" } }) {
+          nodes {
+            path
+            slug
+          }
+        }
+        allWordpressWpJobs(filter: { status: { eq: "publish" } }) {
           nodes {
             path
             slug
@@ -37,6 +44,13 @@ exports.createPages = async function createPages({
   if (errors) {
     throw errors;
   }
+  allWordpressPost.nodes.forEach(({ path, slug }) => {
+    createPage({
+      path,
+      component: postDetailTemplate,
+      context: { slug },
+    });
+  });
   allWordpressWpCases.nodes.forEach(({ path, slug }) => {
     createPage({
       path,
@@ -44,10 +58,10 @@ exports.createPages = async function createPages({
       context: { slug },
     });
   });
-  allWordpressPost.nodes.forEach(({ path, slug }) => {
+  allWordpressWpJobs.nodes.forEach(({ path, slug }) => {
     createPage({
       path,
-      component: postDetailTemplate,
+      component: jobDetailTemplate,
       context: { slug },
     });
   });
