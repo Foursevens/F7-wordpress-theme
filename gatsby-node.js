@@ -14,6 +14,15 @@ exports.createPages = async function createPages({
   actions: { createPage },
   graphql,
 }) {
+  function createWPPages(nodes, component) {
+    nodes.forEach(({ path, slug }) => {
+      createPage({
+        path,
+        component,
+        context: { slug },
+      });
+    });
+  }
   const {
     data: { allWordpressWpCases, allWordpressWpJobs, allWordpressPost },
     errors,
@@ -44,27 +53,9 @@ exports.createPages = async function createPages({
   if (errors) {
     throw errors;
   }
-  allWordpressPost.nodes.forEach(({ path, slug }) => {
-    createPage({
-      path,
-      component: postDetailTemplate,
-      context: { slug },
-    });
-  });
-  allWordpressWpCases.nodes.forEach(({ path, slug }) => {
-    createPage({
-      path,
-      component: caseDetailTemplate,
-      context: { slug },
-    });
-  });
-  allWordpressWpJobs.nodes.forEach(({ path, slug }) => {
-    createPage({
-      path,
-      component: jobDetailTemplate,
-      context: { slug },
-    });
-  });
+  createWPPages(allWordpressPost.nodes, postDetailTemplate);
+  createWPPages(allWordpressWpCases.nodes, caseDetailTemplate);
+  createWPPages(allWordpressWpJobs.nodes, jobDetailTemplate);
 };
 
 exports.onCreateNode = async function onCreateNode({
