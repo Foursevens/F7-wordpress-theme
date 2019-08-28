@@ -7,7 +7,7 @@ import { caseShape } from './model';
 export default function CasesGridListItem({ wpCase }) {
   return (
     <li>
-      <Link to={wpCase.path} key={wpCase.id}>
+      <Link to={wpCase.path}>
         {wpCase.thumbnail_image && (
           <img
             alt={wpCase.thumbnail_image.alt || wpCase.title}
