@@ -7,7 +7,7 @@ import { postShape } from './model';
 export default function PostsGridListItem({ post }) {
   return (
     <li className="post">
-      <Link to={`/${post.path}`}>
+      <Link to={post.path}>
         {post.hero_image === null ? (
           <img
             alt={post.title}

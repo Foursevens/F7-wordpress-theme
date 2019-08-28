@@ -23,19 +23,25 @@ module.exports = async function createPages({
   } = await graphql(
     `
       query {
-        allWordpressWpCases(filter: { status: { eq: "publish" } }) {
+        allWordpressWpCases(
+          filter: { language: { eq: "nl" }, status: { eq: "publish" } }
+        ) {
           nodes {
             path
             slug
           }
         }
-        allWordpressWpJobs(filter: { status: { eq: "publish" } }) {
+        allWordpressWpJobs(
+          filter: { language: { eq: "nl" }, status: { eq: "publish" } }
+        ) {
           nodes {
             path
             slug
           }
         }
-        allWordpressPost(filter: { status: { eq: "publish" } }) {
+        allWordpressPost(
+          filter: { language: { eq: "nl" }, status: { eq: "publish" } }
+        ) {
           nodes {
             path
             slug
