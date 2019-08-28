@@ -59,7 +59,9 @@ export default function IndexPage({
   return (
     <Layout>
       <SEO title="Home" />
-      <h2>Approach</h2>
+      <h2>
+        <Link to="/approach">Approach</Link>
+      </h2>
       <ul>
         {allApproaches.map((approach) => (
           <li key={approach.id}>
