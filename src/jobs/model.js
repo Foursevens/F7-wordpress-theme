@@ -3,10 +3,11 @@ import { string } from 'prop-types';
 
 export const jobFragment = graphql`
   fragment JobData on wordpress__wp_jobs {
-    title
+    content
     required_languages
     required_skill_level
-    content
+    slug
+    title
   }
 `;
 

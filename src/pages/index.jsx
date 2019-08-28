@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import CasesGridList from '../cases/grid-list';
@@ -67,11 +68,15 @@ export default function IndexPage({
           </li>
         ))}
       </ul>
-      <h2>Cases</h2>
+      <h2>
+        <Link to="/cases">Cases</Link>
+      </h2>
       <CasesGridList cases={firstCases} />
       <h2>Team</h2>
       <MembersGridList members={firstMembers} />
-      <h2>Blog</h2>
+      <h2>
+        <Link to="/blog">Blog</Link>
+      </h2>
       <PostsGridList posts={firstPosts} />
     </Layout>
   );

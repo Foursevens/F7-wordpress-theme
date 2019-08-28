@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import Layout from '../components/layout';
@@ -21,6 +22,7 @@ export default function CaseDetailTemplate({
 }) {
   return (
     <Layout>
+      <Link to="/cases">Cases</Link>
       <h2 dangerouslySetInnerHTML={{ __html: title }} />
       {hero_image && (
         <img

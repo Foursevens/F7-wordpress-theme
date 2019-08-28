@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import Layout from '../components/layout';
@@ -21,6 +22,7 @@ export default function JobDetailTemplate({
 }) {
   return (
     <Layout>
+      <Link to="/jobs">Jobs</Link>
       <h2 dangerouslySetInnerHTML={{ __html: title }} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
