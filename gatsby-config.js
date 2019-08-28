@@ -1,3 +1,7 @@
+const LOCALES = process.env.F7_LOCALES
+  ? process.env.F7_LOCALES.split(',')
+  : ['en', 'fr', 'nl'];
+
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -25,7 +29,7 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    ...['en', 'fr', 'nl'].map((language) => ({
+    ...LOCALES.map((language) => ({
       resolve: 'gatsby-source-wordpress',
       options: {
         baseUrl: `foursevens.be/${language}`,
@@ -45,9 +49,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-intl',
       options: {
-        defaultLanguage: 'en',
-        languages: ['en', 'fr', 'nl'],
-        // path: `${__dirname}/src/intl`,
+        defaultLanguage: 'nl',
+        languages: LOCALES,
         redirect: true,
       },
     },
