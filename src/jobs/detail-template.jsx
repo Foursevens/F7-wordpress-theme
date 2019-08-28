@@ -21,7 +21,7 @@ export default function JobDetailTemplate({
 }) {
   return (
     <Layout>
-      <h3 dangerouslySetInnerHTML={{ __html: title }} />
+      <h2 dangerouslySetInnerHTML={{ __html: title }} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
   );

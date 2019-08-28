@@ -6,9 +6,9 @@ import { jobShape } from './model';
 export default function JobsGridListItem({ job }) {
   return (
     <li>
-      <h5 dangerouslySetInnerHTML={{ __html: job.title }} />
-      <h5 dangerouslySetInnerHTML={{ __html: job.required_skill_level }} />
-      <h5 dangerouslySetInnerHTML={{ __html: job.required_languages }} />
+      <h2 dangerouslySetInnerHTML={{ __html: job.title }} />
+      <p dangerouslySetInnerHTML={{ __html: job.required_skill_level }} />
+      <p dangerouslySetInnerHTML={{ __html: job.required_languages }} />
     </li>
   );
 }
