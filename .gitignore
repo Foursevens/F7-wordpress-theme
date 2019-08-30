@@ -1,3 +1,5 @@
+.memento-cache/
+
 # Logs
 logs
 *.log

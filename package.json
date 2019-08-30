@@ -12,6 +12,7 @@
     "lint": "eslint --cache --ext js --ext jsx --fix *.js src/",
     "format": "prettier --write *.js src/**/*.{js,jsx}",
     "start": "yarn develop",
+    "start:memento": "MEMENTO=true yarn develop",
     "start:nl": "F7_LOCALES=nl yarn start",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""

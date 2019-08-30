@@ -30,7 +30,9 @@ module.exports = {
     ...LOCALES.map((language) => ({
       resolve: 'gatsby-source-wordpress',
       options: {
-        baseUrl: `foursevens.be/${language}`,
+        baseUrl: process.env.MEMENTO
+          ? `localhost:3344/${language}`
+          : `foursevens.be/${language}`,
         excludedRoutes: [
           '**/search',
           '**/settings',
@@ -49,7 +51,7 @@ module.exports = {
             }
             return normalizedEntity;
           }),
-        protocol: 'https',
+        protocol: process.env.MEMENTO ? 'http' : 'https',
         useACF: false, // Don't fetch the "Advanced Custom Fields" fields.
       },
     })),
