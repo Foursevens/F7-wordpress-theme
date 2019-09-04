@@ -1,10 +1,9 @@
 import { graphql } from 'gatsby';
 import { string, shape } from 'prop-types';
 
-export const postFragment = graphql`
-  fragment PostData on wordpress__POST {
+export const PostBaseData = graphql`
+  fragment PostBaseData on wordpress__POST {
     id
-    content
     date
     hero_image
     intro
@@ -14,7 +13,6 @@ export const postFragment = graphql`
       name
     }
     title
-    video
   }
 `;
 
@@ -27,5 +25,4 @@ export const postShape = {
   path: string,
   tags: shape({ name: string }),
   title: string,
-  video: string,
 };

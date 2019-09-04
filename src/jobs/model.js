@@ -2,8 +2,7 @@ import { graphql } from 'gatsby';
 import { string } from 'prop-types';
 
 export const jobFragment = graphql`
-  fragment JobData on wordpress__wp_jobs {
-    content
+  fragment JobBaseData on wordpress__wp_jobs {
     required_languages
     required_skill_level
     slug
@@ -12,8 +11,8 @@ export const jobFragment = graphql`
 `;
 
 export const jobShape = {
-  title: string,
   required_languages: string,
   required_skill_level: string,
-  content: string,
+  slug: string,
+  title: string,
 };

@@ -11,7 +11,7 @@ export const query = graphql`
   query($language: String!) {
     allCases: allWordpressWpCases(filter: { language: { eq: $language } }) {
       nodes {
-        ...CaseData
+        ...CaseBaseData
       }
     }
   }

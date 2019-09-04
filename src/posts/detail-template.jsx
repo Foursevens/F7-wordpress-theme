@@ -10,7 +10,9 @@ export const query = graphql`
       language: { eq: $language }
       slug: { eq: $slug }
     ) {
-      ...PostData
+      ...PostBaseData
+      content
+      video
     }
   }
 `;

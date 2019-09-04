@@ -10,7 +10,8 @@ export const query = graphql`
       language: { eq: $language }
       slug: { eq: $slug }
     ) {
-      ...JobData
+      ...JobBaseData
+      content
     }
   }
 `;

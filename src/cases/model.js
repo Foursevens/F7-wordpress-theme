@@ -2,10 +2,8 @@ import { graphql } from 'gatsby';
 import { string, shape } from 'prop-types';
 
 export const caseFragment = graphql`
-  fragment CaseData on wordpress__wp_cases {
+  fragment CaseBaseData on wordpress__wp_cases {
     id
-    content
-    hero_image
     path
     sections {
       name

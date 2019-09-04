@@ -9,7 +9,7 @@ export const query = graphql`
   query($language: String!) {
     allPosts: allWordpressPost(filter: { language: { eq: $language } }) {
       nodes {
-        ...PostData
+        ...PostBaseData
       }
     }
   }

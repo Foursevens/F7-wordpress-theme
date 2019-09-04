@@ -30,7 +30,7 @@ export const query = graphql`
       limit: 6
     ) {
       nodes {
-        ...CaseData
+        ...CaseBaseData
       }
     }
     firstMembers: allWordpressWpMembers(
@@ -48,7 +48,7 @@ export const query = graphql`
       sort: { fields: date, order: DESC }
     ) {
       nodes {
-        ...PostData
+        ...PostBaseData
       }
     }
   }
