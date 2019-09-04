@@ -24,9 +24,39 @@ const PAGES = [
   },
 ];
 
-const WORDPRESS_IMAGES = [
-  { type: 'wordpress__wp_members', fields: ['portret'] },
-];
+const WORDPRESS_FILES = {
+  wordpress__POST: [{ source: 'hero_image' }],
+  wordpress__wp_cases: [
+    { source: 'hero_image' },
+    { source: (node) => node.thumbnail_image.url, target: 'thumbnail_image' },
+  ],
+  wordpress__wp_members: [
+    { source: (node) => node.portret.url, target: 'portret' },
+  ],
+};
+
+/**
+ *
+ * @param {object} context gatsby internals
+ * @param {object} node gatsby node that has one or more file URLs
+ * @param {*} param2
+ */
+async function mapWpRemoteFile(context, node, { source, target }) {
+  /* eslint no-param-reassign: "off" */
+  const { createNodeField } = context;
+  const url = typeof source === 'function' ? source(node) : node[source];
+  if (url == null) {
+    return;
+  }
+  const fileNode = await createRemoteFileNode({
+    ...context,
+    parentNodeId: node.id,
+    url,
+  });
+  const name = `remote_${target || source}`;
+  createNodeField({ node, name });
+  node.fields[`${name}___NODE`] = fileNode.id;
+}
 
 exports.createPages = async function createPages({
   actions: { createPage },
@@ -66,27 +96,18 @@ exports.onCreateNode = async function onCreateNode({
   node,
   store,
 }) {
-  await Promise.all(
-    WORDPRESS_IMAGES.map(async ({ type, fields }) => {
-      if (node.internal.type === type) {
-        await Promise.all(
-          fields.map(async (field) => {
-            /* eslint no-param-reassign: "off" */
-            const fileNode = await createRemoteFileNode({
-              cache,
-              createNode,
-              createNodeId,
-              parentNodeId: node.id,
-              store,
-              url: node[field].url,
-            });
-            createNodeField({ node, name: field, value: fileNode });
-            node[`${field}___NODE`] = fileNode.id;
-          }),
-        );
-      }
-    }),
-  );
+  const wpImageMappers = WORDPRESS_FILES[node.internal.type];
+  if (wpImageMappers) {
+    await Promise.all(
+      wpImageMappers.map((mapper) =>
+        mapWpRemoteFile(
+          { cache, createNode, createNodeField, createNodeId, store },
+          node,
+          mapper,
+        ),
+      ),
+    );
+  }
 };
 
 exports.onCreatePage = function onCreatePage({

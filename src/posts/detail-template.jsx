@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
@@ -19,14 +20,16 @@ export const query = graphql`
 
 export default function PostDetailTemplate({
   data: {
-    postDetail: { content, title, video, hero_image },
+    postDetail: { content, fields, title, video },
   },
 }) {
   return (
     <Layout>
       <Link to="/blog">Blog</Link>
       <h2 dangerouslySetInnerHTML={{ __html: title }} />
-      {hero_image && <img alt={title} src={hero_image} />}
+      {fields && fields.remote_hero_image && (
+        <Img fluid={fields.remote_hero_image.childImageSharp.fluid} />
+      )}
       {video && <div dangerouslySetInnerHTML={{ __html: video }} />}
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>

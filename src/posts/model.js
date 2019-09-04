@@ -5,7 +5,15 @@ export const PostBaseData = graphql`
   fragment PostBaseData on wordpress__POST {
     id
     date
-    hero_image
+    fields {
+      remote_hero_image {
+        childImageSharp {
+          fluid(maxWidth: 768) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
     intro
     language
     slug
@@ -19,7 +27,7 @@ export const PostBaseData = graphql`
 export const postShape = {
   id: string,
   date: string,
-  hero_image: string,
+  fields: shape({ remote_hero_image: shape({}) }),
   intro: string,
   language: string,
   slug: string,

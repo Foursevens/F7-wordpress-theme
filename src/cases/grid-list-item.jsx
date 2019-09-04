@@ -1,3 +1,4 @@
+import Img from 'gatsby-image';
 import { Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -8,10 +9,10 @@ export default function CasesGridListItem({ wpCase }) {
   return (
     <li>
       <Link to={`/cases/${wpCase.slug}`}>
-        {wpCase.thumbnail_image && (
-          <img
-            alt={wpCase.thumbnail_image.alt || wpCase.title}
-            src={wpCase.thumbnail_image.url}
+        {wpCase.fields.remote_thumbnail_image && (
+          <Img
+            alt={wpCase.fields.remote_thumbnail_image.alt}
+            fluid={wpCase.fields.remote_thumbnail_image.childImageSharp.fluid}
           />
         )}
         <div className="cases-card">

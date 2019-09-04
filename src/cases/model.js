@@ -4,6 +4,15 @@ import { string, shape } from 'prop-types';
 export const caseFragment = graphql`
   fragment CaseBaseData on wordpress__wp_cases {
     id
+    fields {
+      remote_thumbnail_image {
+        childImageSharp {
+          fluid(maxWidth: 768) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
     sections {
       name
     }
@@ -13,7 +22,6 @@ export const caseFragment = graphql`
     }
     thumbnail_image {
       alt
-      url
     }
     title
   }
@@ -21,9 +29,10 @@ export const caseFragment = graphql`
 
 export const caseShape = {
   id: string,
+  fields: shape({ remote_thumbnail_image: shape({}) }),
   sections: shape({ name: string }),
   technologies: shape({ name: string }),
-  thumbnail_image: shape({ url: string }),
+  thumbnail_image: shape({ alt: string }),
   slug: string,
   title: string,
 };
