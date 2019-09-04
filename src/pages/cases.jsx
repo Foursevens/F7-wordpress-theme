@@ -25,7 +25,7 @@ export default function CasesPage({
   return (
     <Layout>
       <SEO title="Cases" />
-      <div className="mainCases">
+      <div>
         <h3>Cases</h3>
         <CasesGridList cases={allCases} />
       </div>

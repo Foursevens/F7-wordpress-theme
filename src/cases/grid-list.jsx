@@ -6,7 +6,7 @@ import CasesGridListItem from './grid-list-item';
 
 export default function CasesGridList({ cases }) {
   return (
-    <ul className="cases">
+    <ul>
       {cases.map((wpCase) => (
         <CasesGridListItem wpCase={wpCase} key={wpCase.id} />
       ))}

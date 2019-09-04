@@ -6,7 +6,7 @@ import { postShape } from './model';
 
 export default function PostsGridList({ posts }) {
   return (
-    <ul className="blogItems">
+    <ul>
       {posts.map((post) => (
         <PostsGridListItem post={post} key={post.id} />
       ))}

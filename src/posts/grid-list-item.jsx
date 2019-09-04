@@ -7,7 +7,7 @@ import { postShape } from './model';
 
 export default function PostsGridListItem({ post }) {
   return (
-    <li className="post">
+    <li>
       <Link to={`/blog/${post.slug}`}>
         {post.fields.remote_hero_image && (
           <Image file={post.fields.remote_hero_image} />

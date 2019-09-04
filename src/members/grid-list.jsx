@@ -6,7 +6,7 @@ import { memberShape } from './model';
 
 export default function MembersGridList({ members }) {
   return (
-    <ul className="members">
+    <ul>
       {members.map((member) => (
         <MembersGridListItem member={member} key={member.id} />
       ))}

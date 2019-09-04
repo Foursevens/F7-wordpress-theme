@@ -13,11 +13,9 @@ export default function CasesGridListItem({ wpCase }) {
           alt={wpCase.thumbnail_image.alt}
           file={wpCase.fields.remote_thumbnail_image}
         />
-        <div className="cases-card">
-          <span dangerouslySetInnerHTML={{ __html: wpCase.title }} />
-          <span>{wpCase.technologies.name}</span>
-          <span>{wpCase.sections.name}</span>
-        </div>
+        <span dangerouslySetInnerHTML={{ __html: wpCase.title }} />
+        <span>{wpCase.technologies.name}</span>
+        <span>{wpCase.sections.name}</span>
       </Link>
     </li>
   );

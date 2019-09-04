@@ -6,7 +6,7 @@ import { memberShape } from './model';
 
 export default function MembersGridListItem({ member }) {
   return (
-    <li className="member">
+    <li>
       <Image alt={member.title} file={member.fields.remote_portret} />
       <h4>{member.title}</h4>
       <h6>{member.function}</h6>
