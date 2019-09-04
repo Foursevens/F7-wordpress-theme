@@ -10,9 +10,12 @@ import MembersGridList from '../members/grid-list';
 
 export const query = graphql`
   query IndexQuery($language: String!) {
-    homeIntro: wordpressPage(language: {eq: $language}, title: {eq: "Home"}) {
-    content
-  }
+    homeIntro: wordpressPage(
+      language: { eq: $language }
+      title: { eq: "Home" }
+    ) {
+      content
+    }
     allApproaches: allWordpressWpApproach(
       filter: { status: { eq: "publish" }, language: { eq: $language } }
     ) {
@@ -60,11 +63,11 @@ export default function IndexPage({
     firstPosts: { nodes: firstPosts },
   },
 }) {
-    return (
+  return (
     <Layout>
       <SEO title="Home" />
       <div>Foursevens</div>
-      <p dangerouslySetInnerHTML={{ __html: homeIntro.content}} />
+      <p dangerouslySetInnerHTML={{ __html: homeIntro.content }} />
       <h2>
         <Link to="/approach">Approach</Link>
       </h2>
