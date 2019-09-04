@@ -44,6 +44,8 @@ const WORDPRESS_FILES = {
 async function mapWpRemoteFile(context, node, { source, target }) {
   /* eslint no-param-reassign: "off" */
   const { createNodeField } = context;
+  const name = `remote_${target || source}`;
+  createNodeField({ node, name });
   const url = typeof source === 'function' ? source(node) : node[source];
   if (url == null) {
     return;
@@ -53,8 +55,6 @@ async function mapWpRemoteFile(context, node, { source, target }) {
     parentNodeId: node.id,
     url,
   });
-  const name = `remote_${target || source}`;
-  createNodeField({ node, name });
   node.fields[`${name}___NODE`] = fileNode.id;
 }
 

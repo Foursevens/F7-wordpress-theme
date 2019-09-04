@@ -1,16 +1,13 @@
-import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Image from '../components/image';
 import { memberShape } from './model';
 
 export default function MembersGridListItem({ member }) {
   return (
     <li className="member">
-      <Img
-        fluid={member.fields.remote_portret.childImageSharp.fluid}
-        alt={member.title}
-      />
+      <Image alt={member.title} file={member.fields.remote_portret} />
       <h4>{member.title}</h4>
       <h6>{member.function}</h6>
     </li>

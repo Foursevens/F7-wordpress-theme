@@ -1,17 +1,15 @@
-import Img from 'gatsby-image';
 import { Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Image from '../components/image';
 import { postShape } from './model';
 
 export default function PostsGridListItem({ post }) {
   return (
     <li className="post">
       <Link to={`/blog/${post.slug}`}>
-        {post.fields && post.fields.remote_hero_image && (
-          <Img fluid={post.fields.remote_hero_image.childImageSharp.fluid} />
-        )}
+        <Image file={post.fields.remote_hero_image} />
         <p>
           {post.tags === null ? (
             <span>Article</span>

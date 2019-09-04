@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
+import Image from '../components/image';
 import Layout from '../components/layout';
 
 export const query = graphql`
@@ -40,12 +40,7 @@ export default function CaseDetailTemplate({
     <Layout>
       <Link to="/cases">Cases</Link>
       <h2 dangerouslySetInnerHTML={{ __html: title }} />
-      {remote_hero_image && (
-        <Img
-          alt={thumbnail_image.alt}
-          fluid={remote_hero_image.childImageSharp.fluid}
-        />
-      )}
+      <Image alt={thumbnail_image.alt} file={remote_hero_image} />
       <p dangerouslySetInnerHTML={{ __html: content }} />
     </Layout>
   );
