@@ -13,7 +13,8 @@
     "format": "prettier --write *.js src/**/*.{js,jsx}",
     "start": "yarn develop",
     "start:memento": "MEMENTO=true yarn develop",
-    "start:nl": "F7_LOCALES=nl yarn start",
+    "start:memento:nl": "F7_LOCALES=nl MEMENTO=true yarn develop",
+    "start:nl": "F7_LOCALES=nl yarn develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
