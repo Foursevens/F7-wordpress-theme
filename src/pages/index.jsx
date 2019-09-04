@@ -83,7 +83,9 @@ export default function IndexPage({
         <Link to="/cases">Cases</Link>
       </h2>
       <CasesGridList cases={firstCases} />
-      <h2>Team</h2>
+      <h2>
+        <Link to="/team">Team</Link>
+      </h2>
       <MembersGridList members={firstMembers} />
       <h2>
         <Link to="/blog">Blog</Link>
