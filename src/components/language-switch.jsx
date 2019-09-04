@@ -9,7 +9,7 @@ const LANGUAGE_NAME = {
 
 export default function LanguageSwitch() {
   return (
-    <ul style={{ margin: 0 }}>
+    <ul className="-mx-6">
       <IntlContextConsumer>
         {({ languages, language: currentLocale }) =>
           languages.map((language) => {
@@ -19,16 +19,9 @@ export default function LanguageSwitch() {
               }
             };
             return (
-              <li
-                key={language}
-                style={{
-                  display: 'inline-block',
-                  listStyleType: 'none',
-                  marginLeft: '1em',
-                  padding: 0,
-                }}
-              >
+              <li className="inline-block px-6" key={language}>
                 <span
+                  className="cursor-pointer"
                   onClick={handleChangeLanguage}
                   onKeyPress={(event) => {
                     if (event.keyCode === 13) {
@@ -37,7 +30,6 @@ export default function LanguageSwitch() {
                     }
                   }}
                   role="link"
-                  style={{ cursor: `pointer` }}
                   tabIndex="-1"
                 >
                   {LANGUAGE_NAME[language]}

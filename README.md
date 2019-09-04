@@ -14,6 +14,12 @@ You can start developing by starting the development server.
 yarn start
 ```
 
+## Tooling
+
+Make sure your IDE has plugins to repspect the [ESLint](<[ESLint](https://eslint.org/)>) and [stylelint](https://stylelint.io/) config.
+
+## Caching Wordpress
+
 Because each time we start the local development server we need to download all data from Wordpress, it is recommended to cache the HTTP calls with [memento](https://www.npmjs.com/package/@antoinechalifour/memento).
 
 You'll need to run these two commands in a separate terminal.

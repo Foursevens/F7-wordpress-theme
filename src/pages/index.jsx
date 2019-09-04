@@ -8,6 +8,8 @@ import SEO from '../components/seo';
 import PostsGridList from '../posts/grid-list';
 import MembersGridList from '../members/grid-list';
 
+import styles from './index.module.css';
+
 export const query = graphql`
   query IndexQuery($language: String!) {
     homeIntro: wordpressPage(
@@ -66,8 +68,16 @@ export default function IndexPage({
   return (
     <Layout>
       <SEO title="Home" />
-      <div>Foursevens</div>
-      <p dangerouslySetInnerHTML={{ __html: homeIntro.content }} />
+      <div
+        className="font-bold font-title mb-6 text-center text-3xl uppercase"
+        aria-hidden="true"
+      >
+        Foursevens
+      </div>
+      <div
+        className={styles.intro}
+        dangerouslySetInnerHTML={{ __html: homeIntro.content }}
+      />
       <h2>
         <Link to="/approach">Approach</Link>
       </h2>

@@ -1,0 +1,5 @@
+.intro {
+  & p {
+    @apply my-6 text-center text-2xl font-hairline;
+  }
+}

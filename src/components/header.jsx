@@ -7,17 +7,11 @@ import LanguageSwitch from './language-switch';
 export default function Header({ siteTitle }) {
   return (
     <header>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `1.45rem 1.0875rem`,
-        }}
-      >
-        <h1 style={{ margin: 0 }}>
+      <div className="container mx-auto p-6 flex justify-between">
+        <h1>
           <Link to="/">{siteTitle}</Link>
         </h1>
-        <div style={{ float: 'right' }}>
+        <div>
           <LanguageSwitch />
         </div>
       </div>

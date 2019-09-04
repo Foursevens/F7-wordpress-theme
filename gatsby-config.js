@@ -1,6 +1,6 @@
 const { LOCALE_DEFAULT, LOCALES } = require('./options');
 
-module.exports = {
+const config = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -63,5 +63,15 @@ module.exports = {
         redirect: true,
       },
     },
+    'gatsby-plugin-postcss',
   ],
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push({
+    resolve: 'gatsby-plugin-purgecss',
+    options: { tailwind: true },
+  });
+}
+
+module.exports = config;

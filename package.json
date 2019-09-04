@@ -24,15 +24,20 @@
     "gatsby-plugin-intl": "^0.2.8",
     "gatsby-plugin-manifest": "^2.2.13",
     "gatsby-plugin-offline": "^3.0.1",
+    "gatsby-plugin-postcss": "^2.1.7",
+    "gatsby-plugin-purgecss": "^4.0.1",
     "gatsby-plugin-react-helmet": "^3.1.7",
     "gatsby-plugin-sharp": "^2.2.19",
     "gatsby-source-filesystem": "^2.1.20",
     "gatsby-source-wordpress": "^3.1.29",
     "gatsby-transformer-sharp": "^2.2.13",
+    "postcss-nesting": "^7.0.1",
+    "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "tailwindcss": "^1.1.2"
   },
   "devDependencies": {
     "eslint": "^6.3.0",
@@ -43,7 +48,8 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "stylelint-config-standard": "^18.3.0"
   },
   "volta": {
     "node": "10.16.3",
