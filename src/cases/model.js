@@ -4,10 +4,10 @@ import { string, shape } from 'prop-types';
 export const caseFragment = graphql`
   fragment CaseBaseData on wordpress__wp_cases {
     id
-    path
     sections {
       name
     }
+    slug
     technologies {
       name
     }
@@ -21,9 +21,9 @@ export const caseFragment = graphql`
 
 export const caseShape = {
   id: string,
-  path: string,
   sections: shape({ name: string }),
   technologies: shape({ name: string }),
   thumbnail_image: shape({ url: string }),
+  slug: string,
   title: string,
 };

@@ -8,7 +8,7 @@ export const PostBaseData = graphql`
     hero_image
     intro
     language
-    path
+    slug
     tags {
       name
     }
@@ -22,7 +22,7 @@ export const postShape = {
   hero_image: string,
   intro: string,
   language: string,
-  path: string,
+  slug: string,
   tags: shape({ name: string }),
   title: string,
 };

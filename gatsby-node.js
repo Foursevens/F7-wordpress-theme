@@ -7,9 +7,21 @@ const jobDetailTemplate = resolvePath('./src/jobs/detail-template.jsx');
 const postDetailTemplate = resolvePath('./src/posts/detail-template.jsx');
 
 const PAGES = [
-  { key: 'allWordpressWpCases', template: caseDetailTemplate },
-  { key: 'allWordpressWpJobs', template: jobDetailTemplate },
-  { key: 'allWordpressPost', template: postDetailTemplate },
+  {
+    key: 'allWordpressWpCases',
+    pathPrefix: '/cases',
+    template: caseDetailTemplate,
+  },
+  {
+    key: 'allWordpressWpJobs',
+    pathPrefix: '/jobs',
+    template: jobDetailTemplate,
+  },
+  {
+    key: 'allWordpressPost',
+    pathPrefix: '/blog',
+    template: postDetailTemplate,
+  },
 ];
 
 const WORDPRESS_IMAGES = [
@@ -27,7 +39,7 @@ exports.createPages = async function createPages({
           ({ key }) => `
             ${key}(
               filter: { language: { eq: "nl" }, status: { eq: "publish" } }
-            ) { nodes { path slug } }
+            ) { nodes { slug } }
           `,
         )}
       }
@@ -36,12 +48,12 @@ exports.createPages = async function createPages({
   if (errors) {
     throw errors;
   }
-  PAGES.forEach(({ key, template }) => {
-    data[key].nodes.forEach(({ path, slug }) => {
+  PAGES.forEach(({ key, pathPrefix, template }) => {
+    data[key].nodes.forEach(({ slug }) => {
       createPage({
         component: template,
         context: { slug },
-        path,
+        path: `${pathPrefix}/${slug}`,
       });
     });
   });
