@@ -9,5 +9,6 @@ export default function Image({ file, ...props }) {
 }
 
 Image.propTypes = {
-  file: PropTypes.shape({ childImageSharp: {} }).isRequired,
+  file: PropTypes.shape({ childImageSharp: PropTypes.object.isRequired })
+    .isRequired,
 };

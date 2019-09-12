@@ -9,7 +9,9 @@ export default function PostsGridListItem({ post }) {
   return (
     <li className="post">
       <Link to={`/blog/${post.slug}`}>
-        <Image file={post.fields.remote_hero_image} />
+        {post.fields.remote_hero_image && (
+          <Image file={post.fields.remote_hero_image} />
+        )}
         <p>
           {post.tags === null ? (
             <span>Article</span>

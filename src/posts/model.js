@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import { string, shape } from 'prop-types';
+import { arrayOf, string, shape } from 'prop-types';
 
 export const PostBaseData = graphql`
   fragment PostBaseData on wordpress__POST {
@@ -31,6 +31,6 @@ export const postShape = {
   intro: string,
   language: string,
   slug: string,
-  tags: shape({ name: string }),
+  tags: arrayOf(shape({ name: string })),
   title: string,
 };
