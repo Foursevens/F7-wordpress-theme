@@ -19,12 +19,12 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
-    "gatsby": "^2.15.6",
-    "gatsby-image": "^2.2.17",
+    "gatsby": "^2.15.14",
+    "gatsby-image": "^2.2.18",
     "gatsby-plugin-intl": "^0.2.8",
     "gatsby-plugin-manifest": "^2.2.13",
     "gatsby-plugin-offline": "^3.0.1",
-    "gatsby-plugin-react-helmet": "^3.1.6",
+    "gatsby-plugin-react-helmet": "^3.1.7",
     "gatsby-plugin-sharp": "^2.2.19",
     "gatsby-source-filesystem": "^2.1.20",
     "gatsby-source-wordpress": "^3.1.29",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.2.0",
+    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",
