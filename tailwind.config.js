@@ -11,6 +11,7 @@ module.exports = {
         f7500: '#17BEBB',
         f7600: '#348AA7',
         f7700: '#028280',
+        f7800: '#234E52', // alias of teal-900
       },
       fontFamily: {
         sans: ['Roboto', ...defaultTheme.fontFamily.sans],

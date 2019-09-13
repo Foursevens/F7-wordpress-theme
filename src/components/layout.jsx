@@ -1,29 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
+
 import './layout.css';
 
-export default function Layout({ children }) {
-  const { wordpressSiteMetadata } = useStaticQuery(graphql`
-    query LayoutQuery {
-      wordpressSiteMetadata {
-        name
-      }
-    }
-  `);
-
+export default function Layout({ children, showHero }) {
   return (
     <>
-      <Header siteTitle={wordpressSiteMetadata.name} />
-      <div className="container mx-auto p-6">
-        <main>{children}</main>
+      <Header showHero={showHero} />
+      <div className="container mx-auto">
+        <main className="m-6">{children}</main>
       </div>
     </>
   );
 }
 
+Layout.defaultProps = {
+  showHero: false,
+};
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  showHero: PropTypes.bool,
 };
