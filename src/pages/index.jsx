@@ -66,7 +66,7 @@ export default function IndexPage({
   },
 }) {
   return (
-    <Layout>
+    <Layout showHero>
       <SEO title="Home" />
       <div
         className="font-bold font-title mb-6 text-center text-3xl uppercase"
