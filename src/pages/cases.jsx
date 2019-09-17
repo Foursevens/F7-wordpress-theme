@@ -6,7 +6,6 @@ import CasesGridList from '../cases/grid-list';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-
 export const query = graphql`
   query($language: String!) {
     allCases: allWordpressWpCases(filter: { language: { eq: $language } }) {
@@ -53,9 +52,19 @@ export default function CasesPage({
         <ul className="flex justify-center">
           {allSections.map(({ id, name }) => (
             <li
-               className={`mx-2 ${selectedSections.includes(name)?"focus:border-solid border-2 border-blue-400 rounded text-f7500":null}`}
+              className={`mx-2 ${
+                selectedSections.includes(name) ? 'focus:text-f7500' : null
+              }`}
               key={id}
               onClick={() => toggleSection(name)}
+              onKeyPress={(event) => {
+                if (event.charCode === 13) {
+                  event.preventDefault();
+                  toggleSection(name);
+                }
+              }}
+              role="link"
+              tabIndex="0"
             >
               {name}
             </li>

@@ -7,8 +7,8 @@ import { caseShape } from './model';
 
 export default function CasesGridListItem({ wpCase }) {
   return (
-    <li className="w-64 text-left flex flex-col mb-16 relative mr-2">
-      <Link to={`/cases/${wpCase.slug}`}>
+    <li className="w-64 text-left flex flex-col mb-16 mr-2">
+      <Link to={`/cases/${wpCase.slug}`} tabIndex="0" className="relative">
         <Image
           alt={wpCase.thumbnail_image.alt}
           file={wpCase.fields.remote_thumbnail_image}
