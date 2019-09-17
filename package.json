@@ -9,7 +9,9 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "lint": "eslint --cache --ext js --ext jsx --fix *.js src/",
+    "lint:code": "eslint --cache --ext js --ext jsx --fix *.js src/",
+    "lint:style": "stylelint --fix 'src/**/*.css'",
+    "lint": "yarn lint:code && yarn lint:style",
     "format": "prettier --write *.js src/**/*.{js,jsx}",
     "start": "yarn develop",
     "start:memento": "MEMENTO=true yarn develop",
@@ -49,6 +51,7 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "prettier": "^1.18.2",
+    "stylelint": "^11.0.0",
     "stylelint-config-standard": "^18.3.0"
   },
   "volta": {
