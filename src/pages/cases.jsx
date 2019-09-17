@@ -6,7 +6,6 @@ import CasesGridList from '../cases/grid-list';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-import styles from './cases.module.css';
 
 export const query = graphql`
   query($language: String!) {
@@ -49,12 +48,12 @@ export default function CasesPage({
   return (
     <Layout>
       <SEO title="Cases" />
-      <div className={styles.casesPage}>
+      <div className="text-center">
         <h3>Cases</h3>
-        <ul className={styles.casesFilters}>
+        <ul className="flex justify-center">
           {allSections.map(({ id, name }) => (
             <li
-              className={styles.casesFilter}
+              className="mx-2"
               style={{
                 'font-weight': selectedSections.includes(name)
                   ? 'bold'

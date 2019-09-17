@@ -3,7 +3,6 @@ import React from 'react';
 
 import { caseShape } from './model';
 import CasesGridListItem from './grid-list-item';
-import styles from '../pages/cases.module.css';
 
 export default function CasesGridList({ cases, selectedSections }) {
   const filteredCases =
@@ -14,7 +13,7 @@ export default function CasesGridList({ cases, selectedSections }) {
             sections && selectedSections.includes(sections.name),
         );
   return (
-    <ul className={styles.cases}>
+    <ul className="flex flex-wrap content-center justify-center">
       {filteredCases.map((wpCase) => (
         <CasesGridListItem wpCase={wpCase} key={wpCase.id} />
       ))}
