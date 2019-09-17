@@ -53,12 +53,7 @@ export default function CasesPage({
         <ul className="flex justify-center">
           {allSections.map(({ id, name }) => (
             <li
-              className="mx-2"
-              style={{
-                'font-weight': selectedSections.includes(name)
-                  ? 'bold'
-                  : 'normal',
-              }}
+               className={`mx-2 ${selectedSections.includes(name)?"focus:border-solid border-2 border-blue-400 rounded text-f7500":null}`}
               key={id}
               onClick={() => toggleSection(name)}
             >
