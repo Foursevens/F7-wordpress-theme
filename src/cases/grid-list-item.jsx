@@ -7,15 +7,19 @@ import { caseShape } from './model';
 
 export default function CasesGridListItem({ wpCase }) {
   return (
-    <li>
-      <Link to={`/cases/${wpCase.slug}`}>
-        <Image
-          alt={wpCase.thumbnail_image.alt}
-          file={wpCase.fields.remote_thumbnail_image}
-        />
-        <span dangerouslySetInnerHTML={{ __html: wpCase.title }} />
-        <span>{wpCase.technologies.name}</span>
-        <span>{wpCase.sections.name}</span>
+    <li className="w-64 text-left mb-16 mr-2">
+      <Link to={`/cases/${wpCase.slug}`} className="block">
+        <div className="relative">
+          <Image
+            alt={wpCase.thumbnail_image.alt}
+            file={wpCase.fields.remote_thumbnail_image}
+          />
+          <div className="w-full flex flex-col text-white bg-f7300 font-medium text-lg p-5 absolute -mt-16 inset-auto">
+            <span dangerouslySetInnerHTML={{ __html: wpCase.title }} />
+            <span>{wpCase.technologies.name}</span>
+            <span>{wpCase.sections.name}</span>
+          </div>
+        </div>
       </Link>
     </li>
   );
