@@ -53,7 +53,7 @@ export default function CasesPage({
           {allSections.map(({ id, name }) => (
             <li
               className={`mx-2 ${
-                selectedSections.includes(name) ? 'focus:text-f7500' : null
+                selectedSections.includes(name) ? 'focus: text-f7500' : null
               }`}
               key={id}
               onClick={() => toggleSection(name)}
