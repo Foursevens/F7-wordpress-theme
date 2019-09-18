@@ -3,7 +3,9 @@ import { arrayOf, string, shape } from 'prop-types';
 
 export const PostBaseData = graphql`
   fragment PostBaseData on wordpress__POST {
-    id
+    category {
+      name
+    }
     date
     fields {
       remote_hero_image {
@@ -14,12 +16,10 @@ export const PostBaseData = graphql`
         }
       }
     }
+    id
     intro
     language
     slug
-    category {
-      name
-    }
     tags {
       name
     }
@@ -28,13 +28,13 @@ export const PostBaseData = graphql`
 `;
 
 export const postShape = {
-  id: string,
+  category: shape({ name: string }),
   date: string,
   fields: shape({ remote_hero_image: shape({}) }),
+  id: string,
   intro: string,
   language: string,
   slug: string,
-  category: shape({ name: string }),
   tags: arrayOf(shape({ name: string })),
   title: string,
 };
