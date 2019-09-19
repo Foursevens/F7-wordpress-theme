@@ -15,6 +15,7 @@ export const PostBaseData = graphql`
             ...GatsbyImageSharpFluid
           }
         }
+        name
       }
     }
     intro
