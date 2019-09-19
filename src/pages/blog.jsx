@@ -49,11 +49,13 @@ export default function BlogPage({
     <Layout>
       <SEO title="Blog" />
       <div>
-        <h3 className="text-center">Cases</h3>
-        <ul className="text-center">
+        <h3 className="text-center font-title font-bold text-2xl text-xl mb-2 uppercase">
+          Cases
+        </h3>
+        <ul className="text-center mb-8 ">
           {allCategories.map(({ id, name }) => (
             <li
-              className={`inline cursor-pointer select-none mx-2 ${
+              className={`inline cursor-pointer select-none mx-2 font-hairline ${
                 selectedCategory.includes(name) ? 'focus: text-f7500' : null
               }`}
               key={id}

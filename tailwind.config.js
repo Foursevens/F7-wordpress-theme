@@ -19,6 +19,8 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    boxShadow: ['hover'],
+  },
   plugins: [],
 };

@@ -13,13 +13,14 @@ export default function PostsGridList({ posts, selectedCategories }) {
             category && selectedCategories.includes(category.name),
         );
   return (
-    <ul>
+    <ul className="flex flex-wrap -m-3">
       {filteredPosts.map((post) => (
         <PostsGridListItem post={post} key={post.id} />
       ))}
     </ul>
   );
 }
+
 PostsGridList.defaultProps = {
   selectedCategories: undefined,
 };
