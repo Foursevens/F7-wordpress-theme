@@ -8,18 +8,18 @@ const postDetailTemplate = resolvePath('./src/posts/detail-template.jsx');
 
 const PAGES = [
   {
-    key: 'allWordpressWpCases',
     pathPrefix: '/cases',
+    queryType: 'allWordpressWpCases',
     template: caseDetailTemplate,
   },
   {
-    key: 'allWordpressWpJobs',
     pathPrefix: '/jobs',
+    queryType: 'allWordpressWpJobs',
     template: jobDetailTemplate,
   },
   {
-    key: 'allWordpressPost',
     pathPrefix: '/blog',
+    queryType: 'allWordpressPost',
     template: postDetailTemplate,
   },
 ];
@@ -36,14 +36,13 @@ const WORDPRESS_FILES = {
 };
 
 /**
- *
- * @param {object} context gatsby internals
+ * @param {object} helpers gatsby node helper
  * @param {object} node gatsby node that has one or more file URLs
- * @param {*} param2
+ * @param {object} imageMapper
  */
-async function mapWpRemoteFile(context, node, { source, target }) {
+async function mapWpRemoteFile(helpers, node, { source, target }) {
   /* eslint no-param-reassign: "off" */
-  const { createNodeField } = context;
+  const { createNodeField } = helpers;
   const name = `remote_${target || source}`;
   createNodeField({ node, name });
   const url = typeof source === 'function' ? source(node) : node[source];
@@ -51,13 +50,18 @@ async function mapWpRemoteFile(context, node, { source, target }) {
     return;
   }
   const fileNode = await createRemoteFileNode({
-    ...context,
+    ...helpers,
     parentNodeId: node.id,
     url,
   });
   node.fields[`${name}___NODE`] = fileNode.id;
 }
 
+/**
+ * Tell plugins to add pages. This extension point is called only after the
+ * initial sourcing and transformation of nodes plus creation of the GraphQL
+ * schema are complete so you can query your data in order to create pages.
+ */
 exports.createPages = async function createPages({
   actions: { createPage },
   graphql,
@@ -66,8 +70,8 @@ exports.createPages = async function createPages({
     `
       query {
         ${PAGES.map(
-          ({ key }) => `
-            ${key}(
+          ({ queryType }) => `
+            ${queryType}(
               filter: { language: { eq: "nl" }, status: { eq: "publish" } }
             ) { nodes { slug } }
           `,
@@ -78,8 +82,8 @@ exports.createPages = async function createPages({
   if (errors) {
     throw errors;
   }
-  PAGES.forEach(({ key, pathPrefix, template }) => {
-    data[key].nodes.forEach(({ slug }) => {
+  PAGES.forEach(({ pathPrefix, queryType, template }) => {
+    data[queryType].nodes.forEach(({ slug }) => {
       createPage({
         component: template,
         context: { slug },
@@ -89,6 +93,10 @@ exports.createPages = async function createPages({
   });
 };
 
+/**
+ * Called when a new node is created. Plugins wishing to extend or transform
+ * nodes created by other plugins should implement this API.
+ */
 exports.onCreateNode = async function onCreateNode({
   actions: { createNode, createNodeField },
   cache,
@@ -99,17 +107,21 @@ exports.onCreateNode = async function onCreateNode({
   const wpImageMappers = WORDPRESS_FILES[node.internal.type];
   if (wpImageMappers) {
     await Promise.all(
-      wpImageMappers.map((mapper) =>
+      wpImageMappers.map((imageMapper) =>
         mapWpRemoteFile(
           { cache, createNode, createNodeField, createNodeId, store },
           node,
-          mapper,
+          imageMapper,
         ),
       ),
     );
   }
 };
 
+/**
+ * Called when a new page is created. This extension API is useful for
+ * programmatically manipulating pages created by other plugins.
+ */
 exports.onCreatePage = function onCreatePage({
   page,
   actions: { createPage, deletePage },
