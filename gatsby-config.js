@@ -58,7 +58,7 @@ const config = {
     {
       resolve: 'gatsby-plugin-intl',
       options: {
-        defaultLanguage: 'nl',
+        defaultLanguage: LOCALE_DEFAULT,
         languages: LOCALES,
         redirect: true,
       },

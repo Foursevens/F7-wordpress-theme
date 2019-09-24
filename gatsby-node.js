@@ -2,6 +2,8 @@ const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
+const { LOCALE_DEFAULT } = require('./options');
+
 const caseDetailTemplate = resolvePath('./src/cases/detail-template.jsx');
 const jobDetailTemplate = resolvePath('./src/jobs/detail-template.jsx');
 const postDetailTemplate = resolvePath('./src/posts/detail-template.jsx');
@@ -72,7 +74,7 @@ exports.createPages = async function createPages({
         ${PAGES.map(
           ({ queryType }) => `
             ${queryType}(
-              filter: { language: { eq: "nl" }, status: { eq: "publish" } }
+              filter: { language: { eq: "${LOCALE_DEFAULT}" }, status: { eq: "publish" } }
             ) { nodes { slug } }
           `,
         )}
