@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import { arrayOf, string, shape } from 'prop-types';
+import { arrayOf, object, string, shape } from 'prop-types';
 
 export const PostBaseData = graphql`
   fragment PostBaseData on wordpress__POST {
@@ -32,7 +32,9 @@ export const postShape = {
   id: string,
   category: shape({ name: string }),
   date: string,
-  fields: shape({ remote_hero_image: shape({}) }),
+  fields: shape({
+    remote_hero_image: shape({ childImageSharp: object, name: string }),
+  }),
   intro: string,
   language: string,
   slug: string,

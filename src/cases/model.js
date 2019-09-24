@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import { string, shape } from 'prop-types';
+import { object, string, shape } from 'prop-types';
 
 export const caseFragment = graphql`
   fragment CaseBaseData on wordpress__wp_cases {
@@ -29,7 +29,7 @@ export const caseFragment = graphql`
 
 export const caseShape = {
   id: string,
-  fields: shape({ remote_thumbnail_image: shape({}) }),
+  fields: shape({ remote_thumbnail_image: shape({ childImageSharp: object }) }),
   sections: shape({ name: string }),
   technologies: shape({ name: string }),
   thumbnail_image: shape({ alt: string }),
