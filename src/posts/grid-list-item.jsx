@@ -12,7 +12,7 @@ export default function PostsGridListItem({ accentColor, post }) {
       <div
         className={classNames(
           'min-h-full mx-3',
-          'rounded overflow-hidden shadow-md hover:shadow-xl',
+          'rounded shadow-md hover:shadow-xl',
           `border-b-4 ${accentColor.border}`,
         )}
       >

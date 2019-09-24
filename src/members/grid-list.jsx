@@ -6,7 +6,7 @@ import { memberShape } from './model';
 
 export default function MembersGridList({ members }) {
   return (
-    <ul>
+    <ul className="flex flex-wrap -mx-3">
       {members.map((member) => (
         <MembersGridListItem member={member} key={member.id} />
       ))}

@@ -4,7 +4,6 @@ import { object, string, shape } from 'prop-types';
 export const memberFragment = graphql`
   fragment MemberData on wordpress__wp_members {
     id
-    title
     fields {
       remote_portret {
         childImageSharp {
@@ -15,6 +14,8 @@ export const memberFragment = graphql`
       }
     }
     function
+    skills
+    title
   }
 `;
 
