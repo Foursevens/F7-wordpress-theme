@@ -3,6 +3,7 @@ import React from 'react';
 
 import PostsGridListItem from './grid-list-item';
 import { postShape } from './model';
+import { ACCENT_COLORS } from './options';
 
 export default function PostsGridList({ posts, selectedCategories }) {
   const filteredPosts =
@@ -14,8 +15,16 @@ export default function PostsGridList({ posts, selectedCategories }) {
         );
   return (
     <ul className="flex flex-wrap -m-3">
-      {filteredPosts.map((post) => (
-        <PostsGridListItem post={post} key={post.id} />
+      {filteredPosts.map((post, index) => (
+        <PostsGridListItem
+          accentColor={
+            ACCENT_COLORS[
+              ACCENT_COLORS.length - 1 - (index % ACCENT_COLORS.length)
+            ]
+          }
+          post={post}
+          key={post.id}
+        />
       ))}
     </ul>
   );
