@@ -24,9 +24,10 @@ export default function Hero() {
         imgStyle={{ objectPosition: 'top center' }}
         style={{ height: 350 }}
       />
+      <div className="absolute top-0 left-0 right-0 h-full bg-f7800 opacity-50" />
       <div className="absolute top-0 left-0 right-0 container mx-auto">
-        <div className="mx-6 py-6 text-2xl text-right">
-          <span className="bg-f7100 opacity-75 inline-block -mr-1 p-1">
+        <div className="mx-6 py-6 font-light text-4xl text-right text-f7100">
+          <span className="inline-block -mr-1 p-1 w-48">
             {data.metadata.description}
           </span>
         </div>
