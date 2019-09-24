@@ -1,0 +1,24 @@
+.img__description_layer {
+  transition: opacity 0.2s, visibility 0.2s;
+  background: rgba(2, 130, 128, 0.6);
+}
+
+.img__description {
+  transition: 0.2s;
+  transform: translateY(1em);
+}
+
+.cardItem:hover .img__description_layer,
+.cardItem:focus .img__description_layer {
+  @apply visible opacity-100;
+}
+
+.cardItem:hover .img__img,
+.cardItem:focus .img__img {
+  @apply invisible opacity-100;
+}
+
+.cardItem:hover .img__description,
+.cardItem:focus .img__description {
+  transform: translateY(0);
+}
