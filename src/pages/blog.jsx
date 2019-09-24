@@ -50,7 +50,7 @@ export default function BlogPage({
       <SEO title="Blog" />
       <div>
         <h3 className="text-center font-title font-bold text-2xl text-xl mb-2 uppercase">
-          Cases
+          Blog
         </h3>
         <ul className="text-center mb-8 ">
           {allCategories.map(({ id, name }) => (
