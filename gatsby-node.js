@@ -2,7 +2,7 @@ const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
-const { LOCALE_DEFAULT } = require('./options');
+const { LOCALES } = require('./options');
 
 const caseDetailTemplate = resolvePath('./src/cases/detail-template.jsx');
 const jobDetailTemplate = resolvePath('./src/jobs/detail-template.jsx');
@@ -74,8 +74,8 @@ exports.createPages = async function createPages({
         ${PAGES.map(
           ({ queryType }) => `
             ${queryType}(
-              filter: { language: { eq: "${LOCALE_DEFAULT}" }, status: { eq: "publish" } }
-            ) { nodes { slug } }
+              filter: { status: { eq: "publish" } }
+            ) { nodes { language slug } }
           `,
         )}
       }
@@ -85,11 +85,22 @@ exports.createPages = async function createPages({
     throw errors;
   }
   PAGES.forEach(({ pathPrefix, queryType, template }) => {
-    data[queryType].nodes.forEach(({ slug }) => {
+    data[queryType].nodes.forEach(({ language, slug }) => {
       createPage({
         component: template,
-        context: { slug },
-        path: `${pathPrefix}/${slug}`,
+        context: {
+          intl: {
+            language,
+            languages: LOCALES,
+            messages: {},
+            routed: true,
+            originalPath: `${pathPrefix}/${slug}`,
+            redirect: true, // TODO duplicated
+          },
+          language,
+          slug,
+        },
+        path: `/${language}${pathPrefix}/${slug}`,
       });
     });
   });
