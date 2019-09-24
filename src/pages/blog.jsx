@@ -13,6 +13,15 @@ export const query = graphql`
     ) {
       nodes {
         ...PostBaseData
+        fields {
+          remote_thumbnail_image {
+            childImageSharp {
+              fluid(maxWidth: 350) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
     allCategories: allWordpressCategory(

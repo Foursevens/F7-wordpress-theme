@@ -3,6 +3,8 @@
   "root": true,
   "rules": {
     "camelcase": "off",
+    "no-underscore-dangle": ["error", { "allow": ["__type"] }],
+    "no-use-before-define": ["error", "nofunc"],
     "import/prefer-default-export": "off",
     "react/prop-types": [
       "error",

@@ -34,6 +34,15 @@ export const query = graphql`
     ) {
       nodes {
         ...CaseBaseData
+        fields {
+          remote_thumbnail_image {
+            childImageSharp {
+              fluid(maxWidth: 350) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
     firstMembers: allWordpressWpMembers(
@@ -52,6 +61,15 @@ export const query = graphql`
     ) {
       nodes {
         ...PostBaseData
+        fields {
+          remote_thumbnail_image {
+            childImageSharp {
+              fluid(maxWidth: 350) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
   }

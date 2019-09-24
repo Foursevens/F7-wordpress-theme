@@ -18,11 +18,11 @@ export default function PostsGridListItem({ accentColor, post }) {
       >
         <Link to={`/blog/${post.slug}`}>
           <header className={classNames(accentColor.background, 'h-40')}>
-            {post.fields.remote_hero_image && (
+            {post.fields.remote_thumbnail_image && (
               <Image
-                alt={post.fields.remote_hero_image.name}
+                alt={post.fields.remote_thumbnail_image.name}
                 className="h-full"
-                file={post.fields.remote_hero_image}
+                file={post.fields.remote_thumbnail_image}
               />
             )}
           </header>

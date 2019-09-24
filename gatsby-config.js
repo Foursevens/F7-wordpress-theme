@@ -1,5 +1,7 @@
 const { LOCALE_DEFAULT, LOCALES } = require('./options');
 
+const wpNormalize = require('./wp-normalize.js');
+
 const config = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -40,17 +42,7 @@ const config = {
           '**/users/me',
         ],
         hostingWPCOM: false, // It is not hosted on wordpress.com
-        normalizer: ({ entities }) =>
-          entities.map((entity) => {
-            const normalizedEntity = { ...entity, language };
-            if (entity.path && language !== LOCALE_DEFAULT) {
-              // All non default languages have a Wordpress path prefix like
-              // '/fr' or '/en'. We don't need this as localisation is handled
-              // by gatsby-plugin-intl. So we strip it here.
-              normalizedEntity.path = entity.path.replace(/\/.{2}/, '');
-            }
-            return normalizedEntity;
-          }),
+        normalizer: wpNormalize(language),
         protocol: process.env.MEMENTO ? 'http' : 'https',
         useACF: false, // Don't fetch the "Advanced Custom Fields" fields.
       },

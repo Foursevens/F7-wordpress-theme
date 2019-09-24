@@ -13,6 +13,15 @@ export const query = graphql`
     ) {
       ...PostBaseData
       content
+      fields {
+        remote_hero_image {
+          childImageSharp {
+            fluid(maxWidth: 768) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
       video
     }
   }

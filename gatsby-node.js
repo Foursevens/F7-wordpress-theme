@@ -1,6 +1,7 @@
 const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
+const { get } = require('lodash/fp');
 
 const { LOCALES } = require('./options');
 
@@ -27,14 +28,15 @@ const PAGES = [
 ];
 
 const WORDPRESS_FILES = {
-  wordpress__POST: [{ source: 'hero_image' }],
+  wordpress__POST: [
+    { source: 'hero_image' },
+    { source: get('thumbnail_image.url'), target: 'thumbnail_image' },
+  ],
   wordpress__wp_cases: [
     { source: 'hero_image' },
-    { source: (node) => node.thumbnail_image.url, target: 'thumbnail_image' },
+    { source: get('thumbnail_image.url'), target: 'thumbnail_image' },
   ],
-  wordpress__wp_members: [
-    { source: (node) => node.portret.url, target: 'portret' },
-  ],
+  wordpress__wp_members: [{ source: get('portret.url'), target: 'portret' }],
 };
 
 /**
