@@ -8,7 +8,10 @@ import SEO from '../components/seo';
 
 export const query = graphql`
   query($language: String!) {
-    allCases: allWordpressWpCases(filter: { language: { eq: $language } }) {
+    allCases: allWordpressWpCases(
+      filter: { language: { eq: $language }, status: { eq: "publish" } }
+      sort: { fields: date, order: DESC }
+    ) {
       nodes {
         ...CaseBaseData
       }

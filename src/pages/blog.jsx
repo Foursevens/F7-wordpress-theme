@@ -7,7 +7,10 @@ import PostsGridList from '../posts/grid-list';
 
 export const query = graphql`
   query($language: String!) {
-    allPosts: allWordpressPost(filter: { language: { eq: $language } }) {
+    allPosts: allWordpressPost(
+      filter: { language: { eq: $language }, status: { eq: "publish" } }
+      sort: { fields: date, order: DESC }
+    ) {
       nodes {
         ...PostBaseData
       }

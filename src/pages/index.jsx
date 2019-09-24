@@ -28,15 +28,16 @@ export const query = graphql`
       }
     }
     firstCases: allWordpressWpCases(
-      filter: { language: { eq: $language } }
+      filter: { language: { eq: $language }, status: { eq: "publish" } }
       limit: 6
+      sort: { fields: date, order: DESC }
     ) {
       nodes {
         ...CaseBaseData
       }
     }
     firstMembers: allWordpressWpMembers(
-      filter: { status: { eq: "publish" }, language: { eq: $language } }
+      filter: { language: { eq: $language }, status: { eq: "publish" } }
       limit: 3
       sort: { fields: date, order: DESC }
     ) {
@@ -45,7 +46,7 @@ export const query = graphql`
       }
     }
     firstPosts: allWordpressPost(
-      filter: { status: { eq: "publish" }, language: { eq: $language } }
+      filter: { language: { eq: $language }, status: { eq: "publish" } }
       limit: 6
       sort: { fields: date, order: DESC }
     ) {
