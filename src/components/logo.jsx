@@ -13,7 +13,7 @@ export default function Logo() {
           }
         }
       }
-      metadata: wordpressSiteMetadata(language: { eq: "en" }) {
+      metadata: wordpressSiteMetadata(language: { eq: "nl" }) {
         name
       }
     }

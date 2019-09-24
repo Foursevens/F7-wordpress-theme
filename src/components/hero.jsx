@@ -12,7 +12,7 @@ export default function Hero() {
           }
         }
       }
-      metadata: wordpressSiteMetadata(language: { eq: "en" }) {
+      metadata: wordpressSiteMetadata(language: { eq: "nl" }) {
         description
       }
     }
