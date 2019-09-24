@@ -25,7 +25,7 @@ Because each time we start the local development server we need to download all 
 You'll need to run these two commands in a separate terminal.
 
 ```sh
-npx @antoinechalifour/memento
+yarn memento
 ```
 
 ```sh

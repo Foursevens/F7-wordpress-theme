@@ -13,6 +13,7 @@
     "lint:style": "stylelint --fix 'src/**/*.css'",
     "lint": "yarn lint:code && yarn lint:style",
     "format": "prettier --write *.js src/**/*.{js,jsx}",
+    "memento": "npx @antoinechalifour/memento",
     "start": "yarn develop",
     "start:memento": "MEMENTO=true yarn develop",
     "start:memento:nl": "F7_LOCALES=nl MEMENTO=true yarn develop",
