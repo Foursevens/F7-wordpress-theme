@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
 import React from 'react';
+
+import Image from './image';
 
 export default function Hero() {
   const data = useStaticQuery(graphql`
@@ -19,8 +20,8 @@ export default function Hero() {
   `);
   return (
     <div className="hidden sm:block relative shadow">
-      <Img
-        fluid={data.hero.childImageSharp.fluid}
+      <Image
+        file={data.hero}
         imgStyle={{ objectPosition: 'top center' }}
         style={{ height: 350 }}
       />

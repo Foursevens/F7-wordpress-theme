@@ -5,7 +5,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export default function Image({ file, ...props }) {
-  return file ? <Img fluid={file.childImageSharp.fluid} {...props} /> : <></>;
+  if (!file) {
+    return <></>;
+  }
+  if ('fluid' in file.childImageSharp) {
+    return <Img fluid={file.childImageSharp.fluid} {...props} />;
+  }
+  if ('fixed' in file.childImageSharp) {
+    return <Img fixed={file.childImageSharp.fixed} {...props} />;
+  }
+  return <></>;
 }
 
 Image.propTypes = {
