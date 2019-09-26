@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import { FormattedDate } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -65,13 +66,17 @@ Author.propTypes = {
 export default function PostDetailTemplate({
   data: {
     author,
-    postDetail: { content, fields, title, video },
+    postDetail: { content, date, fields, tags, title, video },
   },
 }) {
   return (
     <Layout>
       <h2 dangerouslySetInnerHTML={{ __html: title }} />
       <Image file={fields.remote_hero_image} />
+      <div>
+        <FormattedDate value={date} day="numeric" month="long" year="numeric" />{' '}
+        - {tags[0].name}
+      </div>
       {author && <Author author={author} />}
       {video && <div dangerouslySetInnerHTML={{ __html: video }} />}
       <p dangerouslySetInnerHTML={{ __html: content }} />
