@@ -1,38 +1,42 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 
+import { imageModel } from '../model';
 import Image from './image';
 
-export default function Hero() {
-  const data = useStaticQuery(graphql`
-    query HeroQuery {
-      hero: file(base: { eq: "hero.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      metadata: wordpressSiteMetadata(language: { eq: "nl" }) {
-        description
-      }
-    }
-  `);
+export default function Hero({ children, colorize, image, position }) {
   return (
     <div className="hidden sm:block relative shadow">
       <Image
-        file={data.hero}
-        imgStyle={{ objectPosition: 'top center' }}
-        style={{ height: 350 }}
+        file={image}
+        imgStyle={{ objectPosition: position }}
+        style={{ height: 450 }}
       />
-      <div className="absolute top-0 left-0 right-0 h-full bg-f7800 opacity-50" />
+      {colorize && (
+        <div
+          className={classNames(
+            'absolute top-0 left-0 right-0 h-full opacity-50',
+            colorize,
+          )}
+        />
+      )}
       <div className="absolute top-0 left-0 right-0 container mx-auto">
-        <div className="mx-6 py-6 font-light text-4xl text-right text-f7100">
-          <span className="inline-block -mr-1 p-1 w-48">
-            {data.metadata.description}
-          </span>
-        </div>
+        {children}
       </div>
     </div>
   );
 }
+
+Hero.defaultProps = {
+  children: null,
+  colorize: false,
+  position: 'center center',
+};
+
+Hero.propTypes = {
+  children: PropTypes.node,
+  colorize: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  image: imageModel.isRequired,
+  position: PropTypes.string,
+};

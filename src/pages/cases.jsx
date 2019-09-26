@@ -1,10 +1,8 @@
 import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
-import '../components/layout.css';
 import CasesGridList from '../cases/grid-list';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import { Layout, SEO, Title } from '../components';
 
 export const query = graphql`
   query($language: String!) {
@@ -60,7 +58,9 @@ export default function CasesPage({
     <Layout>
       <SEO title="Cases" />
       <div className="text-center">
-        <h3>Cases</h3>
+        <Title as="h1" className="text-5xl">
+          Cases
+        </Title>
         <ul>
           {allSections.map(({ id, name }) => (
             <li

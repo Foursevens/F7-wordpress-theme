@@ -3,7 +3,7 @@ import { FormattedDate, Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Image from '../components/image';
+import { Image, Tag } from '../components';
 import { postShape } from './model';
 
 export default function PostsGridListItem({ accentColor, post }) {
@@ -27,13 +27,7 @@ export default function PostsGridListItem({ accentColor, post }) {
             )}
           </header>
           <div className="px-6 py-4">
-            {post.tags === null ? (
-              <span className="font-bold font-title text-f7500">Article</span>
-            ) : (
-              <span className="font-bold font-title text-f7500">
-                {post.tags[0].name}
-              </span>
-            )}
+            <Tag>{post.tags ? post.tags[0].name : 'Article'}</Tag>
             <span className="text-sm ">
               {' '}
               -{' '}
@@ -45,11 +39,11 @@ export default function PostsGridListItem({ accentColor, post }) {
               />
             </span>
             <div
-              className="font-title font-bold text-2xl text-xl mb-2 uppercase"
+              className="font-title font-700 text-xl mb-2 uppercase"
               dangerouslySetInnerHTML={{ __html: post.title }}
             />
             <p
-              className="font-hairline text-sm font-sans leading-normal mb-12"
+              className="font-300 leading-normal mb-12"
               dangerouslySetInnerHTML={{ __html: post.intro }}
             />
           </div>

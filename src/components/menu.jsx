@@ -15,7 +15,7 @@ export default function Menu() {
         {LINKS.map(({ title, to }) => (
           <li key={title}>
             <Link
-              activeClassName="bg-f7200 font-bold"
+              activeClassName="bg-f7200 font-800"
               className="p-3 focusable rounded text-f7800"
               to={to}
             >

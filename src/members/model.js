@@ -1,5 +1,7 @@
 import { graphql } from 'gatsby';
-import { object, string, shape } from 'prop-types';
+import { string, shape } from 'prop-types';
+
+import { imageModel } from '../model';
 
 export const memberFragment = graphql`
   fragment MemberData on wordpress__wp_members {
@@ -21,7 +23,7 @@ export const memberFragment = graphql`
 
 export const memberShape = {
   id: string,
-  fields: shape({ remote_portret: shape({ childImageSharp: object }) }),
+  fields: shape({ remote_portret: imageModel }),
   title: string,
   function: string,
 };

@@ -1,8 +1,7 @@
 import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import { Layout, SEO, Title } from '../components';
 import PostsGridList from '../posts/grid-list';
 
 export const query = graphql`
@@ -61,13 +60,13 @@ export default function BlogPage({
     <Layout>
       <SEO title="Blog" />
       <div>
-        <h3 className="text-center font-title font-bold text-2xl text-xl mb-2 uppercase">
+        <Title as="h1" className="text-5xl">
           Blog
-        </h3>
+        </Title>
         <ul className="text-center mb-8 ">
           {allCategories.map(({ id, name }) => (
             <li
-              className={`inline cursor-pointer select-none mx-2 font-hairline ${
+              className={`inline cursor-pointer select-none mx-2 font-100 ${
                 selectedCategory.includes(name) ? 'focus: text-f7500' : null
               }`}
               key={id}

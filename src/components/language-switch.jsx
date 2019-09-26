@@ -27,7 +27,7 @@ export default function LanguageSwitch() {
               >
                 <span
                   className={classNames('text-f7800', {
-                    'cursor-pointer font-thin': !isActiveLanguage,
+                    'cursor-pointer font-300': !isActiveLanguage,
                   })}
                   onClick={handleChangeLanguage}
                   onKeyPress={(event) => {

@@ -3,21 +3,14 @@ import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import CasesGridList from '../cases/grid-list';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import PostsGridList from '../posts/grid-list';
+import { Hero, Layout, SEO, Title } from '../components';
 import MembersGridList from '../members/grid-list';
+import PostsGridList from '../posts/grid-list';
 
 import styles from './index.module.css';
 
 export const query = graphql`
   query IndexQuery($language: String!) {
-    homeIntro: wordpressPage(
-      language: { eq: $language }
-      title: { eq: "Home" }
-    ) {
-      content
-    }
     allApproaches: allWordpressWpApproach(
       filter: { status: { eq: "publish" }, language: { eq: $language } }
     ) {
@@ -72,34 +65,56 @@ export const query = graphql`
         }
       }
     }
+    hero: file(base: { eq: "hero.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    intro: wordpressPage(language: { eq: $language }, title: { eq: "Home" }) {
+      content
+    }
+    metadata: wordpressSiteMetadata(language: { eq: $language }) {
+      description
+    }
   }
 `;
 
 export default function IndexPage({
   data: {
-    homeIntro,
     allApproaches: { nodes: allApproaches },
     firstCases: { nodes: firstCases },
     firstMembers: { nodes: firstMembers },
     firstPosts: { nodes: firstPosts },
+    hero,
+    intro,
+    metadata,
   },
 }) {
   return (
-    <Layout showHero>
+    <Layout
+      hero={
+        <Hero colorize="bg-f7800" image={hero} position="top center">
+          <div className="mx-6 py-6 font-300 text-4xl text-right text-f7100">
+            <span className="inline-block -mr-1 p-1 w-48">
+              {metadata.description}
+            </span>
+          </div>
+        </Hero>
+      }
+    >
       <SEO title="Home" />
-      <div
-        className="font-bold font-title mb-6 text-center text-3xl uppercase"
-        aria-hidden="true"
-      >
+      <Title aria-hidden="true" as="h1">
         Foursevens
-      </div>
+      </Title>
       <div
         className={styles.intro}
-        dangerouslySetInnerHTML={{ __html: homeIntro.content }}
+        dangerouslySetInnerHTML={{ __html: intro.content }}
       />
-      <h2>
+      <Title>
         <Link to="/approach">Approach</Link>
-      </h2>
+      </Title>
       <ul>
         {allApproaches.map((approach) => (
           <li key={approach.id}>
@@ -108,17 +123,11 @@ export default function IndexPage({
           </li>
         ))}
       </ul>
-      <h2>
-        <Link to="/cases">Cases</Link>
-      </h2>
+      <Title>Cases</Title>
       <CasesGridList cases={firstCases} />
-      <h2>
-        <Link to="/team">Team</Link>
-      </h2>
+      <Title>Team</Title>
       <MembersGridList members={firstMembers} />
-      <h2>
-        <Link to="/blog">Blog</Link>
-      </h2>
+      <Title>Blog</Title>
       <PostsGridList posts={firstPosts} />
     </Layout>
   );

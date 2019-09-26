@@ -2,8 +2,7 @@ import { graphql } from 'gatsby';
 import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import Image from '../components/image';
-import Layout from '../components/layout';
+import { Image, Layout } from '../components';
 
 export const query = graphql`
   query($language: String!, $slug: String!) {
