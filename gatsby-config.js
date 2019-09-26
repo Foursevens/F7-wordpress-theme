@@ -52,6 +52,7 @@ const config = {
       options: {
         defaultLanguage: LOCALE_DEFAULT,
         languages: LOCALES,
+        path: `${__dirname}/src/intl`,
         redirect: true,
       },
     },

@@ -41,6 +41,11 @@ const WORDPRESS_FILES = {
   wordpress__wp_members: [{ source: get('portret.url'), target: 'portret' }],
 };
 
+function loadMessages(language) {
+  /* eslint global-require: "off", import/no-dynamic-require: "off" */
+  return require(`./src/intl/${language}.json`);
+}
+
 /**
  * @param {object} helpers gatsby node helper
  * @param {object} node gatsby node that has one or more file URLs
@@ -98,7 +103,7 @@ exports.createPages = async function createPages({
           intl: {
             language,
             languages: LOCALES,
-            messages: {},
+            messages: loadMessages(language),
             routed: true,
             originalPath: `${pathPrefix}/${slug}`,
             redirect: true, // TODO duplicated

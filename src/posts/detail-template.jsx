@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import { FormattedDate } from 'gatsby-plugin-intl';
+import { FormattedDate, FormattedMessage } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -51,7 +51,9 @@ function Author({
 }) {
   return (
     <div style={{ float: 'right', width: '250px' }}>
-      <h3>Author</h3>
+      <h3>
+        <FormattedMessage id="author" />
+      </h3>
       <Image alt={title} file={remote_portret} />
       <div>{title}</div>
       <div>{functionTitle}</div>
