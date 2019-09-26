@@ -1,7 +1,7 @@
 const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
-const { get } = require('lodash/fp');
+const { get, mapValues } = require('lodash/fp');
 
 const { LOCALES } = require('./options');
 
@@ -21,7 +21,9 @@ const PAGES = [
     template: jobDetailTemplate,
   },
   {
+    mapDataToContext: { author: get('blog_author.wordpress_id') },
     pathPrefix: '/blog',
+    queryFields: 'blog_author { wordpress_id }',
     queryType: 'allWordpressPost',
     template: postDetailTemplate,
   },
@@ -74,10 +76,10 @@ exports.createPages = async function createPages({
     `
       query {
         ${PAGES.map(
-          ({ queryType }) => `
+          ({ queryFields = '', queryType }) => `
             ${queryType}(
               filter: { status: { eq: "publish" } }
-            ) { nodes { language slug } }
+            ) { nodes { ${queryFields} language slug } }
           `,
         )}
       }
@@ -86,11 +88,13 @@ exports.createPages = async function createPages({
   if (errors) {
     throw errors;
   }
-  PAGES.forEach(({ pathPrefix, queryType, template }) => {
-    data[queryType].nodes.forEach(({ language, slug }) => {
+  PAGES.forEach(({ mapDataToContext, pathPrefix, queryType, template }) => {
+    data[queryType].nodes.forEach((datum) => {
+      const { language, slug } = datum;
       createPage({
         component: template,
         context: {
+          ...mapValues((func) => func(datum))(mapDataToContext),
           intl: {
             language,
             languages: LOCALES,
