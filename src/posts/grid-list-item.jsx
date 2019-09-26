@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Link } from 'gatsby-plugin-intl';
+import { FormattedDate, Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -36,7 +36,13 @@ export default function PostsGridListItem({ accentColor, post }) {
             )}
             <span className="text-sm ">
               {' '}
-              - {new Date(post.date).toLocaleDateString()}
+              -{' '}
+              <FormattedDate
+                value={post.date}
+                day="numeric"
+                month="short"
+                year="numeric"
+              />
             </span>
             <div
               className="font-title font-bold text-2xl text-xl mb-2 uppercase"
