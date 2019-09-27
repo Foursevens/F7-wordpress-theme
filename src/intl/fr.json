@@ -1,3 +1,6 @@
 {
-  "author": "Auteur"
+  "author": "Auteur",
+  "job": {
+    "description": "Description de poste"
+  }
 }

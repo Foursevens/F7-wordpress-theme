@@ -1,3 +1,6 @@
 {
-  "author": "Author"
+  "author": "Author",
+  "job": {
+    "description": "Job description"
+  }
 }
