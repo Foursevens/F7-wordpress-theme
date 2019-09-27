@@ -13,9 +13,13 @@ export default function CasesGridList({ cases, selectedSections }) {
             sections && selectedSections.includes(sections.name),
         );
   return (
-    <ul className="flex flex-wrap content-center justify-center">
+    <ul className="flex flex-wrap -mx-3">
       {filteredCases.map((wpCase) => (
-        <CasesGridListItem wpCase={wpCase} key={wpCase.id} />
+        <li key={wpCase.id} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
+          <div className="mx-3 my-8">
+            <CasesGridListItem wpCase={wpCase} />
+          </div>
+        </li>
       ))}
     </ul>
   );

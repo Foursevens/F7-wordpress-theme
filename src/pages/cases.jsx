@@ -57,36 +57,34 @@ export default function CasesPage({
   return (
     <Layout>
       <SEO title="Cases" />
-      <div className="text-center">
-        <Title as="h1" className="text-5xl">
-          Cases
-        </Title>
-        <ul>
-          {allSections.map(({ id, name }) => (
-            <li
-              className={`inline cursor-pointer select-none mx-2 ${
-                selectedSections.includes(name) ? 'focus: text-f7500' : null
-              }`}
-              key={id}
+      <Title as="h1" className="text-5xl">
+        Cases
+      </Title>
+      <ul className="text-center mb-8">
+        {allSections.map(({ id, name }) => (
+          <li
+            className={`inline cursor-pointer select-none mx-2 font-100 ${
+              selectedSections.includes(name) ? 'focus: text-f7500' : null
+            }`}
+            key={id}
+          >
+            <span
+              onClick={() => toggleSection(name)}
+              onKeyPress={(event) => {
+                if (event.charCode === 13) {
+                  event.preventDefault();
+                  toggleSection(name);
+                }
+              }}
+              role="button"
+              tabIndex="0"
             >
-              <span
-                onClick={() => toggleSection(name)}
-                onKeyPress={(event) => {
-                  if (event.charCode === 13) {
-                    event.preventDefault();
-                    toggleSection(name);
-                  }
-                }}
-                role="button"
-                tabIndex="0"
-              >
-                {name}
-              </span>
-            </li>
-          ))}
-        </ul>
-        <CasesGridList selectedSections={selectedSections} cases={allCases} />
-      </div>
+              {name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <CasesGridList selectedSections={selectedSections} cases={allCases} />
     </Layout>
   );
 }
