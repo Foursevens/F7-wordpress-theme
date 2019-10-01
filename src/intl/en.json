@@ -1,6 +1,14 @@
 {
-  "author": "Author",
+  "index": {
+    "hero-alt": "Woman using smartphone"
+  },
   "job": {
     "description": "Job description"
+  },
+  "member": {
+    "portrait-alt": "Handdrawn portrait of {name}"
+  },
+  "post": {
+    "author": "Author"
   }
 }

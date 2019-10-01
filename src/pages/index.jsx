@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import { Link } from 'gatsby-plugin-intl';
+import { injectIntl, intlShape, Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import CasesGridList from '../cases/grid-list';
@@ -81,7 +81,7 @@ export const query = graphql`
   }
 `;
 
-export default function IndexPage({
+function IndexPage({
   data: {
     allApproaches: { nodes: allApproaches },
     firstCases: { nodes: firstCases },
@@ -91,11 +91,17 @@ export default function IndexPage({
     intro,
     metadata,
   },
+  intl,
 }) {
   return (
     <Layout
       hero={
-        <Hero colorize="bg-f7800" image={hero} position="top center">
+        <Hero
+          alt={intl.formatMessage({ id: 'index.hero-alt' })}
+          colorize="bg-f7800"
+          image={hero}
+          position="top center"
+        >
           <div className="mx-6 py-6 font-300 text-4xl text-right text-f7100">
             <span className="inline-block -mr-1 p-1 w-48">
               {metadata.description}
@@ -132,3 +138,9 @@ export default function IndexPage({
     </Layout>
   );
 }
+
+IndexPage.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(IndexPage);

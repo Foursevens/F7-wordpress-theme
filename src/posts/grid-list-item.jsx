@@ -20,7 +20,7 @@ export default function PostsGridListItem({ accentColor, post }) {
           <header className={classNames(accentColor.background, 'h-40')}>
             {post.fields.remote_thumbnail_image && (
               <Image
-                alt={post.fields.remote_thumbnail_image.name}
+                alt={post.thumbnail_image.alt}
                 className="h-full"
                 file={post.fields.remote_thumbnail_image}
               />

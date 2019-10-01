@@ -1,3 +1,5 @@
+/* eslint react/jsx-props-no-spreading: "off" */
+
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -5,25 +7,27 @@ import React from 'react';
 import { imageModel } from '../model';
 import Image from './image';
 
-export default function Hero({ children, colorize, image, position }) {
+export default function Hero({
+  children,
+  colorize,
+  image,
+  position,
+  ...props
+}) {
   return (
     <div className="hidden sm:block relative shadow">
       <Image
         file={image}
         imgStyle={{ objectPosition: position }}
         style={{ height: 450 }}
+        {...props}
       />
       {colorize && (
         <div
-          className={classNames(
-            'absolute top-0 left-0 right-0 h-full opacity-50',
-            colorize,
-          )}
+          className={classNames('absolute inset-0 h-full opacity-50', colorize)}
         />
       )}
-      <div className="absolute top-0 left-0 right-0 container mx-auto">
-        {children}
-      </div>
+      <div className="absolute inset-0 container mx-auto">{children}</div>
     </div>
   );
 }
