@@ -1,3 +1,4 @@
+export { default as Button } from './button';
 export { default as Hero } from './hero';
 export { default as Image } from './image';
 export { default as LanguageSwitch } from './language-switch';
