@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { injectIntl, intlShape } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -6,7 +7,7 @@ import { Image } from '../components';
 import styles from './card.module.css';
 import { memberShape } from './model';
 
-export default function MemberCard({ member, shadow }) {
+function MemberCard({ intl, member, shadow }) {
   return (
     <div
       className={classNames(
@@ -18,7 +19,10 @@ export default function MemberCard({ member, shadow }) {
     >
       <div className="relative border-b-4 border-f7700">
         <Image
-          alt={member.title}
+          alt={intl.formatMessage(
+            { id: 'member.portrait-alt' },
+            { name: member.title },
+          )}
           file={member.fields.remote_portret}
           className={styles.img__img}
         />
@@ -52,6 +56,9 @@ MemberCard.defaultProps = {
 };
 
 MemberCard.propTypes = {
+  intl: intlShape.isRequired,
   member: PropTypes.shape(memberShape).isRequired,
   shadow: PropTypes.bool,
 };
+
+export default injectIntl(MemberCard);
