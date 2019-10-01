@@ -1,7 +1,8 @@
-import { FormattedMessage, Link } from 'gatsby-plugin-intl';
+import { FormattedMessage } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Button } from '../components';
 import { jobShape } from './model';
 
 export default function JobsGridListItem({ job }) {
@@ -20,12 +21,9 @@ export default function JobsGridListItem({ job }) {
           className="font-700 font-title text-4xl"
           dangerouslySetInnerHTML={{ __html: job.required_languages }}
         />
-        <Link
-          className="inline-block font-800 mt-10 hover:bg-f7300 border-2 border-f7300 py-3 px-8 rounded"
-          to={`/jobs/${job.slug}`}
-        >
+        <Button className="mt-6" to={`/jobs/${job.slug}`}>
           <FormattedMessage id="job.description" />
-        </Link>
+        </Button>
       </div>
     </div>
   );
