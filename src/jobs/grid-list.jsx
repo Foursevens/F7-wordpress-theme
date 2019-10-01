@@ -7,7 +7,7 @@ import JobsGridListItem from './grid-list-item';
 export default function JobsGridList({ jobs }) {
   return (
     <ul className="flex flex-wrap -mx-3">
-      {[jobs[0], jobs[0], jobs[0]].map((job) => (
+      {jobs.map((job) => (
         <li key={job.id} className="flex-grow m-3">
           <JobsGridListItem job={job} />
         </li>
