@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
-import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import { Layout } from '../components';
+import { Layout, Title } from '../components';
+import styles from './detail-template.module.css';
 
 export const query = graphql`
   query($language: String!, $slug: String!) {
@@ -23,9 +23,13 @@ export default function JobDetailTemplate({
 }) {
   return (
     <Layout>
-      <Link to="/jobs">Jobs</Link>
-      <h2 dangerouslySetInnerHTML={{ __html: title }} />
-      <p dangerouslySetInnerHTML={{ __html: content }} />
+      <Title as="h1" className="text-5xl">
+        <span dangerouslySetInnerHTML={{ __html: title }} />
+      </Title>
+      <div
+        className={styles.all_text}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </Layout>
   );
 }
