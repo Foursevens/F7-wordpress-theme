@@ -6,9 +6,8 @@ import {
   faFacebookF,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
-import PropTypes from 'prop-types';
 
-export default function ShearButtons({ postUrl }) {
+export default function ShearButtons() {
   function openPopup(e, type) {
     if (e.type === 'click' || e.keyCode === 13) {
       e.preventDefault();
@@ -27,7 +26,7 @@ export default function ShearButtons({ postUrl }) {
           url = '';
       }
       /* eslint-env browser, node */
-      return window.open(url + postUrl, '_blank');
+      return window.open(url + window.location.href, '_blank');
     }
     return true;
   }
@@ -61,6 +60,3 @@ export default function ShearButtons({ postUrl }) {
     </div>
   );
 }
-ShearButtons.propTypes = {
-  postUrl: PropTypes.string.isRequired,
-};

@@ -49,8 +49,6 @@ export default function PostDetailTemplate({
     postDetail: { content, date, fields, tags, title, video },
   },
 }) {
-  /* eslint-env browser, node */
-  const postUrl = window.location.href;
   return (
     <Layout hero={<Hero image={fields.remote_hero_image} />}>
       <Title as="h1" className="text-5xl">
@@ -73,7 +71,7 @@ export default function PostDetailTemplate({
             </h3>
             <MemberCard member={author} shadow={false} />
             <div>
-              <ShearButtons postUrl={postUrl} />
+              <ShearButtons />
             </div>
           </div>
           <div
