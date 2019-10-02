@@ -6,6 +6,7 @@ import React from 'react';
 import { Hero, Layout, Tag, Title } from '../components';
 import { MemberCard } from '../members';
 import styles from './detail.module.css';
+import ShareButtons from '../components/share-buttons';
 
 export const query = graphql`
   query($author: Int, $language: String!, $slug: String!) {
@@ -69,6 +70,9 @@ export default function PostDetailTemplate({
               <FormattedMessage id="author" />
             </h3>
             <MemberCard member={author} shadow={false} />
+            <div>
+              <ShareButtons />
+            </div>
           </div>
           <div
             className={classNames(
