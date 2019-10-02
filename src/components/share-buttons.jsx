@@ -8,7 +8,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 export default function ShareButtons() {
-  /* eslint-env browser, node */
   const currentUrl = window.location.href;
   return (
     <div className="text-left mt-8 text-black">
