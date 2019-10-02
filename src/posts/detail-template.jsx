@@ -6,7 +6,7 @@ import React from 'react';
 import { Hero, Layout, Tag, Title } from '../components';
 import { MemberCard } from '../members';
 import styles from './detail.module.css';
-import ShearButtons from '../components/share-buttons';
+import ShareButtons from '../components/share-buttons';
 
 export const query = graphql`
   query($author: Int, $language: String!, $slug: String!) {
@@ -71,7 +71,7 @@ export default function PostDetailTemplate({
             </h3>
             <MemberCard member={author} shadow={false} />
             <div>
-              <ShearButtons />
+              <ShareButtons />
             </div>
           </div>
           <div
