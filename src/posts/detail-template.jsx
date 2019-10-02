@@ -6,6 +6,7 @@ import React from 'react';
 import { Hero, Layout, Tag, Title } from '../components';
 import { MemberCard } from '../members';
 import styles from './detail.module.css';
+import ShearButtons from '../components/share-buttons';
 
 export const query = graphql`
   query($author: Int, $language: String!, $slug: String!) {
@@ -48,6 +49,8 @@ export default function PostDetailTemplate({
     postDetail: { content, date, fields, tags, title, video },
   },
 }) {
+  /* eslint-env browser, node */
+  const postUrl = window.location.href;
   return (
     <Layout hero={<Hero image={fields.remote_hero_image} />}>
       <Title as="h1" className="text-5xl">
@@ -69,6 +72,9 @@ export default function PostDetailTemplate({
               <FormattedMessage id="author" />
             </h3>
             <MemberCard member={author} shadow={false} />
+            <div>
+              <ShearButtons postUrl={postUrl} />
+            </div>
           </div>
           <div
             className={classNames(

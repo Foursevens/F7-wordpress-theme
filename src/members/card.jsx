@@ -9,11 +9,9 @@ import { memberShape } from './model';
 export default function MemberCard({ member, shadow }) {
   return (
     <div
-      className={classNames(
-        styles.cardItem,
-        'min-h-full mx-3 text-center rounded',
-        { 'shadow-md': shadow },
-      )}
+      className={classNames(styles.cardItem, 'mx-3 text-center rounded', {
+        'shadow-md': shadow,
+      })}
       tabIndex="0"
     >
       <div className="relative border-b-4 border-f7700">
