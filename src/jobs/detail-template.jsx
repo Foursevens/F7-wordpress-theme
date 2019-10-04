@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Layout, Title } from '../components';
+import { Layout, ShareButtons, Title } from '../components';
 import styles from './detail-template.module.css';
 
 export const query = graphql`
@@ -30,6 +30,7 @@ export default function JobDetailTemplate({
         className={styles.all_text}
         dangerouslySetInnerHTML={{ __html: content }}
       />
+      <ShareButtons />
     </Layout>
   );
 }

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Hero, Layout, Tag, Title } from '../components';
+import { Hero, Layout, ShareButtons, Tag, Title } from '../components';
 import styles from './detail-template.module.css';
 
 export const query = graphql`
@@ -69,6 +69,7 @@ export default function CaseDetailTemplate({
           >
             {customer_site}
           </a>
+          <ShareButtons />
         </div>
       </div>
     </Layout>
