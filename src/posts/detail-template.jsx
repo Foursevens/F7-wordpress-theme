@@ -3,10 +3,9 @@ import { graphql } from 'gatsby';
 import { FormattedDate, FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import { Hero, Layout, Tag, Title } from '../components';
+import { Hero, Layout, ShareButtons, Tag, Title } from '../components';
 import { MemberCard } from '../members';
 import styles from './detail.module.css';
-import ShareButtons from '../components/share-buttons';
 
 export const query = graphql`
   query($author: Int, $language: String!, $slug: String!) {
