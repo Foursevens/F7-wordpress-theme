@@ -8,6 +8,12 @@
   "member": {
     "portrait-alt": "Portrait de {name} dessiné à la main"
   },
+  "new-member": {
+    "ask-work-with-us": "Voulez-vous travailler avec nous?",
+    "cta-apply": "Cliquer pour postuler",
+    "portrait-alt": "Portrait de nouveau membre non identifié dessiné à la main",
+    "your-name-here": "Votre nom ici?"
+  },
   "post": {
     "author": "Auteur"
   }
