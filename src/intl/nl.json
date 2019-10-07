@@ -8,6 +8,12 @@
   "member": {
     "portrait-alt": "Hand getekend portret van {name}"
   },
+  "new-member": {
+    "ask-work-with-us": "Wil je bij ons werken?",
+    "cta-apply": "Klik om te solliciteren",
+    "portrait-alt": "Hand getekend portret van onbekend nieuw lid",
+    "your-name-here": "Jouw naam hier?"
+  },
   "post": {
     "author": "Auteur"
   }
