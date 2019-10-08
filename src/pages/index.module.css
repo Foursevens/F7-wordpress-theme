@@ -1,5 +1,9 @@
 .intro {
   & p {
-    @apply my-6 text-center text-2xl font-100;
+    @apply text-center text-2xl font-100;
+  }
+
+  & p + p {
+    @apply mt-6;
   }
 }

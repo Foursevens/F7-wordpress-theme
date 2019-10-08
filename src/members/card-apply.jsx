@@ -24,11 +24,11 @@ function NewMember({ intl }) {
     }
   `);
   return (
-    <Link className="my-3 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4" to="/jobs">
+    <Link to="/jobs">
       <div
         className={classNames(
           styles.cardItem,
-          'mx-3 text-center rounded shadow-md',
+          'bg-white text-center rounded shadow-md',
         )}
       >
         <div className="relative border-b-4 border-f7700 ">
