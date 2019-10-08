@@ -23,6 +23,7 @@ export const query = graphql`
           }
         }
       }
+      hero_image_copyright
     }
   }
 `;
@@ -34,13 +35,19 @@ export default function CaseDetailTemplate({
       customer_site,
       customer_name,
       fields: { remote_hero_image },
+      hero_image_copyright,
       sections,
       title,
     },
   },
 }) {
   return (
-    <Layout hero={<Hero image={remote_hero_image} />}>
+    <Layout
+      className="relative"
+      hero={
+        <Hero image={remote_hero_image} imageCopyright={hero_image_copyright} />
+      }
+    >
       <Title as="h1" className="text-5xl">
         <span dangerouslySetInnerHTML={{ __html: title }} />
       </Title>
