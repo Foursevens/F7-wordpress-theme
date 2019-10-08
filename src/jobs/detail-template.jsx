@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Layout, ShareButtons, Title } from '../components';
+import { Container, Layout, ShareButtons, Title } from '../components';
 import styles from './detail-template.module.css';
 
 export const query = graphql`
@@ -23,14 +23,16 @@ export default function JobDetailTemplate({
 }) {
   return (
     <Layout>
-      <Title as="h1" className="text-5xl">
-        <span dangerouslySetInnerHTML={{ __html: title }} />
-      </Title>
-      <div
-        className={styles.all_text}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-      <ShareButtons />
+      <Container>
+        <Title as="h1" className="text-5xl">
+          <span dangerouslySetInnerHTML={{ __html: title }} />
+        </Title>
+        <div
+          className={styles.all_text}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+        <ShareButtons />
+      </Container>
     </Layout>
   );
 }

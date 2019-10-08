@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
 import CasesGridList from '../cases/grid-list';
-import { Layout, SEO, Title } from '../components';
+import { Container, Layout, SEO, Title } from '../components';
 
 export const query = graphql`
   query($language: String!) {
@@ -56,35 +56,37 @@ export default function CasesPage({
           .map(([key]) => key);
   return (
     <Layout>
-      <SEO title="Cases" />
-      <Title as="h1" className="text-5xl">
-        Cases
-      </Title>
-      <ul className="text-center mb-8">
-        {allSections.map(({ id, name }) => (
-          <li
-            className={`inline cursor-pointer select-none mx-2 font-100 ${
-              selectedSections.includes(name) ? 'focus: text-f7500' : null
-            }`}
-            key={id}
-          >
-            <span
-              onClick={() => toggleSection(name)}
-              onKeyPress={(event) => {
-                if (event.charCode === 13) {
-                  event.preventDefault();
-                  toggleSection(name);
-                }
-              }}
-              role="button"
-              tabIndex="0"
+      <Container>
+        <SEO title="Cases" />
+        <Title as="h1" className="text-5xl">
+          Cases
+        </Title>
+        <ul className="text-center mb-8">
+          {allSections.map(({ id, name }) => (
+            <li
+              className={`inline cursor-pointer select-none mx-2 font-100 ${
+                selectedSections.includes(name) ? 'focus: text-f7500' : null
+              }`}
+              key={id}
             >
-              {name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <CasesGridList selectedSections={selectedSections} cases={allCases} />
+              <span
+                onClick={() => toggleSection(name)}
+                onKeyPress={(event) => {
+                  if (event.charCode === 13) {
+                    event.preventDefault();
+                    toggleSection(name);
+                  }
+                }}
+                role="button"
+                tabIndex="0"
+              >
+                {name}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <CasesGridList selectedSections={selectedSections} cases={allCases} />
+      </Container>
     </Layout>
   );
 }

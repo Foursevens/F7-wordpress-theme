@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
-import { Layout, SEO, Title } from '../components';
+import { Container, Layout, SEO, Title } from '../components';
 import PostsGridList from '../posts/grid-list';
 
 export const query = graphql`
@@ -59,7 +59,7 @@ export default function BlogPage({
   return (
     <Layout>
       <SEO title="Blog" />
-      <div>
+      <Container>
         <Title as="h1" className="text-5xl">
           Blog
         </Title>
@@ -88,7 +88,7 @@ export default function BlogPage({
           ))}
         </ul>
         <PostsGridList selectedCategories={selectedCategory} posts={allPosts} />
-      </div>
+      </Container>
     </Layout>
   );
 }

@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Layout, SEO, Title } from '../components';
+import { Container, Layout, SEO, Title } from '../components';
 import JobsGridList from '../jobs/grid-list';
 
 export const query = graphql`
@@ -22,10 +22,12 @@ export default function JobsPage({
   return (
     <Layout>
       <SEO title="Jobs" />
-      <Title as="h1" className="text-5xl">
-        Jobs
-      </Title>
-      <JobsGridList jobs={allJobs} />
+      <Container>
+        <Title as="h1" className="text-5xl">
+          Jobs
+        </Title>
+        <JobsGridList jobs={allJobs} />
+      </Container>
     </Layout>
   );
 }
