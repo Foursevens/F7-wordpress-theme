@@ -1,7 +1,12 @@
 const { resolve: resolvePath } = require('path');
 
+const Img = require('gatsby-image').default;
+const { fluid } = require('gatsby-plugin-sharp');
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 const { get, mapValues, memoize } = require('lodash/fp');
+const parse5 = require('parse5');
+const React = require('react');
+const ReactDomSsr = require('react-dom/server');
 
 const { LOCALES } = require('./options');
 
@@ -31,14 +36,25 @@ const PAGES = [
 
 const WORDPRESS_FILES = {
   wordpress__POST: [
-    { source: 'hero_image' },
-    { source: get('thumbnail_image.url'), target: 'thumbnail_image' },
+    { mode: 'html', source: 'content', target: 'content_images' },
+    { mode: 'url', source: 'hero_image' },
+    {
+      mode: 'url',
+      source: get('thumbnail_image.url'),
+      target: 'thumbnail_image',
+    },
   ],
   wordpress__wp_cases: [
-    { source: 'hero_image' },
-    { source: get('thumbnail_image.url'), target: 'thumbnail_image' },
+    { mode: 'url', source: 'hero_image' },
+    {
+      mode: 'url',
+      source: get('thumbnail_image.url'),
+      target: 'thumbnail_image',
+    },
   ],
-  wordpress__wp_members: [{ source: get('portret.url'), target: 'portret' }],
+  wordpress__wp_members: [
+    { mode: 'url', source: get('portret.url'), target: 'portret' },
+  ],
 };
 
 function flattenObject(object, prefix = '') {
@@ -65,21 +81,77 @@ const memoizeLoadMessages = memoize(loadMessages);
  * @param {object} node gatsby node that has one or more file URLs
  * @param {object} imageMapper
  */
-async function mapWpRemoteFile(helpers, node, { source, target }) {
+async function mapWpRemoteFiles(helpers, node, { mode, source, target }) {
   /* eslint no-param-reassign: "off" */
-  const { createNodeField } = helpers;
-  const name = `remote_${target || source}`;
-  createNodeField({ node, name });
-  const url = typeof source === 'function' ? source(node) : node[source];
-  if (url == null) {
-    return;
+  const { cache, createNodeField, reporter } = helpers;
+  const fieldName = `remote_${target || source}`;
+  createNodeField({ node, name: fieldName });
+  switch (mode) {
+    default:
+      throw new Error('Unknown mode');
+    case 'html': {
+      const imageTags = node.content.match(/<img [^>]+\/?>/gm);
+      if (!imageTags) {
+        return;
+      }
+      const images = imageTags.map(parse5.parse).map((rootNode) => {
+        const image = rootNode.childNodes[0].childNodes[1].childNodes[0];
+        return image.attrs.reduce((acc, { name, value }) => {
+          acc[name] = value;
+          return acc;
+        }, {});
+      });
+      const fileNodes = await Promise.all(
+        images.map(async ({ src }) => {
+          if (!src) {
+            return null;
+          }
+          const absoluteUrl =
+            src[0] === '/' ? `https://foursevens.be${src}` : src;
+          return createRemoteFileNode({
+            ...helpers,
+            parentNodeId: node.id,
+            url: absoluteUrl,
+          });
+        }),
+      );
+      await Promise.all(
+        imageTags.map(async (imageTag, index) => {
+          const image = images[index];
+          const fileNode = fileNodes[index];
+          if (!fileNode) {
+            return;
+          }
+          const fluidResult = await fluid({
+            file: fileNode,
+            args: { maxWidth: image.width || 768 },
+            reporter,
+            cache,
+          });
+          const imgOptions = {
+            fluid: fluidResult,
+            style: { width: image.width },
+          };
+          const imageJsxElement = React.createElement(Img, imgOptions, null);
+          const fluidImageHtml = ReactDomSsr.renderToString(imageJsxElement);
+          node.content = node.content.replace(imageTag, fluidImageHtml);
+        }),
+      );
+      return;
+    }
+    case 'url': {
+      const url = typeof source === 'function' ? source(node) : node[source];
+      if (url == null) {
+        return;
+      }
+      const fileNode = await createRemoteFileNode({
+        ...helpers,
+        parentNodeId: node.id,
+        url,
+      });
+      node.fields[`${fieldName}___NODE`] = fileNode.id;
+    }
   }
-  const fileNode = await createRemoteFileNode({
-    ...helpers,
-    parentNodeId: node.id,
-    url,
-  });
-  node.fields[`${name}___NODE`] = fileNode.id;
 }
 
 /**
@@ -146,7 +218,7 @@ exports.onCreateNode = async function onCreateNode({
   if (wpImageMappers) {
     await Promise.all(
       wpImageMappers.map((imageMapper) =>
-        mapWpRemoteFile(
+        mapWpRemoteFiles(
           { cache, createNode, createNodeField, createNodeId, store },
           node,
           imageMapper,
