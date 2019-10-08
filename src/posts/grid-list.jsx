@@ -14,17 +14,21 @@ export default function PostsGridList({ posts, selectedCategories }) {
             category && selectedCategories.includes(category.name),
         );
   return (
-    <ul className="flex flex-wrap -m-3">
+    <ul className="flex flex-wrap -mx-3 -mt-3 mb-3">
       {filteredPosts.map((post, index) => (
-        <PostsGridListItem
-          accentColor={
-            ACCENT_COLORS[
-              ACCENT_COLORS.length - 1 - (index % ACCENT_COLORS.length)
-            ]
-          }
-          post={post}
+        <li
+          className="px-3 my-3 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4"
           key={post.id}
-        />
+        >
+          <PostsGridListItem
+            accentColor={
+              ACCENT_COLORS[
+                ACCENT_COLORS.length - 1 - (index % ACCENT_COLORS.length)
+              ]
+            }
+            post={post}
+          />
+        </li>
       ))}
     </ul>
   );

@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Container, Layout, SEO } from '../components';
+import { Container, Layout, SEO, Title } from '../components';
 import ApproachesGridList from '../approaches/grid-list';
 
 export const query = graphql`
@@ -25,6 +25,9 @@ export default function ApproachPage({
     <Layout>
       <SEO title="Approach" />
       <Container>
+        <Title as="h1" className="text-5xl">
+          Approach
+        </Title>
         <ApproachesGridList approaches={allApproaches} />
       </Container>
     </Layout>

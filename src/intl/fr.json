@@ -1,5 +1,9 @@
 {
+  "general": {
+    "read-more": "Lire plus"
+  },
   "index": {
+    "meet-the-team": "Rencontrer l'équipe",
     "hero-alt": "Femme utilisant smartphone"
   },
   "job": {

@@ -1,9 +1,10 @@
 import { graphql } from 'gatsby';
-import { injectIntl, intlShape, Link } from 'gatsby-plugin-intl';
+import { injectIntl, intlShape } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import CasesGridList from '../cases/grid-list';
-import { Hero, Layout, SEO, Title } from '../components';
+import { Hero, Layout, Section, SEO } from '../components';
+import ApproachesGridList from '../approaches/grid-list';
 import MembersGridList from '../members/grid-list';
 import PostsGridList from '../posts/grid-list';
 
@@ -22,7 +23,7 @@ export const query = graphql`
     }
     firstCases: allWordpressWpCases(
       filter: { language: { eq: $language }, status: { eq: "publish" } }
-      limit: 6
+      limit: 8
       sort: { fields: date, order: DESC }
     ) {
       nodes {
@@ -49,7 +50,7 @@ export const query = graphql`
     }
     firstPosts: allWordpressPost(
       filter: { language: { eq: $language }, status: { eq: "publish" } }
-      limit: 6
+      limit: 8
       sort: { fields: date, order: DESC }
     ) {
       nodes {
@@ -94,47 +95,51 @@ function IndexPage({
   intl,
 }) {
   return (
-    <Layout
-      hero={
-        <Hero
-          alt={intl.formatMessage({ id: 'index.hero-alt' })}
-          colorize="bg-f7800"
-          image={hero}
-          position="top center"
-        >
-          <div className="mx-6 py-6 font-300 text-4xl text-right text-f7100">
-            <span className="inline-block -mr-1 p-1 w-48">
-              {metadata.description}
-            </span>
-          </div>
-        </Hero>
-      }
-    >
+    <Layout>
       <SEO title="Home" />
-      <Title aria-hidden="true" as="h1">
-        Foursevens
-      </Title>
-      <div
-        className={styles.intro}
-        dangerouslySetInnerHTML={{ __html: intro.content }}
-      />
-      <Title>
-        <Link to="/approach">Approach</Link>
-      </Title>
-      <ul>
-        {allApproaches.map((approach) => (
-          <li key={approach.id}>
-            <h3>{approach.title}</h3>
-            <p>{approach.approach_intro}</p>
-          </li>
-        ))}
-      </ul>
-      <Title>Cases</Title>
-      <CasesGridList cases={firstCases} />
-      <Title>Team</Title>
-      <MembersGridList members={firstMembers} />
-      <Title>Blog</Title>
-      <PostsGridList posts={firstPosts} />
+      <Hero
+        alt={intl.formatMessage({ id: 'index.hero-alt' })}
+        colorize="bg-f7800"
+        image={hero}
+        position="top center"
+      >
+        <div className="mx-6 py-6 font-300 text-4xl text-right text-f7100">
+          <span className="inline-block -mr-1 p-1 w-48">
+            {metadata.description}
+          </span>
+        </div>
+      </Hero>
+      <Section title="Foursevens">
+        <div
+          className={styles.intro}
+          dangerouslySetInnerHTML={{ __html: intro.content }}
+        />
+      </Section>
+      <Section title="Approach" striped>
+        <ApproachesGridList approaches={allApproaches} />
+      </Section>
+      <Section
+        actionMessageId="general.read-more"
+        actionTo="/cases"
+        title="Cases"
+      >
+        <CasesGridList cases={firstCases} />
+      </Section>
+      <Section
+        actionMessageId="index.meet-the-team"
+        actionTo="/team"
+        striped
+        title="Team"
+      >
+        <MembersGridList members={firstMembers} />
+      </Section>
+      <Section
+        actionMessageId="general.read-more"
+        actionTo="/blog"
+        title="Blog"
+      >
+        <PostsGridList posts={firstPosts} />
+      </Section>
     </Layout>
   );
 }

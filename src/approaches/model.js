@@ -4,13 +4,13 @@ import { string } from 'prop-types';
 export const approachFragment = graphql`
   fragment ApproachData on wordpress__wp_approach {
     id
-    title
     approach_text
+    title
   }
 `;
 
 export const approachShape = {
   id: string,
-  title: string,
   approach_text: string,
+  title: string,
 };

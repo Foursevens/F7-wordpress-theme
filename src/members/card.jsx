@@ -10,7 +10,7 @@ import { memberShape } from './model';
 function MemberCard({ intl, member, shadow }) {
   return (
     <div
-      className={classNames(styles.cardItem, 'mx-3 text-center rounded', {
+      className={classNames(styles.cardItem, 'bg-white text-center rounded', {
         'shadow-md': shadow,
       })}
       tabIndex="0"

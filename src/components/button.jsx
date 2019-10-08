@@ -7,7 +7,7 @@ export default function Button({ children, className, to }) {
   return (
     <Link
       className={classNames(
-        'inline-block px-8 py-3 hover:bg-f7300 border-2 border-f7300 font-800 rounded',
+        'inline-block px-8 py-3 font-800 rounded bg-f7500 text-f7100 uppercase',
         className,
       )}
       to={to}
