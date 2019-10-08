@@ -1,7 +1,7 @@
 const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
-const { get, mapValues } = require('lodash/fp');
+const { get, mapValues, memoize } = require('lodash/fp');
 
 const { LOCALES } = require('./options');
 
@@ -41,10 +41,24 @@ const WORDPRESS_FILES = {
   wordpress__wp_members: [{ source: get('portret.url'), target: 'portret' }],
 };
 
+function flattenObject(object, prefix = '') {
+  return Object.entries(object).reduce((acc, [key, value]) => {
+    const fullKey = prefix ? `${prefix}.${key}` : key;
+    if (typeof value === 'string') {
+      acc[fullKey] = value;
+    } else {
+      Object.assign(acc, flattenObject(value, fullKey));
+    }
+    return acc;
+  }, {});
+}
+
 function loadMessages(language) {
   /* eslint global-require: "off", import/no-dynamic-require: "off" */
-  return require(`./src/intl/${language}.json`);
+  return flattenObject(require(`./src/intl/${language}.json`));
 }
+
+const memoizeLoadMessages = memoize(loadMessages);
 
 /**
  * @param {object} helpers gatsby node helper
@@ -103,7 +117,7 @@ exports.createPages = async function createPages({
           intl: {
             language,
             languages: LOCALES,
-            messages: loadMessages(language),
+            messages: memoizeLoadMessages(language),
             routed: true,
             originalPath: `${pathPrefix}/${slug}`,
             redirect: true, // TODO duplicated

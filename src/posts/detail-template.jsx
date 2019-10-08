@@ -66,7 +66,7 @@ export default function PostDetailTemplate({
         <div className="flex flex-wrap sm:flex-no-wrap -mx-6">
           <div className="sm:order-2 hidden md:block mx-6">
             <h3 className="font-900 font-title mt-6 text-2xl">
-              <FormattedMessage id="author" />
+              <FormattedMessage id="post.author" />
             </h3>
             <MemberCard member={author} shadow={false} />
             <div>
