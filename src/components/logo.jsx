@@ -7,7 +7,7 @@ import Image from './image';
 export default function Logo() {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
-      logo: file(base: { eq: "logo.png" }) {
+      logo: file(base: { eq: "logo-full.png" }) {
         childImageSharp {
           fixed(width: 200) {
             ...GatsbyImageSharpFixed

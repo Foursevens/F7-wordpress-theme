@@ -17,13 +17,13 @@ const config = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'Foursevens',
+        short_name: '7777',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: '#028280',
+        theme_color: '#028280',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png',
+        icon: 'src/images/logo-alpha.png',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
