@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Layout, SEO, Title } from '../components';
+import { Container, Layout, SEO, Title } from '../components';
 import MembersGridList from '../members/grid-list';
 
 export const query = graphql`
@@ -22,10 +22,12 @@ export default function MemberPage({
   return (
     <Layout>
       <SEO title="Team" />
-      <Title as="h1" className="text-5xl">
-        Team
-      </Title>
-      <MembersGridList members={allMembers} />
+      <Container>
+        <Title as="h1" className="text-5xl">
+          Team
+        </Title>
+        <MembersGridList members={allMembers} />
+      </Container>
     </Layout>
   );
 }
