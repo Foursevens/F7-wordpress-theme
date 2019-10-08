@@ -41,6 +41,7 @@ export default function Hero({
 Hero.defaultProps = {
   children: null,
   colorize: false,
+  image: null,
   imageCopyright: null,
   position: 'center center',
 };
@@ -48,7 +49,7 @@ Hero.defaultProps = {
 Hero.propTypes = {
   children: PropTypes.node,
   colorize: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  image: imageModel.isRequired,
+  image: imageModel,
   imageCopyright: PropTypes.string,
   position: PropTypes.string,
 };
