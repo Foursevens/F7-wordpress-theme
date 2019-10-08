@@ -11,6 +11,7 @@ export default function Hero({
   children,
   colorize,
   image,
+  imageCopyright,
   position,
   ...props
 }) {
@@ -28,6 +29,11 @@ export default function Hero({
         />
       )}
       <div className="absolute inset-0 container mx-auto">{children}</div>
+      {imageCopyright && (
+        <div className="absolute bottom-0 left-0 bg-gray-900 text-white opacity-50 p-1">
+          Foto: {imageCopyright}
+        </div>
+      )}
     </div>
   );
 }
@@ -35,6 +41,7 @@ export default function Hero({
 Hero.defaultProps = {
   children: null,
   colorize: false,
+  imageCopyright: null,
   position: 'center center',
 };
 
@@ -42,5 +49,6 @@ Hero.propTypes = {
   children: PropTypes.node,
   colorize: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   image: imageModel.isRequired,
+  imageCopyright: PropTypes.string,
   position: PropTypes.string,
 };
