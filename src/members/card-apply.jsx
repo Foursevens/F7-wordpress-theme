@@ -14,7 +14,7 @@ import styles from './card.module.css';
 function NewMember({ intl }) {
   const data = useStaticQuery(graphql`
     query NewMemberQuery {
-      newMember: file(base: { eq: "new_member.png" }) {
+      newMember: file(base: { eq: "new-member.png" }) {
         childImageSharp {
           fluid(maxWidth: 257) {
             ...GatsbyImageSharpFluid
