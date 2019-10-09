@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import defaultTheme from 'tailwindcss/defaultTheme';
 import { throttle } from 'throttle-debounce';
 
+const NOOP = () => {};
+
 const screens = Object.entries(defaultTheme.screens)
   .map(([name, width]) => ({
     minWidth: Number(width.replace(/[^\d]+$/, '')),
@@ -12,7 +14,8 @@ screens.push({ minWidth: -1, name: 'xs' });
 
 /** @return {string} */
 function findBreakpoint() {
-  return screens.find((screen) => window.innerWidth > screen.minWidth).name;
+  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1280;
+  return screens.find((screen) => screenWidth > screen.minWidth).name;
 }
 
 export function useBreakpoint() {
@@ -21,6 +24,9 @@ export function useBreakpoint() {
     setBreakpoint(findBreakpoint());
   });
   useEffect(function resizeEffect() {
+    if (typeof window === 'undefined') {
+      return NOOP;
+    }
     window.addEventListener('resize', resizeHandler);
     return () => {
       window.removeEventListener('resize', resizeHandler);

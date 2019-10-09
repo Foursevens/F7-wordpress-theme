@@ -8,7 +8,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 export default function ShareButtons() {
-  const currentUrl = window.location.href;
+  const currentUrl =
+    typeof window !== 'undefined' ? window.location.href : null;
   return (
     <div className="text-left mt-8 text-black">
       <h3 className="font-900 font-title text-2xl mt-6 ">Share</h3>
