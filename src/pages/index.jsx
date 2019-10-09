@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import { injectIntl, intlShape } from 'gatsby-plugin-intl';
 import React from 'react';
 
+import { useBreakpoint } from '../breakpoint';
 import CasesGridList from '../cases/grid-list';
 import { Hero, Layout, Section, SEO } from '../components';
 import ApproachesGridList from '../approaches/grid-list';
@@ -9,6 +10,12 @@ import MembersGridList from '../members/grid-list';
 import PostsGridList from '../posts/grid-list';
 
 import styles from './index.module.css';
+
+const LIMITS = {
+  firstCases: { xs: 2, sm: 4, md: 4, lg: 6 },
+  firstMembers: { xs: 0, sm: 1, md: 3, lg: 2 },
+  firstPosts: { xs: 2, sm: 4, md: 4, lg: 6 },
+};
 
 export const query = graphql`
   query IndexQuery($language: String!) {
@@ -94,6 +101,7 @@ function IndexPage({
   },
   intl,
 }) {
+  const breakpoint = useBreakpoint();
   return (
     <Layout>
       <SEO title="Home" />
@@ -123,7 +131,9 @@ function IndexPage({
         actionTo="/cases"
         title="Cases"
       >
-        <CasesGridList cases={firstCases} />
+        <CasesGridList
+          cases={firstCases.slice(0, LIMITS.firstCases[breakpoint])}
+        />
       </Section>
       <Section
         actionMessageId="index.meet-the-team"
@@ -131,14 +141,18 @@ function IndexPage({
         striped
         title="Team"
       >
-        <MembersGridList members={firstMembers} />
+        <MembersGridList
+          members={firstMembers.slice(0, LIMITS.firstMembers[breakpoint])}
+        />
       </Section>
       <Section
         actionMessageId="general.read-more"
         actionTo="/blog"
         title="Blog"
       >
-        <PostsGridList posts={firstPosts} />
+        <PostsGridList
+          posts={firstPosts.slice(0, LIMITS.firstPosts[breakpoint])}
+        />
       </Section>
     </Layout>
   );
