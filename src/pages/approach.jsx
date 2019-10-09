@@ -11,6 +11,7 @@ export const query = graphql`
     ) {
       nodes {
         ...ApproachData
+        approach_text
       }
     }
   }

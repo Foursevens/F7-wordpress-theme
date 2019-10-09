@@ -23,9 +23,8 @@ export const query = graphql`
       filter: { status: { eq: "publish" }, language: { eq: $language } }
     ) {
       nodes {
-        id
+        ...ApproachData
         approach_intro
-        title
       }
     }
     firstCases: allWordpressWpCases(
