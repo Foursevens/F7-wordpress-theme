@@ -8,6 +8,13 @@ html {
   @apply font-sans;
 }
 
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
 .focusable:focus {
   @apply outline-none;
 

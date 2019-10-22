@@ -8,11 +8,11 @@ import './layout.css';
 
 export default function Layout({ children }) {
   return (
-    <>
+    <div className="h-full flex flex-col">
       <header>
         <NavigationBar />
       </header>
-      <main>{children}</main>
+      <main className="flex-grow">{children}</main>
       <footer>
         <FooterDetails />
       </footer>
@@ -27,7 +27,7 @@ export default function Layout({ children }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
