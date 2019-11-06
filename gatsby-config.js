@@ -59,7 +59,11 @@ const config = {
     'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-purgecss',
-      options: { tailwind: true, whitelist: ['img'] },
+      options: {
+        develop: true,
+        tailwind: true,
+        whitelist: ['iframe', 'img'],
+      },
     },
   ],
 };
