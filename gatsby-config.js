@@ -57,14 +57,11 @@ const config = {
       },
     },
     'gatsby-plugin-postcss',
+    {
+      resolve: 'gatsby-plugin-purgecss',
+      options: { tailwind: true, whitelist: ['img'] },
+    },
   ],
 };
-
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push({
-    resolve: 'gatsby-plugin-purgecss',
-    options: { tailwind: true },
-  });
-}
 
 module.exports = config;
