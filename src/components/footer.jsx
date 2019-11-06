@@ -30,13 +30,13 @@ export default function FooterDetails() {
         <div className="md:w-1/2 lg:w-1/4">
           <div className="absolute text-white font-300 text-xs leading-loose m-6 z-50">
             <Image loading="eager" file={whiteLogoImage} />
-            <adress>
+            <address>
               <div>Rue d&apos;alost 7</div>
               <div>1000 Bruxelles</div>
               <div>Belgique</div>
               <div>info@foursevens.be</div>
               <div>+32 3 450 80 30</div>
-            </adress>
+            </address>
           </div>
         </div>
       </div>
