@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import { injectIntl, intlShape } from 'gatsby-plugin-intl';
+import { injectIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Image } from '../components';
+import { intlShape } from '../model';
 import styles from './card.module.css';
 import { memberShape } from './model';
 

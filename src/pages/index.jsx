@@ -1,10 +1,11 @@
 import { graphql } from 'gatsby';
-import { injectIntl, intlShape } from 'gatsby-plugin-intl';
+import { injectIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import { useBreakpoint } from '../breakpoint';
 import CasesGridList from '../cases/grid-list';
 import { Hero, Layout, Section, SEO } from '../components';
+import { intlShape } from '../model';
 import ApproachesGridList from '../approaches/grid-list';
 import MembersGridList from '../members/grid-list';
 import PostsGridList from '../posts/grid-list';

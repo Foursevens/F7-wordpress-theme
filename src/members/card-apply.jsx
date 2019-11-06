@@ -1,14 +1,10 @@
 import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
-import {
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-  Link,
-} from 'gatsby-plugin-intl';
+import { FormattedMessage, injectIntl, Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import Image from '../components/image';
+import { intlShape } from '../model';
 import styles from './card.module.css';
 
 function NewMember({ intl }) {
