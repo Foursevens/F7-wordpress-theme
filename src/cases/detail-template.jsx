@@ -70,6 +70,8 @@ export default function CaseDetailTemplate({
             <a
               className="hover:underline hover:text-f7900 text-sm font-100"
               href={customer_site}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               {customer_site}
             </a>
