@@ -12,7 +12,7 @@
   "scripts": {
     "build": "gatsby build",
     "build:memento": "MEMENTO=true gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop --host 0.0.0.0",
     "lint:code": "eslint --cache --ext js --ext jsx --fix *.js src/",
     "lint:style": "stylelint --fix 'src/**/*.css'",
     "lint": "yarn lint:code && yarn lint:style",
