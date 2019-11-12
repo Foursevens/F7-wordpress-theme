@@ -6,6 +6,7 @@ const LINKS = [
   { title: 'Blog', to: '/blog' },
   { title: 'Team', to: '/team' },
   { title: 'Jobs', to: '/jobs' },
+  { title: 'Contact', to: '/contact' },
 ];
 
 export default function Menu() {

@@ -1,5 +1,10 @@
 {
   "general": {
+    "address": {
+      "street": "Rue d'alost 7",
+      "city": "1000 Bruxelles",
+      "country": "Belgique"
+    },
     "read-more": "Lire plus"
   },
   "index": {

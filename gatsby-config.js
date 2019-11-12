@@ -74,6 +74,14 @@ const config = {
       },
     },
   ],
+  siteMetadata: {
+    contact: {
+      email: 'info@foursevens.be',
+      linkedin: 'foursevens',
+      phone: '+32 3 450 80 30',
+      twitter: 'foursevensBE',
+    },
+  },
 };
 
 module.exports = config;

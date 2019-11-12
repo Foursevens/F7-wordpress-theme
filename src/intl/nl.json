@@ -1,5 +1,10 @@
 {
   "general": {
+    "address": {
+      "street": "Aalststraat 7",
+      "city": "1000 Brussel",
+      "country": "België"
+    },
     "read-more": "Lees meer"
   },
   "index": {
