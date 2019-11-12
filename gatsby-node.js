@@ -71,7 +71,7 @@ async function mapWpRemoteFile(helpers, node, { source, target }) {
   const name = `remote_${target || source}`;
   createNodeField({ node, name });
   const url = typeof source === 'function' ? source(node) : node[source];
-  if (url == null) {
+  if (url == null || typeof url !== 'string') {
     return;
   }
   const fileNode = await createRemoteFileNode({
