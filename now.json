@@ -1,12 +1,15 @@
 {
-  "version": 2,
-  "name": "f7-theme",
   "builds": [
     {
+      "config": { "distDir": "public" },
       "src": "package.json",
-      "use": "@now/static-build",
-      "config": { "distDir": "public" }
+      "use": "@now/static-build"
     }
   ],
-  "regions": ["bru"]
+  "env": {
+    "NPM_RC": "@npm-rc-fa"
+  },
+  "name": "f7-theme",
+  "regions": ["bru"],
+  "version": 2
 }
