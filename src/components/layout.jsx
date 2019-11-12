@@ -17,7 +17,7 @@ export default function Layout({ children }) {
         <FooterDetails />
       </footer>
       {process.env.NODE_ENV === 'development' && (
-        <div className="fixed right-0 bottom-0">
+        <div className="fixed right-0 bottom-0 z-50">
           <div className="bg-red-200 sm:bg-red-300 md:bg-red-400 lg:bg-red-500 xl:bg-red-600 font-900 font-title p-1 text-red-900">
             <span className="sm:hidden">XS</span>
             <span className="hidden sm:inline md:hidden">SM</span>

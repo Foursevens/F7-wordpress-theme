@@ -28,7 +28,7 @@ export default function FooterDetails() {
     <div className="bg-f7500 relative">
       <div className="absolute inset-0 container mx-auto w-full">
         <div className="md:w-1/2 lg:w-1/4">
-          <div className="absolute text-white font-300 text-xs leading-loose m-6 z-50">
+          <div className="absolute text-white font-300 text-xs leading-loose m-6 z-10">
             <Image loading="eager" file={whiteLogoImage} />
             <address>
               <div>Rue d&apos;alost 7</div>
