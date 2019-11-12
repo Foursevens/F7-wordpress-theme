@@ -20,7 +20,7 @@ export default function Section({
         <Title className="mt-0 mb-10">{title}</Title>
         {children}
         {actionMessageId && actionTo && (
-          <div className="my-10 text-center">
+          <div className="mt-10 text-center">
             <Button to={actionTo}>
               <FormattedMessage id={actionMessageId} />
             </Button>

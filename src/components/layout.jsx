@@ -13,7 +13,7 @@ export default function Layout({ children }) {
         <NavigationBar />
       </header>
       <main className="flex-grow">{children}</main>
-      <footer>
+      <footer className="mt-10">
         <FooterDetails />
       </footer>
       {process.env.NODE_ENV === 'development' && (
