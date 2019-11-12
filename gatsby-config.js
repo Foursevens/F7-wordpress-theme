@@ -65,6 +65,14 @@ const config = {
         whitelist: ['iframe', 'img'],
       },
     },
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        matomoUrl: 'https://foursevens.matomo.cloud',
+        siteId: '1',
+        siteUrl: 'https://foursevens.be',
+      },
+    },
   ],
 };
 
