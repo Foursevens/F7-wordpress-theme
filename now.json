@@ -1,4 +1,9 @@
 {
+  "build": {
+    "env": {
+      "NPM_RC": "@npm-rc-fa"
+    }
+  },
   "builds": [
     {
       "config": { "distDir": "public" },
@@ -6,9 +11,6 @@
       "use": "@now/static-build"
     }
   ],
-  "env": {
-    "NPM_RC": "@npm-rc-fa"
-  },
   "name": "f7-theme",
   "regions": ["bru"],
   "version": 2
