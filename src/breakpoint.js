@@ -15,7 +15,7 @@ screens.push({ minWidth: -1, name: 'xs' });
 /** @return {string} */
 function findBreakpoint() {
   const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1280;
-  return screens.find((screen) => screenWidth > screen.minWidth).name;
+  return screens.find((screen) => screenWidth >= screen.minWidth).name;
 }
 
 export function useBreakpoint() {
