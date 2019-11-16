@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,800|Roboto+Condensed:700,900');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 html {
   @apply font-sans;
 }

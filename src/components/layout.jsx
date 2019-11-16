@@ -4,7 +4,8 @@ import React from 'react';
 import FooterDetails from './footer';
 import NavigationBar from './navigation-bar';
 
-import './layout.css';
+import '../tailwind.css';
+import '../main.css';
 
 export default function Layout({ children }) {
   return (
