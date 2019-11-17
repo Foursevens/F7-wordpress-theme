@@ -31,4 +31,4 @@ jobs:
           FTP_PASSWORD: ${{ secrets.DEPLOY_FTP_PASSWORD }}
           LOCAL_DIR: public/
           METHOD: sftp
-          REMOTE_DIR: www.foursevens.be/beta/
+          REMOTE_DIR: www.foursevens.be/
