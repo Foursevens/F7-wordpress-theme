@@ -22,7 +22,7 @@ jobs:
       - name: Install
         run: yarn --frozen-lockfile
       - name: Build
-        run: yarn build
+        run: yarn build:ci
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:

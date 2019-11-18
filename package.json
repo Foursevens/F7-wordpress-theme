@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "build:ci": "gatsby clean && gatsby build",
     "build:memento": "MEMENTO=true gatsby build",
     "develop": "gatsby develop --host 0.0.0.0",
     "lint:code": "eslint --cache --ext js --ext jsx --fix *.js src/",
