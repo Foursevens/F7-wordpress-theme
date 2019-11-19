@@ -128,7 +128,7 @@ function IndexPage({
         <ApproachesGridList approaches={allApproaches} />
       </Section>
       <Section
-        actionMessageId="general.read-more"
+        actionMessageId="index.more-cases"
         actionTo="/cases"
         title="Cases"
       >
