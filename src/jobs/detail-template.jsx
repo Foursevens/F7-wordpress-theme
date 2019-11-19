@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Container, Layout, ShareButtons, Title } from '../components';
+import { Container, Layout, SEO, ShareButtons, Title } from '../components';
+import { locationShape } from '../model';
 import styles from './detail-template.module.css';
 
 export const query = graphql`
@@ -20,9 +21,11 @@ export default function JobDetailTemplate({
   data: {
     jobDetail: { title, content },
   },
+  location,
 }) {
   return (
     <Layout>
+      <SEO pathname={location.pathname} title={title} />
       <Container>
         <Title as="h1" className="text-5xl">
           <span dangerouslySetInnerHTML={{ __html: title }} />
@@ -36,3 +39,7 @@ export default function JobDetailTemplate({
     </Layout>
   );
 }
+
+JobDetailTemplate.propTypes = {
+  location: locationShape.isRequired,
+};

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import { Container, Layout, SEO, Title } from '../components';
 import PostsGridList from '../posts/grid-list';
+import { locationShape } from '../model';
 
 export const query = graphql`
   query($language: String!) {
@@ -40,6 +41,7 @@ export default function BlogPage({
     allPosts: { nodes: allPosts },
     allCategories: { nodes: allCategories },
   },
+  location,
 }) {
   const [categoryFilter, setCategoryFilter] = useState({});
 
@@ -58,7 +60,7 @@ export default function BlogPage({
           .map(([key]) => key);
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO pathname={location.pathname} title="Blog" />
       <Container>
         <Title as="h1" className="text-5xl">
           Blog
@@ -92,3 +94,7 @@ export default function BlogPage({
     </Layout>
   );
 }
+
+BlogPage.propTypes = {
+  location: locationShape.isRequired,
+};

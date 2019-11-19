@@ -82,6 +82,7 @@ const config = {
       phone: '+32 3 450 80 30',
       twitter: 'foursevensBE',
     },
+    author: 'Ines Vanlangendonck',
   },
 };
 

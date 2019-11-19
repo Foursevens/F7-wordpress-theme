@@ -105,7 +105,7 @@ function IndexPage({
   const breakpoint = useBreakpoint();
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Homepage" />
       <Hero
         alt={intl.formatMessage({ id: 'index.hero-alt' })}
         colorize="bg-f7800"

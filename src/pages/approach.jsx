@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Container, Layout, SEO, Title } from '../components';
 import ApproachesGridList from '../approaches/grid-list';
+import { locationShape } from '../model';
 
 export const query = graphql`
   query($language: String!) {
@@ -22,10 +23,11 @@ export default function ApproachPage({
   data: {
     allApproaches: { nodes: allApproaches },
   },
+  location,
 }) {
   return (
     <Layout>
-      <SEO title="Approach" />
+      <SEO pathname={location.pathname} title="Approach" />
       <Container>
         <Title as="h1" className="text-5xl">
           Approach
@@ -35,3 +37,7 @@ export default function ApproachPage({
     </Layout>
   );
 }
+
+ApproachPage.propTypes = {
+  location: locationShape.isRequired,
+};

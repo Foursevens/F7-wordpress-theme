@@ -6,10 +6,12 @@ import {
   Container,
   Hero,
   Layout,
+  SEO,
   ShareButtons,
   Tag,
   Title,
 } from '../components';
+import { locationShape } from '../model';
 import styles from './detail-template.module.css';
 
 export const query = graphql`
@@ -47,9 +49,16 @@ export default function CaseDetailTemplate({
       title,
     },
   },
+  location,
 }) {
   return (
     <Layout className="relative">
+      <SEO
+        article
+        banner={remote_hero_image.childImageSharp.fluid.src}
+        pathname={location.pathname}
+        title={title}
+      />
       <Hero image={remote_hero_image} imageCopyright={hero_image_copyright} />
       <Container>
         <Title as="h1" className="text-5xl">
@@ -82,3 +91,7 @@ export default function CaseDetailTemplate({
     </Layout>
   );
 }
+
+CaseDetailTemplate.propTypes = {
+  location: locationShape.isRequired,
+};

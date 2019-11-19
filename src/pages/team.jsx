@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Container, Layout, SEO, Title } from '../components';
 import MembersGridList from '../members/grid-list';
+import { locationShape } from '../model';
 
 export const query = graphql`
   query($language: String!) {
@@ -14,14 +15,15 @@ export const query = graphql`
   }
 `;
 
-export default function MemberPage({
+export default function TeamPage({
   data: {
     allMembers: { nodes: allMembers },
   },
+  location,
 }) {
   return (
     <Layout>
-      <SEO title="Team" />
+      <SEO pathname={location.pathname} title="Team" />
       <Container>
         <Title as="h1" className="text-5xl">
           Team
@@ -31,3 +33,7 @@ export default function MemberPage({
     </Layout>
   );
 }
+
+TeamPage.propTypes = {
+  location: locationShape.isRequired,
+};

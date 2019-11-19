@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Container, Layout, SEO, Title } from '../components';
 import JobsGridList from '../jobs/grid-list';
+import { locationShape } from '../model';
 
 export const query = graphql`
   query($language: String!) {
@@ -18,10 +19,11 @@ export default function JobsPage({
   data: {
     allJobs: { nodes: allJobs },
   },
+  location,
 }) {
   return (
     <Layout>
-      <SEO title="Jobs" />
+      <SEO pathname={location.pathname} title="Jobs" />
       <Container>
         <Title as="h1" className="text-5xl">
           Jobs
@@ -31,3 +33,7 @@ export default function JobsPage({
     </Layout>
   );
 }
+
+JobsPage.propTypes = {
+  location: locationShape.isRequired,
+};

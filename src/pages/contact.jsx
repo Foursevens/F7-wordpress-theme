@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Container, Layout, SEO, Title } from '../components';
+import { locationShape } from '../model';
 
 export const query = graphql`
   query($language: String!) {
@@ -85,10 +86,11 @@ export default function ContactPage({
       },
     },
   },
+  location,
 }) {
   return (
     <Layout>
-      <SEO title="Contact" />
+      <SEO pathname={location.pathname} title="Contact" />
       <Container>
         <Title as="h1" className="text-5xl">
           {title}
@@ -136,3 +138,7 @@ export default function ContactPage({
     </Layout>
   );
 }
+
+ContactPage.propTypes = {
+  location: locationShape.isRequired,
+};

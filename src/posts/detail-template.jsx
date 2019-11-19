@@ -7,11 +7,13 @@ import {
   Container,
   Hero,
   Layout,
+  SEO,
   ShareButtons,
   Tag,
   Title,
 } from '../components';
 import { MemberCard } from '../members';
+import { locationShape } from '../model';
 import styles from './detail.module.css';
 
 export const query = graphql`
@@ -35,6 +37,7 @@ export const query = graphql`
     ) {
       ...PostBaseData
       content
+      excerpt
       fields {
         remote_hero_image {
           childImageSharp {
@@ -52,12 +55,33 @@ export const query = graphql`
 export default function PostDetailTemplate({
   data: {
     author,
-    postDetail: { content, date, fields, tags, title, video },
+    postDetail: {
+      content,
+      date,
+      excerpt,
+      fields: { remote_hero_image },
+      tags,
+      title,
+      video,
+    },
   },
+  location,
 }) {
   return (
     <Layout>
-      <Hero image={fields.remote_hero_image} />
+      <SEO
+        article
+        author={author ? author.title : undefined}
+        banner={
+          remote_hero_image
+            ? remote_hero_image.childImageSharp.fluid.src
+            : undefined
+        }
+        description={excerpt}
+        pathname={location.pathname}
+        title={title}
+      />
+      <Hero image={remote_hero_image} />
       <Container>
         <Title as="h1" className="text-5xl">
           <span dangerouslySetInnerHTML={{ __html: title }} />
@@ -107,3 +131,7 @@ export default function PostDetailTemplate({
     </Layout>
   );
 }
+
+PostDetailTemplate.propTypes = {
+  location: locationShape.isRequired,
+};

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import CasesGridList from '../cases/grid-list';
 import { Container, Layout, SEO, Title } from '../components';
+import { locationShape } from '../model';
 
 export const query = graphql`
   query($language: String!) {
@@ -40,6 +41,7 @@ export default function CasesPage({
     allCases: { nodes: allCases },
     allSections: { nodes: allSections },
   },
+  location,
 }) {
   const [sectionFilter, setSectionFilter] = useState({});
   function toggleSection(name) {
@@ -57,7 +59,7 @@ export default function CasesPage({
   return (
     <Layout>
       <Container>
-        <SEO title="Cases" />
+        <SEO pathname={location.pathname} title="Cases" />
         <Title as="h1" className="text-5xl">
           Cases
         </Title>
@@ -90,3 +92,7 @@ export default function CasesPage({
     </Layout>
   );
 }
+
+CasesPage.propTypes = {
+  location: locationShape.isRequired,
+};
