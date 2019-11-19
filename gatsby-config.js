@@ -61,7 +61,7 @@ const config = {
       resolve: 'gatsby-plugin-purgecss',
       options: {
         develop: true,
-        ignore: ['src/layout/**.css'],
+        purgeOnly: ['src/layout/tailwind.css'],
         tailwind: true,
         whitelist: ['iframe', 'img'],
       },
