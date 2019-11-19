@@ -7,12 +7,16 @@ import { caseShape } from './model';
 
 export default function CasesGridListItem({ wpCase }) {
   return (
-    <Link to={`/cases/${wpCase.slug}`} className="block rounded">
+    <Link
+      className="block bg-f7200 h-full rounded"
+      to={`/cases/${wpCase.slug}`}
+    >
       <Image
+        className="bg-white"
         alt={wpCase.thumbnail_image.alt}
         file={wpCase.fields.remote_thumbnail_image}
       />
-      <div className="bg-f7200 p-4 text-green-900">
+      <div className="p-4 text-green-900">
         <Tag>{wpCase.sections.name}</Tag>
         <div
           className="font-900 font-title text-xl uppercase"
