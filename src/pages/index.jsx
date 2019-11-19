@@ -21,7 +21,8 @@ const LIMITS = {
 export const query = graphql`
   query IndexQuery($language: String!) {
     allApproaches: allWordpressWpApproach(
-      filter: { status: { eq: "publish" }, language: { eq: $language } }
+      filter: { language: { eq: $language }, status: { eq: "publish" } }
+      sort: { fields: menu_order }
     ) {
       nodes {
         ...ApproachData

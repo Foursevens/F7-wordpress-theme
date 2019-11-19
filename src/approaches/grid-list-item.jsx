@@ -1,22 +1,15 @@
-import classNames from 'classnames';
 import { Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { useBreakpoint } from '../breakpoint';
+import { Image } from '../components';
 import { approachShape } from './model';
 
-const BLOCK_HEIGHT = { xs: 10, sm: 20, md: 50, lg: 150, xl: 150 };
-
-export default function ApproachesGridListItem({ approach, color }) {
-  const breakpoint = useBreakpoint();
+export default function ApproachesGridListItem({ approach }) {
   return (
     <div className="bg-white h-full text-center">
       <Link className="block p-6" to="/approach">
-        <span
-          className={classNames('inline-block my-3', color)}
-          style={{ width: 150, height: BLOCK_HEIGHT[breakpoint] }}
-        />
+        <Image alt={approach.image.alt} file={approach.fields.remote_image} />
         <h3
           className="font-900 font-title my-6 text-xl uppercase"
           dangerouslySetInnerHTML={{ __html: approach.title }}
@@ -34,5 +27,4 @@ export default function ApproachesGridListItem({ approach, color }) {
 
 ApproachesGridListItem.propTypes = {
   approach: PropTypes.shape(approachShape).isRequired,
-  color: PropTypes.string.isRequired,
 };

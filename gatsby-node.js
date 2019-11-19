@@ -34,6 +34,7 @@ const WORDPRESS_FILES = {
     { source: 'hero_image' },
     { source: get('thumbnail_image.url'), target: 'thumbnail_image' },
   ],
+  wordpress__wp_approach: [{ source: get('image.url'), target: 'image' }],
   wordpress__wp_cases: [
     { source: 'hero_image' },
     { source: get('thumbnail_image.url'), target: 'thumbnail_image' },

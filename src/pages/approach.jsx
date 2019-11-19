@@ -8,6 +8,7 @@ export const query = graphql`
   query($language: String!) {
     allApproaches: allWordpressWpApproach(
       filter: { language: { eq: $language } }
+      sort: { fields: menu_order }
     ) {
       nodes {
         ...ApproachData
