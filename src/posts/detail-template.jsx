@@ -64,7 +64,7 @@ export default function PostDetailTemplate({
       date,
       excerpt,
       fields: { remoteHeroImage },
-      tags,
+      tag,
       title,
       video,
     },
@@ -102,7 +102,7 @@ export default function PostDetailTemplate({
             'text-center md:text-left': !video,
           })}
         >
-          <Tag>{tags ? tags[0].name : 'Article'}</Tag> &ndash;{' '}
+          <Tag>{tag ? tag.name : 'Article'}</Tag> &ndash;{' '}
           <FormattedDate
             value={date}
             day="numeric"

@@ -26,7 +26,7 @@ export default function PostsGridListItem({ accentColor, post }) {
           )}
         </header>
         <div className="px-6 py-4">
-          <Tag>{post.tags ? post.tags[0].name : 'Article'}</Tag>
+          <Tag>{post.tag ? post.tag.name : 'Article'}</Tag>
           <span className="text-sm ">
             {' '}
             -{' '}

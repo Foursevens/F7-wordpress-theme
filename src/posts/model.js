@@ -11,7 +11,7 @@ export const PostBaseData = graphql`
     intro
     language
     slug
-    tags {
+    tag {
       name
     }
     thumbnailImage {
@@ -28,7 +28,7 @@ export const postShape = {
   intro: string,
   language: string,
   slug: string,
-  tags: arrayOf(shape({ name: string })),
+  tag: arrayOf(shape({ name: string })),
   thumbnailImage: shape({ alt: string }),
   title: string,
 };
