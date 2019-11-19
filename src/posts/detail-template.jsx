@@ -36,6 +36,9 @@ export const query = graphql`
       slug: { eq: $slug }
     ) {
       ...PostBaseData
+      category {
+        slug
+      }
       content
       excerpt
       fields {
@@ -56,6 +59,7 @@ export default function PostDetailTemplate({
   data: {
     author,
     postDetail: {
+      category: { slug: category },
       content,
       date,
       excerpt,
@@ -67,6 +71,12 @@ export default function PostDetailTemplate({
   },
   location,
 }) {
+  const actualContent =
+    category === 'video' ? (
+      <div dangerouslySetInnerHTML={{ __html: video }} />
+    ) : (
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+    );
   return (
     <Layout>
       <SEO
@@ -117,14 +127,12 @@ export default function PostDetailTemplate({
                 styles.content,
               )}
             >
-              {video && <div dangerouslySetInnerHTML={{ __html: video }} />}
-              <div dangerouslySetInnerHTML={{ __html: content }} />
+              {actualContent}
             </div>
           </div>
         ) : (
           <div className={classNames('text-2xl font-300', styles.content)}>
-            {video && <div dangerouslySetInnerHTML={{ __html: video }} />}
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            {actualContent}
           </div>
         )}
       </Container>
