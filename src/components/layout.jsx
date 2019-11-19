@@ -1,5 +1,7 @@
+import { dom } from '@fortawesome/fontawesome-svg-core';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import FooterDetails from './footer';
 import NavigationBar from './navigation-bar';
@@ -10,6 +12,9 @@ import '../main.css';
 export default function Layout({ children }) {
   return (
     <div className="h-full flex flex-col">
+      <Helmet>
+        <style>{dom.css()}</style>
+      </Helmet>
       <header>
         <NavigationBar />
       </header>
