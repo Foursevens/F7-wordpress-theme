@@ -15,11 +15,11 @@ export default function JobsGridListItem({ job }) {
         />
         <div
           className="font-700 font-title text-4xl"
-          dangerouslySetInnerHTML={{ __html: job.required_skill_level }}
+          dangerouslySetInnerHTML={{ __html: job.requiredSkillLevel }}
         />
         <div
           className="font-700 font-title text-4xl"
-          dangerouslySetInnerHTML={{ __html: job.required_languages }}
+          dangerouslySetInnerHTML={{ __html: job.requiredLanguages }}
         />
         <Button className="mt-6" to={`/jobs/${job.slug}`}>
           <FormattedMessage id="job.description" />

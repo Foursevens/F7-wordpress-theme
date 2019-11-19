@@ -18,9 +18,9 @@ import styles from './detail.module.css';
 
 export const query = graphql`
   query($author: Int, $language: String!, $slug: String!) {
-    author: wordpressWpMembers(wordpress_id: { eq: $author }) {
+    author: wordpressWpMembers(wordpressId: { eq: $author }) {
       fields {
-        remote_portret {
+        remotePortret {
           childImageSharp {
             fluid(maxWidth: 350) {
               ...GatsbyImageSharpFluid
@@ -42,7 +42,7 @@ export const query = graphql`
       content
       excerpt
       fields {
-        remote_hero_image {
+        remoteHeroImage {
           childImageSharp {
             fluid(maxWidth: 768) {
               ...GatsbyImageSharpFluid
@@ -63,7 +63,7 @@ export default function PostDetailTemplate({
       content,
       date,
       excerpt,
-      fields: { remote_hero_image },
+      fields: { remoteHeroImage },
       tags,
       title,
       video,
@@ -83,15 +83,15 @@ export default function PostDetailTemplate({
         article
         author={author ? author.title : undefined}
         banner={
-          remote_hero_image
-            ? remote_hero_image.childImageSharp.fluid.src
+          remoteHeroImage
+            ? remoteHeroImage.childImageSharp.fluid.src
             : undefined
         }
         description={excerpt}
         pathname={location.pathname}
         title={title}
       />
-      <Hero image={remote_hero_image} />
+      <Hero image={remoteHeroImage} />
       <Container>
         <Title as="h1" className="text-5xl">
           <span dangerouslySetInnerHTML={{ __html: title }} />

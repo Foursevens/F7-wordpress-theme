@@ -9,11 +9,11 @@ export const query = graphql`
   query($language: String!) {
     allApproaches: allWordpressWpApproach(
       filter: { language: { eq: $language } }
-      sort: { fields: menu_order }
+      sort: { fields: menuOrder }
     ) {
       nodes {
         ...ApproachData
-        approach_text
+        approachText
       }
     }
   }

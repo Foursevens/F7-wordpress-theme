@@ -22,11 +22,11 @@ export const query = graphql`
   query IndexQuery($language: String!) {
     allApproaches: allWordpressWpApproach(
       filter: { language: { eq: $language }, status: { eq: "publish" } }
-      sort: { fields: menu_order }
+      sort: { fields: menuOrder }
     ) {
       nodes {
         ...ApproachData
-        approach_intro
+        approachIntro
       }
     }
     firstCases: allWordpressWpCases(
@@ -37,7 +37,7 @@ export const query = graphql`
       nodes {
         ...CaseBaseData
         fields {
-          remote_thumbnail_image {
+          remoteThumbnailImage {
             childImageSharp {
               fluid(maxWidth: 350) {
                 ...GatsbyImageSharpFluid
@@ -64,7 +64,7 @@ export const query = graphql`
       nodes {
         ...PostBaseData
         fields {
-          remote_thumbnail_image {
+          remoteThumbnailImage {
             childImageSharp {
               fluid(maxWidth: 350) {
                 ...GatsbyImageSharpFluid

@@ -7,7 +7,7 @@ export const approachFragment = graphql`
   fragment ApproachData on wordpress__wp_approach {
     id
     fields {
-      remote_image {
+      remoteImage {
         childImageSharp {
           fixed(width: 130) {
             ...GatsbyImageSharpFixed
@@ -24,7 +24,7 @@ export const approachFragment = graphql`
 
 export const approachShape = {
   id: string,
-  fields: shape({ remote_image: imageModel }),
+  fields: shape({ remoteImage: imageModel }),
   image: shape({ alt: string }),
   title: string,
 };

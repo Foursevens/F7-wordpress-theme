@@ -22,7 +22,7 @@ function MemberCard({ intl, member, shadow }) {
             { id: 'member.portrait-alt' },
             { name: member.title },
           )}
-          file={member.fields.remote_portret}
+          file={member.fields.remotePortret}
           className={styles.img__img}
         />
         <div

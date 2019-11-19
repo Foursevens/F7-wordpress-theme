@@ -1,7 +1,7 @@
 const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
-const { get, mapValues, memoize } = require('lodash/fp');
+const { camelCase, get, mapValues, memoize } = require('lodash/fp');
 
 const { LOCALES } = require('./options');
 
@@ -21,9 +21,9 @@ const PAGES = [
     template: jobDetailTemplate,
   },
   {
-    mapDataToContext: { author: get('blog_author.wordpress_id') },
+    mapDataToContext: { author: get('blogAuthor.wordpress_id') },
     pathPrefix: '/blog',
-    queryFields: 'blog_author { wordpress_id }',
+    queryFields: 'blogAuthor { wordpress_id }',
     queryType: 'allWordpressPost',
     template: postDetailTemplate,
   },
@@ -31,13 +31,13 @@ const PAGES = [
 
 const WORDPRESS_FILES = {
   wordpress__POST: [
-    { source: 'hero_image' },
-    { source: get('thumbnail_image.url'), target: 'thumbnail_image' },
+    { source: 'heroImage' },
+    { source: get('thumbnailImage.url'), target: 'thumbnailImage' },
   ],
   wordpress__wp_approach: [{ source: get('image.url'), target: 'image' }],
   wordpress__wp_cases: [
-    { source: 'hero_image' },
-    { source: get('thumbnail_image.url'), target: 'thumbnail_image' },
+    { source: 'heroImage' },
+    { source: get('thumbnailImage.url'), target: 'thumbnailImage' },
   ],
   wordpress__wp_members: [{ source: get('portret.url'), target: 'portret' }],
 };
@@ -69,7 +69,7 @@ const memoizeLoadMessages = memoize(loadMessages);
 async function mapWpRemoteFile(helpers, node, { source, target }) {
   /* eslint no-param-reassign: "off" */
   const { createNodeField } = helpers;
-  const name = `remote_${target || source}`;
+  const name = camelCase(`remote ${target || source}`);
   createNodeField({ node, name });
   const url = typeof source === 'function' ? source(node) : node[source];
   if (url == null || typeof url !== 'string') {

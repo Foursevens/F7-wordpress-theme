@@ -1,15 +1,20 @@
+const { camelCase, mapKeys } = require('lodash/fp');
+
 const { LOCALE_DEFAULT } = require('./options');
 
+const camelCaseKeys = mapKeys((key) => (key[0] === '_' ? key : camelCase(key)));
+
 function cleanEntity(baseEntity) {
-  switch (baseEntity.__type) {
+  const cleanEnity = camelCaseKeys(baseEntity);
+  switch (cleanEnity.__type) {
     default:
-      return baseEntity;
+      return cleanEnity;
     case 'wordpress__POST':
-      return cleanPost(baseEntity);
+      return cleanPost(cleanEnity);
   }
 }
 
-function cleanPost({ featured_image_src, tag, thumbnail_image, ...rest }) {
+function cleanPost({ featuredImageSrc, tag, thumbnailImage, ...rest }) {
   // wordpress__POST.taxonomies.rest_base:
   // - type: boolean
   //   value: false
@@ -22,9 +27,9 @@ function cleanPost({ featured_image_src, tag, thumbnail_image, ...rest }) {
   //   value: 'WP_REST_Terms_Controller'
   return Object.assign(
     rest,
-    typeof featured_image_src === 'string' ? { featured_image_src } : null,
+    typeof featuredImageSrc === 'string' ? { featuredImageSrc } : null,
     typeof tag === 'object' ? { tag } : null,
-    typeof thumbnail_image === 'object' ? { thumbnail_image } : null,
+    typeof thumbnailImage === 'object' ? { thumbnailImage } : null,
   );
 }
 

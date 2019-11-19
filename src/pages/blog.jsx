@@ -14,7 +14,7 @@ export const query = graphql`
       nodes {
         ...PostBaseData
         fields {
-          remote_thumbnail_image {
+          remoteThumbnailImage {
             childImageSharp {
               fluid(maxWidth: 350) {
                 ...GatsbyImageSharpFluid

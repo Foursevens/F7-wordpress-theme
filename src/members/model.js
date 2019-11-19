@@ -7,7 +7,7 @@ export const memberFragment = graphql`
   fragment MemberData on wordpress__wp_members {
     id
     fields {
-      remote_portret {
+      remotePortret {
         childImageSharp {
           fluid(maxWidth: 257) {
             ...GatsbyImageSharpFluid
@@ -23,7 +23,7 @@ export const memberFragment = graphql`
 
 export const memberShape = {
   id: string,
-  fields: shape({ remote_portret: imageModel }),
+  fields: shape({ remotePortret: imageModel }),
   title: string,
   function: string,
 };

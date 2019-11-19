@@ -22,9 +22,9 @@ export const query = graphql`
     ) {
       ...CaseBaseData
       content
-      customer_site
+      customerSite
       fields {
-        remote_hero_image {
+        remoteHeroImage {
           childImageSharp {
             fluid(maxWidth: 768) {
               ...GatsbyImageSharpFluid
@@ -32,7 +32,7 @@ export const query = graphql`
           }
         }
       }
-      hero_image_copyright
+      heroImageCopyright
     }
   }
 `;
@@ -41,10 +41,10 @@ export default function CaseDetailTemplate({
   data: {
     caseDetail: {
       content,
-      customer_site,
-      customer_name,
-      fields: { remote_hero_image },
-      hero_image_copyright,
+      customerSite,
+      customerName,
+      fields: { remoteHeroImage },
+      heroImageCopyright,
       sections,
       title,
     },
@@ -55,11 +55,11 @@ export default function CaseDetailTemplate({
     <Layout className="relative">
       <SEO
         article
-        banner={remote_hero_image.childImageSharp.fluid.src}
+        banner={remoteHeroImage.childImageSharp.fluid.src}
         pathname={location.pathname}
         title={title}
       />
-      <Hero image={remote_hero_image} imageCopyright={hero_image_copyright} />
+      <Hero image={remoteHeroImage} imageCopyright={heroImageCopyright} />
       <Container>
         <Title as="h1" className="text-5xl">
           <span dangerouslySetInnerHTML={{ __html: title }} />
@@ -75,14 +75,14 @@ export default function CaseDetailTemplate({
           />
           <div className="md:mb-0 w-full md:w-1/4 lg:w-1/5 xl:w-1/6">
             <h4 className="font-700 font-title text-2xl uppercase">klant</h4>
-            <p className="font-100">{customer_name}</p>
+            <p className="font-100">{customerName}</p>
             <a
               className="hover:underline hover:text-f7900 text-sm font-100"
-              href={customer_site}
+              href={customerSite}
               rel="noopener noreferrer"
               target="_blank"
             >
-              {customer_site}
+              {customerSite}
             </a>
             <ShareButtons />
           </div>

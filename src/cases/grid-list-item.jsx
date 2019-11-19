@@ -13,14 +13,14 @@ export default function CasesGridListItem({ wpCase }) {
     >
       <Image
         className="bg-white"
-        alt={wpCase.thumbnail_image.alt}
-        file={wpCase.fields.remote_thumbnail_image}
+        alt={wpCase.thumbnailImage.alt}
+        file={wpCase.fields.remoteThumbnailImage}
       />
       <div className="p-4 text-green-900">
         <Tag>{wpCase.sections.name}</Tag>
         <div
           className="font-900 font-title text-xl uppercase"
-          dangerouslySetInnerHTML={{ __html: wpCase.customer_name }}
+          dangerouslySetInnerHTML={{ __html: wpCase.customerName }}
         />
         <div className="font-300 text-sm">{wpCase.technologies.name}</div>
       </div>

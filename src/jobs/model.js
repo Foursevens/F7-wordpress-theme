@@ -4,8 +4,8 @@ import { string } from 'prop-types';
 export const jobFragment = graphql`
   fragment JobBaseData on wordpress__wp_jobs {
     id
-    required_languages
-    required_skill_level
+    requiredLanguages
+    requiredSkillLevel
     slug
     title
   }
@@ -13,8 +13,8 @@ export const jobFragment = graphql`
 
 export const jobShape = {
   id: string,
-  required_languages: string,
-  required_skill_level: string,
+  requiredLanguages: string,
+  requiredSkillLevel: string,
   slug: string,
   title: string,
 };

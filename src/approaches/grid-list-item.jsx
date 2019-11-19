@@ -9,7 +9,7 @@ export default function ApproachesGridListItem({ approach }) {
   return (
     <div className="bg-white h-full text-center">
       <Link className="block p-6" to="/approach">
-        <Image alt={approach.image.alt} file={approach.fields.remote_image} />
+        <Image alt={approach.image.alt} file={approach.fields.remoteImage} />
         <h3
           className="font-900 font-title my-6 text-xl uppercase"
           dangerouslySetInnerHTML={{ __html: approach.title }}
@@ -17,7 +17,7 @@ export default function ApproachesGridListItem({ approach }) {
         <p
           className="font-100 my-3"
           dangerouslySetInnerHTML={{
-            __html: approach.approach_intro || approach.approach_text,
+            __html: approach.approachIntro || approach.approachText,
           }}
         />
       </Link>
