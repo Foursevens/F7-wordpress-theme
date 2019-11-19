@@ -1,13 +1,11 @@
-import classNames from 'classnames';
 import { graphql } from 'gatsby';
-import { FormattedDate, FormattedMessage } from 'gatsby-plugin-intl';
+import { FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import { Hero, SEO, ShareButtons, Tag } from '../components';
-import { ContentLayout, MainLayout } from '../layout';
+import { SEO, ShareButtons, SideBarItem } from '../components';
+import { ContentDetailLayout, MainLayout } from '../layout';
 import { MemberCard } from '../members';
 import { locationShape } from '../model';
-import styles from './detail.module.css';
 
 export const query = graphql`
   query($author: Int, $language: String!, $slug: String!) {
@@ -64,12 +62,15 @@ export default function PostDetailTemplate({
   },
   location,
 }) {
-  const actualContent =
-    category === 'video' ? (
-      <div dangerouslySetInnerHTML={{ __html: video }} />
-    ) : (
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    );
+  const isVideo = category === 'video';
+  const aside = author ? (
+    <>
+      <SideBarItem title={<FormattedMessage id="post.author" />}>
+        <MemberCard member={author} shadow={false} />
+      </SideBarItem>
+      <ShareButtons />
+    </>
+  ) : null;
   return (
     <MainLayout>
       <SEO
@@ -84,48 +85,16 @@ export default function PostDetailTemplate({
         pathname={location.pathname}
         title={title}
       />
-      <Hero image={remoteHeroImage} />
-      <ContentLayout title={title}>
-        <div
-          className={classNames('my-6 text-gray-600', {
-            'text-center': video,
-            'text-center md:text-left': !video,
-          })}
-        >
-          <Tag>{tag ? tag.name : 'Article'}</Tag> &ndash;{' '}
-          <FormattedDate
-            value={date}
-            day="numeric"
-            month="long"
-            year="numeric"
-          />
-        </div>
-        {author ? (
-          <div className="flex flex-wrap sm:flex-no-wrap -mx-6">
-            <div className="sm:order-2 hidden md:block mx-6">
-              <h3 className="font-900 font-title mt-6 text-2xl">
-                <FormattedMessage id="post.author" />
-              </h3>
-              <MemberCard member={author} shadow={false} />
-              <div>
-                <ShareButtons />
-              </div>
-            </div>
-            <div
-              className={classNames(
-                'font-300 flex-grow mx-6 sm:order-1 text-2xl',
-                styles.content,
-              )}
-            >
-              {actualContent}
-            </div>
-          </div>
-        ) : (
-          <div className={classNames('text-2xl font-300', styles.content)}>
-            {actualContent}
-          </div>
-        )}
-      </ContentLayout>
+      <ContentDetailLayout
+        aside={aside}
+        centered={isVideo}
+        date={date}
+        hero={remoteHeroImage}
+        taxonomy={tag ? tag.name : 'Article'}
+        title={title}
+      >
+        <div dangerouslySetInnerHTML={{ __html: isVideo ? video : content }} />
+      </ContentDetailLayout>
     </MainLayout>
   );
 }

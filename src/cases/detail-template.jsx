@@ -1,11 +1,9 @@
-import classNames from 'classnames';
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Hero, SEO, ShareButtons, Tag } from '../components';
-import { ContentLayout, MainLayout } from '../layout';
+import { SEO, ShareButtons, SideBarItem } from '../components';
+import { ContentDetailLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
-import styles from './detail-template.module.css';
 
 export const query = graphql`
   query($language: String!, $slug: String!) {
@@ -16,6 +14,7 @@ export const query = graphql`
       ...CaseBaseData
       content
       customerSite
+      date
       fields {
         remoteHeroImage {
           childImageSharp {
@@ -36,6 +35,7 @@ export default function CaseDetailTemplate({
       content,
       customerSite,
       customerName,
+      date,
       fields: { remoteHeroImage },
       heroImageCopyright,
       sections,
@@ -44,6 +44,22 @@ export default function CaseDetailTemplate({
   },
   location,
 }) {
+  const aside = (
+    <>
+      <SideBarItem title="Klant">
+        <p className="font-100">{customerName}</p>
+        <a
+          className="hover:underline hover:text-f7900 text-sm font-100"
+          href={customerSite}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {customerSite}
+        </a>
+      </SideBarItem>
+      <ShareButtons />
+    </>
+  );
   return (
     <MainLayout className="relative">
       <SEO
@@ -52,32 +68,16 @@ export default function CaseDetailTemplate({
         pathname={location.pathname}
         title={title}
       />
-      <Hero image={remoteHeroImage} imageCopyright={heroImageCopyright} />
-      <ContentLayout title={title}>
-        <Tag>{sections.name}</Tag>
-        <div className="mt-16 flex flex-wrap justify-between">
-          <div
-            className={classNames(
-              styles.all_text,
-              'md:mb-0 w-full md:w-2/3 lg:w-3/4 xl:w-4/5',
-            )}
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-          <div className="md:mb-0 w-full md:w-1/4 lg:w-1/5 xl:w-1/6">
-            <h4 className="font-700 font-title text-2xl uppercase">klant</h4>
-            <p className="font-100">{customerName}</p>
-            <a
-              className="hover:underline hover:text-f7900 text-sm font-100"
-              href={customerSite}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {customerSite}
-            </a>
-            <ShareButtons />
-          </div>
-        </div>
-      </ContentLayout>
+      <ContentDetailLayout
+        aside={aside}
+        date={date}
+        hero={remoteHeroImage}
+        heroCopyright={heroImageCopyright}
+        taxonomy={sections.name}
+        title={title}
+      >
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </ContentDetailLayout>
     </MainLayout>
   );
 }

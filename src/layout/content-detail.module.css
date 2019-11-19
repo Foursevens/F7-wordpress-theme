@@ -1,0 +1,52 @@
+.content {
+  & a {
+    @apply border-b-2 border-f7200 text-f7500;
+  }
+
+  & figcaption {
+    @apply italic m-3 text-base text-center;
+  }
+
+  & h2 {
+    @apply font-title font-900 pt-12 mb-6 text-center text-3xl uppercase;
+  }
+
+  & h3 {
+    @apply font-title font-900 pt-12 mb-6 text-center text-3xl uppercase;
+  }
+
+  & h4 {
+    @apply font-title font-900 pt-12 mb-6 text-center text-3xl uppercase;
+  }
+
+  & h5 {
+    @apply font-title font-900 pt-12 mb-6 text-center text-2xl uppercase;
+  }
+
+  & iframe {
+    @apply mx-auto;
+  }
+
+  & img {
+    @apply mx-auto;
+  }
+
+  & p {
+    @apply my-6;
+  }
+
+  & strong {
+    @apply font-800;
+  }
+
+  & li::before {
+    content: '';
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    margin-right: 0.75em;
+    background-image: url('../images/arrow-from-left.svg');
+    background-repeat: no-repeat;
+    transform: translateY(5px);
+  }
+}

@@ -8,6 +8,7 @@ export { default as Menu } from './menu';
 export { default as NavigationBar } from './navigation-bar';
 export { default as Section } from './section';
 export { default as SEO } from './seo';
+export { default as SideBarItem } from './side-bar-item';
 export { default as ShareButtons } from './share-buttons';
 export { default as Tag } from './tag';
 export { default as Title } from './title';

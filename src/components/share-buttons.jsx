@@ -1,18 +1,18 @@
-import React from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLinkedinIn,
   faFacebookF,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import React from 'react';
+
+import SideBarItem from './side-bar-item';
 
 export default function ShareButtons() {
   const currentUrl =
     typeof window !== 'undefined' ? window.location.href : null;
   return (
-    <div className="text-left mt-8 text-black">
-      <h3 className="font-900 font-title text-2xl mt-6 ">Share</h3>
+    <SideBarItem title="Share">
       <ul>
         <li className="inline">
           <a
@@ -40,6 +40,6 @@ export default function ShareButtons() {
           </a>
         </li>
       </ul>
-    </div>
+    </SideBarItem>
   );
 }
