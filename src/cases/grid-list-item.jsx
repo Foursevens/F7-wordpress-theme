@@ -18,10 +18,9 @@ export default function CasesGridListItem({ wpCase }) {
       />
       <div className="p-4 text-green-900">
         <Tag>{wpCase.sections.name}</Tag>
-        <div
-          className="font-900 font-title text-xl uppercase"
-          dangerouslySetInnerHTML={{ __html: wpCase.customerName }}
-        />
+        <div className="font-900 font-title text-xl uppercase">
+          {wpCase.customerName}
+        </div>
         <div className="font-300 text-sm">{wpCase.technologies.name}</div>
       </div>
     </Link>

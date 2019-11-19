@@ -37,10 +37,9 @@ export default function PostsGridListItem({ accentColor, post }) {
               year="numeric"
             />
           </span>
-          <div
-            className="font-title font-700 text-xl mb-2 uppercase"
-            dangerouslySetInnerHTML={{ __html: post.title }}
-          />
+          <div className="font-title font-700 text-xl mb-2 uppercase">
+            {post.title}
+          </div>
           <p
             className="font-300 leading-normal mb-12"
             dangerouslySetInnerHTML={{ __html: post.intro }}

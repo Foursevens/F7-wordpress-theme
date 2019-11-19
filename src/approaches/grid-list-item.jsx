@@ -10,10 +10,9 @@ export default function ApproachesGridListItem({ approach }) {
     <div className="bg-white h-full text-center">
       <Link className="block p-6" to="/approach">
         <Image alt={approach.image.alt} file={approach.fields.remoteImage} />
-        <h3
-          className="font-900 font-title my-6 text-xl uppercase"
-          dangerouslySetInnerHTML={{ __html: approach.title }}
-        />
+        <h3 className="font-900 font-title my-6 text-xl uppercase">
+          {approach.title}
+        </h3>
         <p
           className="font-100 my-3"
           dangerouslySetInnerHTML={{

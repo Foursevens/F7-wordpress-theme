@@ -1,3 +1,4 @@
+const he = require('he');
 const { camelCase, mapKeys } = require('lodash/fp');
 
 const { LOCALE_DEFAULT } = require('./options');
@@ -10,7 +11,11 @@ function cleanEntity(baseEntity) {
     default:
       return cleanEnity;
     case 'wordpress__POST':
+      cleanEnity.title = he.decode(cleanEnity.title);
       return cleanPost(cleanEnity);
+    case 'wordpress__wp_cases':
+      cleanEnity.title = he.decode(cleanEnity.title);
+      return cleanEnity;
   }
 }
 

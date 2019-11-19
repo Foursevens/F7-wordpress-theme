@@ -94,7 +94,7 @@ export default function PostDetailTemplate({
       <Hero image={remoteHeroImage} />
       <Container>
         <Title as="h1" className="text-5xl">
-          <span dangerouslySetInnerHTML={{ __html: title }} />
+          {title}
         </Title>
         <div
           className={classNames('my-6 text-gray-600', {

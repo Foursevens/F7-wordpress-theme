@@ -62,7 +62,7 @@ export default function CaseDetailTemplate({
       <Hero image={remoteHeroImage} imageCopyright={heroImageCopyright} />
       <Container>
         <Title as="h1" className="text-5xl">
-          <span dangerouslySetInnerHTML={{ __html: title }} />
+          {title}
         </Title>
         <Tag>{sections.name}</Tag>
         <div className="mt-16 flex flex-wrap justify-between">

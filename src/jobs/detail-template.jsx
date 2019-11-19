@@ -28,7 +28,7 @@ export default function JobDetailTemplate({
       <SEO pathname={location.pathname} title={title} />
       <Container>
         <Title as="h1" className="text-5xl">
-          <span dangerouslySetInnerHTML={{ __html: title }} />
+          {title}
         </Title>
         <div
           className={styles.all_text}

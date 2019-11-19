@@ -143,14 +143,14 @@ exports.onCreateNode = async function onCreateNode({
   node,
   store,
 }) {
-  const wpImageMappers = WORDPRESS_FILES[node.internal.type];
-  if (wpImageMappers) {
+  const wpFileMappers = WORDPRESS_FILES[node.internal.type];
+  if (wpFileMappers) {
     await Promise.all(
-      wpImageMappers.map((imageMapper) =>
+      wpFileMappers.map((fileMapper) =>
         mapWpRemoteFile(
           { cache, createNode, createNodeField, createNodeId, store },
           node,
-          imageMapper,
+          fileMapper,
         ),
       ),
     );
