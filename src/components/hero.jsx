@@ -16,7 +16,7 @@ export default function Hero({
   ...props
 }) {
   return (
-    <div className="hidden sm:block relative shadow">
+    <div className="hidden sm:block relative shadow-md">
       <Image
         file={image}
         imgStyle={{ objectPosition: position }}

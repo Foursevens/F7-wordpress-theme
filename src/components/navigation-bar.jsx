@@ -7,7 +7,7 @@ import Menu from './menu';
 
 export default function NavigationBar() {
   return (
-    <div className="bg-f7100 border-t-2 border-f7400 shadow">
+    <div className="bg-f7100 border-t-2 border-f7400 shadow-md relative z-10">
       <Container>
         <div className="flex flex-wrap items-center justify-between">
           <div className="md:w-1/2 lg:w-1/4">
