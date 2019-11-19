@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
-import { Container, Layout, SEO, Title } from '../components';
+import { Container, SEO, Title } from '../components';
+import { MainLayout } from '../layout';
 import PostsGridList from '../posts/grid-list';
 import { locationShape } from '../model';
 
@@ -59,7 +60,7 @@ export default function BlogPage({
           .filter(([, value]) => value !== false)
           .map(([key]) => key);
   return (
-    <Layout>
+    <MainLayout>
       <SEO pathname={location.pathname} title="Blog" />
       <Container>
         <Title as="h1" className="text-5xl">
@@ -91,7 +92,7 @@ export default function BlogPage({
         </ul>
         <PostsGridList selectedCategories={selectedCategory} posts={allPosts} />
       </Container>
-    </Layout>
+    </MainLayout>
   );
 }
 

@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Container, Layout, SEO, Title } from '../components';
+import { Container, SEO, Title } from '../components';
+import { MainLayout } from '../layout';
 import JobsGridList from '../jobs/grid-list';
 import { locationShape } from '../model';
 
@@ -22,7 +23,7 @@ export default function JobsPage({
   location,
 }) {
   return (
-    <Layout>
+    <MainLayout>
       <SEO pathname={location.pathname} title="Jobs" />
       <Container>
         <Title as="h1" className="text-5xl">
@@ -30,7 +31,7 @@ export default function JobsPage({
         </Title>
         <JobsGridList jobs={allJobs} />
       </Container>
-    </Layout>
+    </MainLayout>
   );
 }
 

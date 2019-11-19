@@ -60,7 +60,7 @@ const config = {
     {
       resolve: 'gatsby-plugin-purgecss',
       options: {
-        ignore: ['src/main.css'],
+        ignore: ['src/layout/main.css'],
         develop: true,
         tailwind: true,
         whitelist: ['iframe', 'img'],

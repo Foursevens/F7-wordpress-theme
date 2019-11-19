@@ -3,7 +3,6 @@ export { default as Container } from './container';
 export { default as Hero } from './hero';
 export { default as Image } from './image';
 export { default as LanguageSwitch } from './language-switch';
-export { default as Layout } from './layout';
 export { default as Logo } from './logo';
 export { default as Menu } from './menu';
 export { default as NavigationBar } from './navigation-bar';

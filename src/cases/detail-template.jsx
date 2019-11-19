@@ -2,15 +2,8 @@ import classNames from 'classnames';
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import {
-  Container,
-  Hero,
-  Layout,
-  SEO,
-  ShareButtons,
-  Tag,
-  Title,
-} from '../components';
+import { Container, Hero, SEO, ShareButtons, Tag, Title } from '../components';
+import { MainLayout } from '../layout';
 import { locationShape } from '../model';
 import styles from './detail-template.module.css';
 
@@ -52,7 +45,7 @@ export default function CaseDetailTemplate({
   location,
 }) {
   return (
-    <Layout className="relative">
+    <MainLayout className="relative">
       <SEO
         article
         banner={remoteHeroImage.childImageSharp.fluid.src}
@@ -88,7 +81,7 @@ export default function CaseDetailTemplate({
           </div>
         </div>
       </Container>
-    </Layout>
+    </MainLayout>
   );
 }
 

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import FooterDetails from './footer';
-import NavigationBar from './navigation-bar';
+import FooterDetails from '../components/footer';
+import NavigationBar from '../components/navigation-bar';
 
-import '../tailwind.css';
-import '../main.css';
+import './tailwind.css';
+import './main.css';
 
-export default function Layout({ children }) {
+export default function MainLayout({ children }) {
   return (
     <div className="h-full flex flex-col">
       <Helmet>
@@ -37,6 +37,6 @@ export default function Layout({ children }) {
   );
 }
 
-Layout.propTypes = {
+MainLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };

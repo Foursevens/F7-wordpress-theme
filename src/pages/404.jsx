@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Container, Layout, SEO, Title } from '../components';
+import { Container, SEO, Title } from '../components';
+import { MainLayout } from '../layout';
 
 export default function NotFoundPage() {
   return (
-    <Layout>
+    <MainLayout>
       <SEO title="404: Not found" />
       <Container>
         <Title as="h1" className="text-5xl">
@@ -12,6 +13,6 @@ export default function NotFoundPage() {
         </Title>
         <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
       </Container>
-    </Layout>
+    </MainLayout>
   );
 }

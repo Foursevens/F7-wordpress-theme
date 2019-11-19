@@ -4,7 +4,8 @@ import React from 'react';
 
 import { useBreakpoint } from '../breakpoint';
 import CasesGridList from '../cases/grid-list';
-import { Hero, Layout, Section, SEO } from '../components';
+import { Hero, Section, SEO } from '../components';
+import { MainLayout } from '../layout';
 import { intlShape } from '../model';
 import ApproachesGridList from '../approaches/grid-list';
 import MembersGridList from '../members/grid-list';
@@ -104,7 +105,7 @@ function IndexPage({
 }) {
   const breakpoint = useBreakpoint();
   return (
-    <Layout>
+    <MainLayout>
       <SEO title="Homepage" />
       <Hero
         alt={intl.formatMessage({ id: 'index.hero-alt' })}
@@ -155,7 +156,7 @@ function IndexPage({
           posts={firstPosts.slice(0, LIMITS.firstPosts[breakpoint])}
         />
       </Section>
-    </Layout>
+    </MainLayout>
   );
 }
 

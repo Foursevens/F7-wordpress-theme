@@ -7,7 +7,8 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Container, Layout, SEO, Title } from '../components';
+import { Container, SEO, Title } from '../components';
+import { MainLayout } from '../layout';
 import { locationShape } from '../model';
 
 export const query = graphql`
@@ -89,7 +90,7 @@ export default function ContactPage({
   location,
 }) {
   return (
-    <Layout>
+    <MainLayout>
       <SEO pathname={location.pathname} title="Contact" />
       <Container>
         <Title as="h1" className="text-5xl">
@@ -135,7 +136,7 @@ export default function ContactPage({
           <span dangerouslySetInnerHTML={{ __html: content }} />
         </div>
       </Container>
-    </Layout>
+    </MainLayout>
   );
 }
 

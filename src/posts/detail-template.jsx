@@ -3,15 +3,8 @@ import { graphql } from 'gatsby';
 import { FormattedDate, FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import {
-  Container,
-  Hero,
-  Layout,
-  SEO,
-  ShareButtons,
-  Tag,
-  Title,
-} from '../components';
+import { Container, Hero, SEO, ShareButtons, Tag, Title } from '../components';
+import { MainLayout } from '../layout';
 import { MemberCard } from '../members';
 import { locationShape } from '../model';
 import styles from './detail.module.css';
@@ -78,7 +71,7 @@ export default function PostDetailTemplate({
       <div dangerouslySetInnerHTML={{ __html: content }} />
     );
   return (
-    <Layout>
+    <MainLayout>
       <SEO
         article
         author={author ? author.title : undefined}
@@ -136,7 +129,7 @@ export default function PostDetailTemplate({
           </div>
         )}
       </Container>
-    </Layout>
+    </MainLayout>
   );
 }
 
