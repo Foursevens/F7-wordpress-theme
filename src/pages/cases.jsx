@@ -2,8 +2,8 @@ import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
 import CasesGridList from '../cases/grid-list';
-import { Container, SEO, Title } from '../components';
-import { MainLayout } from '../layout';
+import { SEO } from '../components';
+import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
 
 export const query = graphql`
@@ -59,11 +59,8 @@ export default function CasesPage({
           .map(([key]) => key);
   return (
     <MainLayout>
-      <Container>
-        <SEO pathname={location.pathname} title="Cases" />
-        <Title as="h1" className="text-5xl">
-          Cases
-        </Title>
+      <SEO pathname={location.pathname} title="Cases" />
+      <ContentLayout title="Cases">
         <ul className="text-center mb-8">
           {allSections.map(({ id, name }) => (
             <li
@@ -89,7 +86,7 @@ export default function CasesPage({
           ))}
         </ul>
         <CasesGridList selectedSections={selectedSections} cases={allCases} />
-      </Container>
+      </ContentLayout>
     </MainLayout>
   );
 }

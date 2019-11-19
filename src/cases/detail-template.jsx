@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Container, Hero, SEO, ShareButtons, Tag, Title } from '../components';
-import { MainLayout } from '../layout';
+import { Hero, SEO, ShareButtons, Tag } from '../components';
+import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
 import styles from './detail-template.module.css';
 
@@ -53,10 +53,7 @@ export default function CaseDetailTemplate({
         title={title}
       />
       <Hero image={remoteHeroImage} imageCopyright={heroImageCopyright} />
-      <Container>
-        <Title as="h1" className="text-5xl">
-          {title}
-        </Title>
+      <ContentLayout title={title}>
         <Tag>{sections.name}</Tag>
         <div className="mt-16 flex flex-wrap justify-between">
           <div
@@ -80,7 +77,7 @@ export default function CaseDetailTemplate({
             <ShareButtons />
           </div>
         </div>
-      </Container>
+      </ContentLayout>
     </MainLayout>
   );
 }

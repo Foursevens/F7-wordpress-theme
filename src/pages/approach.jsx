@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Container, SEO, Title } from '../components';
-import { MainLayout } from '../layout';
+import { SEO } from '../components';
+import { ContentLayout, MainLayout } from '../layout';
 import ApproachesGridList from '../approaches/grid-list';
 import { locationShape } from '../model';
 
@@ -29,12 +29,9 @@ export default function ApproachPage({
   return (
     <MainLayout>
       <SEO pathname={location.pathname} title="Approach" />
-      <Container>
-        <Title as="h1" className="text-5xl">
-          Approach
-        </Title>
+      <ContentLayout title="Approach">
         <ApproachesGridList approaches={allApproaches} />
-      </Container>
+      </ContentLayout>
     </MainLayout>
   );
 }

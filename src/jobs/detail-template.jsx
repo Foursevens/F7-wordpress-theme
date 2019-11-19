@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Container, SEO, ShareButtons, Title } from '../components';
-import { MainLayout } from '../layout';
+import { SEO, ShareButtons } from '../components';
+import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
 import styles from './detail-template.module.css';
 
@@ -27,16 +27,13 @@ export default function JobDetailTemplate({
   return (
     <MainLayout>
       <SEO pathname={location.pathname} title={title} />
-      <Container>
-        <Title as="h1" className="text-5xl">
-          {title}
-        </Title>
+      <ContentLayout title={title}>
         <div
           className={styles.all_text}
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <ShareButtons />
-      </Container>
+      </ContentLayout>
     </MainLayout>
   );
 }

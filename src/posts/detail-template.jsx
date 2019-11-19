@@ -3,8 +3,8 @@ import { graphql } from 'gatsby';
 import { FormattedDate, FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import { Container, Hero, SEO, ShareButtons, Tag, Title } from '../components';
-import { MainLayout } from '../layout';
+import { Hero, SEO, ShareButtons, Tag } from '../components';
+import { ContentLayout, MainLayout } from '../layout';
 import { MemberCard } from '../members';
 import { locationShape } from '../model';
 import styles from './detail.module.css';
@@ -85,10 +85,7 @@ export default function PostDetailTemplate({
         title={title}
       />
       <Hero image={remoteHeroImage} />
-      <Container>
-        <Title as="h1" className="text-5xl">
-          {title}
-        </Title>
+      <ContentLayout title={title}>
         <div
           className={classNames('my-6 text-gray-600', {
             'text-center': video,
@@ -128,7 +125,7 @@ export default function PostDetailTemplate({
             {actualContent}
           </div>
         )}
-      </Container>
+      </ContentLayout>
     </MainLayout>
   );
 }

@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
-import { Container, SEO, Title } from '../components';
-import { MainLayout } from '../layout';
+import { SEO } from '../components';
+import { ContentLayout, MainLayout } from '../layout';
 import PostsGridList from '../posts/grid-list';
 import { locationShape } from '../model';
 
@@ -62,10 +62,7 @@ export default function BlogPage({
   return (
     <MainLayout>
       <SEO pathname={location.pathname} title="Blog" />
-      <Container>
-        <Title as="h1" className="text-5xl">
-          Blog
-        </Title>
+      <ContentLayout title="Blog">
         <ul className="text-center mb-8 ">
           {allCategories.map(({ id, name }) => (
             <li
@@ -91,7 +88,7 @@ export default function BlogPage({
           ))}
         </ul>
         <PostsGridList selectedCategories={selectedCategory} posts={allPosts} />
-      </Container>
+      </ContentLayout>
     </MainLayout>
   );
 }

@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { Container, SEO, Title } from '../components';
-import { MainLayout } from '../layout';
+import { SEO } from '../components';
+import { ContentLayout, MainLayout } from '../layout';
 import MembersGridList from '../members/grid-list';
 import { locationShape } from '../model';
 
@@ -25,12 +25,9 @@ export default function TeamPage({
   return (
     <MainLayout>
       <SEO pathname={location.pathname} title="Team" />
-      <Container>
-        <Title as="h1" className="text-5xl">
-          Team
-        </Title>
+      <ContentLayout title="Team">
         <MembersGridList members={allMembers} />
-      </Container>
+      </ContentLayout>
     </MainLayout>
   );
 }
