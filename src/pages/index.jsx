@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import { injectIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import { useBreakpoint } from '../breakpoint';
+import { useBreakpoint } from '../hooks';
 import CasesGridList from '../cases/grid-list';
 import { Hero, Section, SEO } from '../components';
 import { MainLayout } from '../layout';
