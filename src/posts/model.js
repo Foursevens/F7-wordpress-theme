@@ -28,7 +28,7 @@ export const postShape = {
   intro: string,
   language: string,
   slug: string,
-  tag: arrayOf(shape({ name: string })),
+  tag: shape({ name: string }),
   thumbnailImage: shape({ alt: string }),
   title: string,
 };
