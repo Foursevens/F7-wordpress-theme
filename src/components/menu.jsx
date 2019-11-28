@@ -9,6 +9,11 @@ const LINKS = [
   { title: 'Contact', to: '/contact' },
 ];
 
+const getLinkProps = ({ isPartiallyCurrent }) =>
+  isPartiallyCurrent
+    ? { className: 'bg-f7200 focusable p-3 font-800 rounded text-f7800' }
+    : null;
+
 export default function Menu() {
   return (
     <nav className="max-w-sm mx-auto">
@@ -16,8 +21,8 @@ export default function Menu() {
         {LINKS.map(({ title, to }) => (
           <li key={title}>
             <Link
-              activeClassName="bg-f7200 font-800"
-              className="p-3 focusable rounded text-f7800"
+              className="focusable p-3 text-f7800"
+              getProps={getLinkProps}
               to={to}
             >
               {title}
