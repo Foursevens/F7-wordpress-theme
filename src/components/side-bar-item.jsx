@@ -12,5 +12,5 @@ export default function SideBarItem({ children, title }) {
 
 SideBarItem.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
 };
