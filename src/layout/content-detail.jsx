@@ -27,20 +27,22 @@ export default function ContentDetailLayout({
     <>
       <Hero image={hero} imageCopyright={heroCopyright} />
       <ContentLayout title={title}>
-        <div
-          className={classNames('my-6 text-gray-600', {
-            'text-center': centered,
-            'text-center md:text-left': !centered,
-          })}
-        >
-          <Tag>{taxonomy}</Tag> &ndash;{' '}
-          <FormattedDate
-            value={date}
-            day="numeric"
-            month="long"
-            year="numeric"
-          />
-        </div>
+        {date && taxonomy && (
+          <div
+            className={classNames('my-6 text-gray-600', {
+              'text-center': centered,
+              'text-center md:text-left': !centered,
+            })}
+          >
+            <Tag>{taxonomy}</Tag> &ndash;{' '}
+            <FormattedDate
+              value={date}
+              day="numeric"
+              month="long"
+              year="numeric"
+            />
+          </div>
+        )}
         {aside ? (
           <div className="flex flex-wrap sm:flex-no-wrap -mx-6">
             <div
@@ -61,17 +63,20 @@ export default function ContentDetailLayout({
 
 ContentDetailLayout.defaultProps = {
   aside: null,
+  date: null,
   centered: false,
+  hero: null,
   heroCopyright: null,
+  taxonomy: null,
 };
 
 ContentDetailLayout.propTypes = {
   aside: PropTypes.node,
   children: PropTypes.node.isRequired,
   centered: PropTypes.bool,
-  date: PropTypes.string.isRequired,
-  hero: imageModel.isRequired,
+  date: PropTypes.string,
+  hero: imageModel,
   heroCopyright: PropTypes.string,
-  taxonomy: PropTypes.string.isRequired,
+  taxonomy: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
