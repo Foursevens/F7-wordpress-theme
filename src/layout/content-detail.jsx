@@ -45,7 +45,7 @@ export default function ContentDetailLayout({
           <div className="flex flex-wrap sm:flex-no-wrap -mx-6">
             <div
               className="flex-shrink-0 sm:order-2 hidden md:block mx-6"
-              style={{ 'flex-basis': '200px' }}
+              style={{ flexBasis: '200px' }}
             >
               {aside}
             </div>
