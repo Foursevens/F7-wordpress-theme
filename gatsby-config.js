@@ -2,6 +2,8 @@ const { LOCALE_DEFAULT, LOCALES } = require('./options');
 
 const wpNormalize = require('./wp-normalize.js');
 
+const siteUrl = 'https://foursevens.be';
+
 const config = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -71,18 +73,19 @@ const config = {
       options: {
         matomoUrl: 'https://foursevens.matomo.cloud',
         siteId: '1',
-        siteUrl: 'https://foursevens.be',
+        siteUrl,
       },
     },
   ],
   siteMetadata: {
+    author: 'Ines Vanlangendonck',
     contact: {
       email: 'info@foursevens.be',
       linkedin: 'foursevens',
       phone: '+32 3 450 80 30',
       twitter: 'foursevensBE',
     },
-    author: 'Ines Vanlangendonck',
+    siteUrl,
   },
 };
 

@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { useIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Helmet from 'react-helmet';
@@ -24,14 +25,12 @@ const query = graphql`
           twitter
         }
         defaultAuthor: author
+        siteUrl
       }
     }
     wordpressSiteMetadata {
       defaultTitle: name
       headline: description
-      siteHomepage: home
-      siteLanguage: language
-      siteUrl: url
     }
   }
 `;
@@ -55,16 +54,14 @@ export default function SEO({
       siteMetadata: {
         defaultAuthor,
         contact: { twitter },
+        siteUrl,
       },
     },
-    wordpressSiteMetadata: {
-      defaultTitle,
-      headline,
-      siteHomepage,
-      siteLanguage,
-      siteUrl,
-    },
+    wordpressSiteMetadata: { defaultTitle, headline },
   } = useStaticQuery(query);
+
+  const { locale: siteLanguage } = useIntl();
+  const siteHomepage = `${siteUrl}/${siteLanguage}`;
 
   const defaultDescription = headline;
   const seo = {
@@ -145,6 +142,8 @@ export default function SEO({
     itemListElement,
     name: 'Breadcrumbs',
   };
+
+  console.log(siteLanguage);
 
   return (
     <>
