@@ -1,14 +1,14 @@
 import classNames from 'classnames';
-import { injectIntl } from 'gatsby-plugin-intl';
+import { useIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Image } from '../components';
-import { intlShape } from '../model';
 import styles from './card.module.css';
 import { memberShape } from './model';
 
-function MemberCard({ intl, member, shadow }) {
+export default function MemberCard({ member, shadow }) {
+  const intl = useIntl();
   return (
     <div
       className={classNames(styles.cardItem, 'bg-white text-center rounded', {
@@ -55,9 +55,6 @@ MemberCard.defaultProps = {
 };
 
 MemberCard.propTypes = {
-  intl: intlShape.isRequired,
   member: PropTypes.shape(memberShape).isRequired,
   shadow: PropTypes.bool,
 };
-
-export default injectIntl(MemberCard);

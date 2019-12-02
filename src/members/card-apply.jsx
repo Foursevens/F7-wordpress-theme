@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
-import { FormattedMessage, injectIntl, Link } from 'gatsby-plugin-intl';
+import { FormattedMessage, useIntl, Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import Image from '../components/image';
-import { intlShape } from '../model';
 import styles from './card.module.css';
 
-function NewMember({ intl }) {
+export default function NewMember() {
+  const intl = useIntl();
   const data = useStaticQuery(graphql`
     query NewMemberQuery {
       newMember: file(base: { eq: "new-member.png" }) {
@@ -62,9 +62,3 @@ function NewMember({ intl }) {
     </Link>
   );
 }
-
-NewMember.propTypes = {
-  intl: intlShape.isRequired,
-};
-
-export default injectIntl(NewMember);

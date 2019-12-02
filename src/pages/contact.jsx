@@ -3,13 +3,13 @@ import { faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faAt, faPhone, faMailbox } from '@fortawesome/pro-solid-svg-icons';
 import classNames from 'classnames';
 import { graphql } from 'gatsby';
-import { FormattedMessage, injectIntl } from 'gatsby-plugin-intl';
+import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import { SEO } from '../components';
 import { ContentLayout, MainLayout } from '../layout';
-import { intlShape, locationShape } from '../model';
+import { locationShape } from '../model';
 
 export const query = graphql`
   query($language: String!) {
@@ -80,7 +80,7 @@ ContactChannel.propTypes = {
   label: PropTypes.string.isRequired,
 };
 
-function ContactPage({
+export default function ContactPage({
   data: {
     contactPage: { content, subtitle, title },
     site: {
@@ -89,9 +89,9 @@ function ContactPage({
       },
     },
   },
-  intl,
   location,
 }) {
+  const intl = useIntl();
   return (
     <MainLayout>
       <SEO pathname={location.pathname} title="Contact" />
@@ -146,8 +146,5 @@ function ContactPage({
 }
 
 ContactPage.propTypes = {
-  intl: intlShape.isRequired,
   location: locationShape.isRequired,
 };
-
-export default injectIntl(ContactPage);

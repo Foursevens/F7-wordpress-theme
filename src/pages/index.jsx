@@ -1,12 +1,11 @@
 import { graphql } from 'gatsby';
-import { injectIntl } from 'gatsby-plugin-intl';
+import { useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import { useBreakpoint } from '../hooks';
 import CasesGridList from '../cases/grid-list';
 import { Hero, Section, SEO } from '../components';
 import { MainLayout } from '../layout';
-import { intlShape } from '../model';
 import ApproachesGridList from '../approaches/grid-list';
 import MembersGridList from '../members/grid-list';
 import PostsGridList from '../posts/grid-list';
@@ -91,7 +90,7 @@ export const query = graphql`
   }
 `;
 
-function IndexPage({
+export default function IndexPage({
   data: {
     allApproaches: { nodes: allApproaches },
     firstCases: { nodes: firstCases },
@@ -101,9 +100,9 @@ function IndexPage({
     intro,
     metadata,
   },
-  intl,
 }) {
   const breakpoint = useBreakpoint();
+  const intl = useIntl();
   return (
     <MainLayout>
       <SEO title="Homepage" />
@@ -159,9 +158,3 @@ function IndexPage({
     </MainLayout>
   );
 }
-
-IndexPage.propTypes = {
-  intl: intlShape.isRequired,
-};
-
-export default injectIntl(IndexPage);
