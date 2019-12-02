@@ -1,4 +1,9 @@
 {
+  "contact": {
+    "address": "Find us",
+    "email": "E-mail us",
+    "phone": "Call us"
+  },
   "general": {
     "address": {
       "street": "Rue d'alost 7",

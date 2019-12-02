@@ -1,4 +1,9 @@
 {
+  "contact": {
+    "address": "Vind ons",
+    "email": "E-mail ons",
+    "phone": "Bel ons"
+  },
   "general": {
     "address": {
       "street": "Aalststraat 7",
