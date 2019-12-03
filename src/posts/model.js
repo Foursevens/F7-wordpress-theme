@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import { arrayOf, string, shape } from 'prop-types';
+import { string, shape } from 'prop-types';
 
 export const PostBaseData = graphql`
   fragment PostBaseData on wordpress__POST {
