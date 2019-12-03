@@ -1,28 +1,36 @@
 name: CI
 
 on:
+  deployment:
   push:
     branches:
       - production
-  schedule:
-    - cron: '0 0 * * 1' # Every monday at 00:00
 
 jobs:
-  build:
+  deployment:
     runs-on: ubuntu-latest
     steps:
+      - name: "Deployment pending"
+        uses: "deliverybot/deployment-status@v1"
+        with:
+          state: "pending"
+          token: "${{ secrets.GH_TOKEN }}"
+
       - name: Checkout
         uses: actions/checkout@master
+
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
+          node-version: "10.x"
       - name: Authenticate Font Awesome
         run: npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.FA_TOKEN }}
       - name: Install
         run: yarn --frozen-lockfile
+
       - name: Build
         run: yarn build:ci
+
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
@@ -32,3 +40,17 @@ jobs:
           LOCAL_DIR: public/
           METHOD: sftp
           REMOTE_DIR: www.foursevens.be/
+
+      - name: "Deployment success"
+        if: success()
+        uses: "deliverybot/deployment-status@v1"
+        with:
+          state: "success"
+          token: "${{ secrets.GH_TOKEN }}"
+
+      - name: "Deployment failure"
+        if: failure()
+        uses: "deliverybot/deployment-status@v1"
+        with:
+          state: "failure"
+          token: "${{ secrets.GH_TOKEN }}"
