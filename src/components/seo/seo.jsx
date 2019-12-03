@@ -143,8 +143,6 @@ export default function SEO({
     name: 'Breadcrumbs',
   };
 
-  console.log(siteLanguage);
-
   return (
     <>
       <Helmet title={seo.title}>
