@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - production
+  schedule:
+    - cron: "0 0 0 ? * 1" # every monday, at 00:00
 
 jobs:
   deployment:
