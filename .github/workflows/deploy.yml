@@ -1,30 +1,24 @@
 name: CI
 
 on:
-  deployment:
   push:
     branches:
-      - production
+      - master
+  repository_dispatch:
   schedule:
-    - cron: "0 0 * * 1" # every monday at 00:00
+    - cron: '0 0 * * 1' # every monday at 00:00
 
 jobs:
   deployment:
     runs-on: ubuntu-latest
     steps:
-      # - name: "Deployment pending"
-      #   uses: "deliverybot/deployment-status@v1"
-      #   with:
-      #     state: "pending"
-      #     token: "${{ secrets.GH_TOKEN }}"
-
       - name: Checkout
         uses: actions/checkout@master
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "10.x"
+          node-version: '10.x'
       - name: Authenticate Font Awesome
         run: npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.FA_TOKEN }}
       - name: Install
@@ -42,15 +36,3 @@ jobs:
           LOCAL_DIR: public/
           METHOD: sftp
           REMOTE_DIR: www.foursevens.be/
-      # - name: "Deployment success"
-      #   if: success()
-      #   uses: "deliverybot/deployment-status@v1"
-      #   with:
-      #     state: "success"
-      #     token: "${{ secrets.GH_TOKEN }}"
-      # - name: "Deployment failure"
-      #   if: failure()
-      #   uses: "deliverybot/deployment-status@v1"
-      #   with:
-      #     state: "failure"
-      #     token: "${{ secrets.GH_TOKEN }}"
