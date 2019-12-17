@@ -12,11 +12,11 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     steps:
-      - name: "Deployment pending"
-        uses: "deliverybot/deployment-status@v1"
-        with:
-          state: "pending"
-          token: "${{ secrets.GH_TOKEN }}"
+      # - name: "Deployment pending"
+      #   uses: "deliverybot/deployment-status@v1"
+      #   with:
+      #     state: "pending"
+      #     token: "${{ secrets.GH_TOKEN }}"
 
       - name: Checkout
         uses: actions/checkout@master
@@ -42,17 +42,15 @@ jobs:
           LOCAL_DIR: public/
           METHOD: sftp
           REMOTE_DIR: www.foursevens.be/
-
-      - name: "Deployment success"
-        if: success()
-        uses: "deliverybot/deployment-status@v1"
-        with:
-          state: "success"
-          token: "${{ secrets.GH_TOKEN }}"
-
-      - name: "Deployment failure"
-        if: failure()
-        uses: "deliverybot/deployment-status@v1"
-        with:
-          state: "failure"
-          token: "${{ secrets.GH_TOKEN }}"
+      # - name: "Deployment success"
+      #   if: success()
+      #   uses: "deliverybot/deployment-status@v1"
+      #   with:
+      #     state: "success"
+      #     token: "${{ secrets.GH_TOKEN }}"
+      # - name: "Deployment failure"
+      #   if: failure()
+      #   uses: "deliverybot/deployment-status@v1"
+      #   with:
+      #     state: "failure"
+      #     token: "${{ secrets.GH_TOKEN }}"
