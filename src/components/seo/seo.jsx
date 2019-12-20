@@ -68,7 +68,7 @@ export default function SEO({
     author: author || defaultAuthor,
     description: description || defaultDescription,
     image: `${siteUrl}${banner || defaultBanner}`,
-    title: title || defaultTitle,
+    title: title ? `${defaultTitle} – ${title}` : defaultTitle,
     url: `${siteUrl}${pathname || ''}`,
   };
 

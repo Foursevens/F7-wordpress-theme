@@ -105,7 +105,7 @@ export default function IndexPage({
   const intl = useIntl();
   return (
     <MainLayout>
-      <SEO title="Homepage" />
+      <SEO title={metadata.description.toLowerCase()} />
       <Hero
         alt={intl.formatMessage({ id: 'index.hero-alt' })}
         colorize="bg-f7800"
