@@ -18,8 +18,12 @@
   },
   "overrides": [
     {
-      "files": ["*.js"],
+      "files": ["./*.js", "scripts/**/*.js"],
+      "parserOptions": {
+        "sourceType": "script"
+      },
       "rules": {
+        "strict": ["error", "global"],
         "import/no-extraneous-dependencies": [
           "error",
           { "devDependencies": true }

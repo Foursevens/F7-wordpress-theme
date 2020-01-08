@@ -1,3 +1,5 @@
+'use strict';
+
 const nesting = require('postcss-nesting');
 const presetEnv = require('postcss-preset-env');
 const tailwind = require('tailwindcss');

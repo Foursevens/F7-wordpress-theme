@@ -1,3 +1,5 @@
+'use strict';
+
 // This is determined by Wordpress. Don't change.
 exports.LOCALE_DEFAULT = 'nl';
 

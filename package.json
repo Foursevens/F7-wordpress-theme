@@ -11,10 +11,9 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "build:ci": "gatsby clean && gatsby build",
     "build:memento": "MEMENTO=true gatsby build",
     "develop": "gatsby develop --host 0.0.0.0",
-    "lint:code": "eslint --cache --ext js --ext jsx --fix *.js src/",
+    "lint:code": "eslint --cache --ext js --ext jsx --fix *.js scripts/ src/",
     "lint:style": "stylelint --fix 'src/**/*.css'",
     "lint": "yarn lint:code && yarn lint:style",
     "format": "prettier --write *.js src/**/*.{js,jsx}",
@@ -57,6 +56,8 @@
     "tailwindcss": "^1.1.4"
   },
   "devDependencies": {
+    "basic-ftp": "^4.5.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",

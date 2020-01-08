@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - 10.16.3
+
+branches:
+  only:
+    - master
+
+before_install:
+  - npm config set "//npm.fontawesome.com/:_authToken" ${FA_AUTH_TOKEN}
+
+install: yarn --frozen-lockfile
+cache: yarn
+
+script:
+  - yarn build
+
+after_success:
+  - node scripts/deploy
+
+notifications:
+  slack:
+    secure: mTJ9WvuFU9kWt2eVx7K9tI+DnkZ1Vj0T7fwFDJmytWx+XqExlXztiNzzxsaehtA7DkIPACM1uwEY3icLP504RSQcAQNlxu+LH533mABem2IVWzIWv48g/kTfVNpxJgVs5hjaqMVdVyu0aVyiy46XjdfYyZa9pAI8xrpBL2sRDIB8NYaJILKwUy7ptDk4MVnwJZmPmXaiIRIa8SCoI4L5cN7+lVVWn5ONxD80ivIcE4QRLy4OxaMchBOtUcfNDb1QcXhetlRgUZyo9ahO0YCVIGynjI55HqiVIq4SIiMmRbuayxIrCkSNSjvdsLOua13LQ960wfnV52+Gm6zOEVzgygKRDjaw5iH+1qlX7WpA0v7wZcrq0AzHi+s7L4ynPDfy9QehAgywCZu1OoPi6xbt0jiVz9FBazw7G9FK1mUasmB84E1TL7jhYf/lwMIx2VnxaoTYFbtKCtSmLUWEkbZxJMHvBAEoSxbuSt27qrpSfpIB7a0rmMNu7pEIdFSs/t6ajGG5KUCtmC+NXjkv/0VbCut0c1aMOc5eCxfB0vbZR0WCZFhhI6yqYPeAi+iGwN+G7jHqEVN4K1UprmbIs5T3tHt1NV/F7VgdfD4NrY3eTjMTlnQAWviHgKA1h8lB28crNwWV0a05W7ikJlCc7CMI2U6jqQzPkY6WzxwI8X2lBxY=

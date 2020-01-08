@@ -1,3 +1,5 @@
+'use strict';
+
 const { resolve: resolvePath } = require('path');
 
 const { createRemoteFileNode } = require('gatsby-source-filesystem');

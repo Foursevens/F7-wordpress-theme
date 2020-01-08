@@ -1,3 +1,5 @@
+'use strict';
+
 const { LOCALE_DEFAULT, LOCALES } = require('./options');
 
 const wpNormalize = require('./wp-normalize.js');

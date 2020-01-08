@@ -1,3 +1,5 @@
+'use strict';
+
 const he = require('he');
 const { camelCase, mapKeys } = require('lodash/fp');
 
