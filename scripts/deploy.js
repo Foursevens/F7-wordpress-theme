@@ -22,6 +22,7 @@ const DIR_PUBLIC = path.join(__dirname, '../public');
     await client.uploadFromDir(DIR_PUBLIC, process.env.DEPLOY_FTP_DIR);
   } catch (err) {
     console.error(err.message);
+    process.exitCode = 1;
   } finally {
     client.close();
   }
