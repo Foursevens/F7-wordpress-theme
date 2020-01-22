@@ -10,7 +10,7 @@
     "url": "https://github.com/Foursevens/f7-wordpress-theme"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "build:memento": "MEMENTO=true gatsby build",
     "develop": "gatsby develop --host 0.0.0.0",
     "lint:code": "eslint --cache --ext js --ext jsx --fix *.js scripts/ src/",
