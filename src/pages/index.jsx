@@ -119,10 +119,9 @@ export default function IndexPage({
         </div>
       </Hero>
       <Section title="Foursevens">
-        <div
-          className={styles.intro}
-          dangerouslySetInnerHTML={{ __html: intro.content }}
-        />
+        <p className={styles.intro}>
+          <div dangerouslySetInnerHTML={{ __html: intro.content }} />
+        </p>
       </Section>
       <Section title="Approach" striped>
         <ApproachesGridList approaches={allApproaches} />

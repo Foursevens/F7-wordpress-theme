@@ -40,10 +40,9 @@ export default function PostsGridListItem({ accentColor, post }) {
           <div className="font-title font-700 text-xl mb-2 uppercase">
             {post.title}
           </div>
-          <p
-            className="font-300 leading-normal mb-12"
-            dangerouslySetInnerHTML={{ __html: post.intro }}
-          />
+          <p className="font-300 leading-normal mb-12">
+            <div dangerouslySetInnerHTML={{ __html: post.intro }} />
+          </p>
         </div>
       </Link>
     </div>

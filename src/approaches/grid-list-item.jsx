@@ -13,12 +13,13 @@ export default function ApproachesGridListItem({ approach }) {
         <h3 className="font-900 font-title my-6 text-xl uppercase">
           {approach.title}
         </h3>
-        <p
-          className="font-100 my-3"
-          dangerouslySetInnerHTML={{
-            __html: approach.approachIntro || approach.approachText,
-          }}
-        />
+        <p className="font-100 my-3">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: approach.approachIntro || approach.approachText,
+            }}
+          />
+        </p>
       </Link>
     </div>
   );

@@ -138,7 +138,7 @@ export default function ContactPage({
         </ul>
         <div className="font-title text-xl my-6">{subtitle}</div>
         <div className="my-6 font-300 text-2xl">
-          <span dangerouslySetInnerHTML={{ __html: content }} />
+          <div dangerouslySetInnerHTML={{ __html: content }} />
         </div>
       </ContentLayout>
     </MainLayout>

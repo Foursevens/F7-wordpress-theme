@@ -36,8 +36,9 @@ export default function MemberCard({ member, shadow }) {
               styles.img__description,
               'font-300 leading-loose text-lg',
             )}
-            dangerouslySetInnerHTML={{ __html: member.skills }}
-          />
+          >
+            <div dangerouslySetInnerHTML={{ __html: member.skills }} />
+          </p>
         </div>
       </div>
       <div className="p-5">
