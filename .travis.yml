@@ -14,8 +14,6 @@ cache: yarn
 
 script:
   - yarn build
-
-after_success:
   - node scripts/deploy
 
 notifications:
