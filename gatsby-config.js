@@ -4,7 +4,8 @@ const { LOCALE_DEFAULT, LOCALES } = require('./options');
 
 const wpNormalize = require('./wp-normalize.js');
 
-const siteUrl = 'https://foursevens.be';
+const siteHost = 'admin.foursevens.be';
+const siteUrl = `https://${siteHost}`;
 
 const config = {
   plugins: [
@@ -38,7 +39,7 @@ const config = {
       options: {
         baseUrl: process.env.MEMENTO
           ? `localhost:3344/${language}`
-          : `foursevens.be/${language}`,
+          : `${siteHost}/${language}`,
         excludedRoutes: [
           '**/search',
           '**/settings',

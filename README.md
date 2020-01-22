@@ -41,6 +41,20 @@ yarn start:nl
 yarn start:memento:nl
 ```
 
+## Build
+
+```sh
+yarn run build
+```
+
 ## Deploy
 
-`// TODO`
+Create an `.env` variable in the project root.
+
+```sh
+DEPLOY_FTP_DIR="httpdocs/"
+DEPLOY_FTP_PASSWORD="[PASSWORD]"
+DEPLOY_FTP_USERNAME="foursevensserv"
+```
+
+Run `node scripts/deploy`.
