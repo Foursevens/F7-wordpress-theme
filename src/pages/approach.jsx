@@ -9,7 +9,7 @@ import { locationShape } from '../model';
 export const query = graphql`
   query($language: String!) {
     allApproaches: allWordpressWpApproach(
-      filter: { language: { eq: $language } }
+      filter: { language: { eq: $language }, status: { eq: "publish" } }
       sort: { fields: menuOrder }
     ) {
       nodes {

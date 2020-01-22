@@ -8,7 +8,9 @@ import { locationShape } from '../model';
 
 export const query = graphql`
   query($language: String!) {
-    allMembers: allWordpressWpMembers(filter: { language: { eq: $language } }) {
+    allMembers: allWordpressWpMembers(
+      filter: { language: { eq: $language }, status: { eq: "publish" } }
+    ) {
       nodes {
         ...MemberData
       }
