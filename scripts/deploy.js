@@ -18,7 +18,7 @@ const DIR_REMOTE = process.env.DEPLOY_FTP_DIR_REMOTE;
 (async function main() {
   const client = new Client();
   client.on('upload', (info) => {
-    console.log(`uploaded ${path.relative(__dirname, info.source)}`);
+    console.log(`uploaded ${path.relative(DIR_LOCAL, info.source)}`);
   });
   try {
     await client.connect({
