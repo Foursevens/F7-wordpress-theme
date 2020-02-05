@@ -14,7 +14,7 @@
 }
 
 .cardItem .img__img {
-  max-height: 300px;
+  height: 290px;
 }
 
 .cardItem:hover .img__img,
