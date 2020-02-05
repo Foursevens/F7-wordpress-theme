@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Grid } from '../layout';
+import CaseCard from './card';
 import { caseShape } from './model';
-import CasesGridListItem from './grid-list-item';
 
 export default function CasesGridList({ cases, selectedSections }) {
   const filteredCases =
@@ -13,13 +14,11 @@ export default function CasesGridList({ cases, selectedSections }) {
             sections && selectedSections.includes(sections.name),
         );
   return (
-    <ul className="flex flex-wrap items-stretch -mx-3 -mt-3 mb-3">
+    <Grid>
       {filteredCases.map((wpCase) => (
-        <li className="p-3 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4" key={wpCase.id}>
-          <CasesGridListItem wpCase={wpCase} />
-        </li>
+        <CaseCard wpCase={wpCase} />
       ))}
-    </ul>
+    </Grid>
   );
 }
 

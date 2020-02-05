@@ -2,8 +2,8 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import { SEO } from '../components';
-import { ContentLayout, MainLayout } from '../layout';
-import MembersGridList from '../members/grid-list';
+import { ContentLayout, Grid, MainLayout } from '../layout';
+import { MemberCard, MemberCardApply } from '../members';
 import { locationShape } from '../model';
 
 export const query = graphql`
@@ -28,7 +28,11 @@ export default function TeamPage({
     <MainLayout>
       <SEO pathname={location.pathname} title="Team" />
       <ContentLayout title="Team">
-        <MembersGridList members={allMembers} />
+        <Grid>
+          {allMembers
+            .map((member) => <MemberCard key={member.id} member={member} />)
+            .concat(<MemberCardApply key="apply" />)}
+        </Grid>
       </ContentLayout>
     </MainLayout>
   );

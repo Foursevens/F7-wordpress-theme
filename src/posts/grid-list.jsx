@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import PostsGridListItem from './grid-list-item';
+import { Grid } from '../layout';
+import PostCard from './card';
 import { postShape } from './model';
 import { ACCENT_COLORS } from './options';
 
@@ -14,23 +15,19 @@ export default function PostsGridList({ posts, selectedCategories }) {
             category && selectedCategories.includes(category.name),
         );
   return (
-    <ul className="flex flex-wrap -mx-3 -mt-3 mb-3">
+    <Grid>
       {filteredPosts.map((post, index) => (
-        <li
-          className="px-3 my-3 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4"
+        <PostCard
           key={post.id}
-        >
-          <PostsGridListItem
-            accentColor={
-              ACCENT_COLORS[
-                ACCENT_COLORS.length - 1 - (index % ACCENT_COLORS.length)
-              ]
-            }
-            post={post}
-          />
-        </li>
+          accentColor={
+            ACCENT_COLORS[
+              ACCENT_COLORS.length - 1 - (index % ACCENT_COLORS.length)
+            ]
+          }
+          post={post}
+        />
       ))}
-    </ul>
+    </Grid>
   );
 }
 

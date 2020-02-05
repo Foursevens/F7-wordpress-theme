@@ -6,7 +6,7 @@ import React from 'react';
 import { Image, Tag } from '../components';
 import { postShape } from './model';
 
-export default function PostsGridListItem({ accentColor, post }) {
+export default function PostCard({ accentColor, post }) {
   return (
     <div
       className={classNames(
@@ -49,7 +49,7 @@ export default function PostsGridListItem({ accentColor, post }) {
   );
 }
 
-PostsGridListItem.propTypes = {
+PostCard.propTypes = {
   accentColor: PropTypes.shape({
     background: PropTypes.string.isRequired,
     border: PropTypes.string.isRequired,
