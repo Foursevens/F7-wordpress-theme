@@ -31,14 +31,14 @@ export default function MemberCard({ member, shadow }) {
             'absolute inset-0 text-white invisible opacity-0 flex justify-center items-center',
           )}
         >
-          <p
+          <div
             className={classNames(
               styles.img__description,
               'font-300 leading-loose text-lg',
             )}
           >
             <div dangerouslySetInnerHTML={{ __html: member.skills }} />
-          </p>
+          </div>
         </div>
       </div>
       <div className="p-5">
