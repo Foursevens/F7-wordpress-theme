@@ -13,6 +13,10 @@
   @apply visible opacity-100;
 }
 
+.cardItem .img__img {
+  max-height: 300px;
+}
+
 .cardItem:hover .img__img,
 .cardItem:focus .img__img {
   @apply invisible opacity-100;
