@@ -16,7 +16,7 @@ export default function CasesGridList({ cases, selectedSections }) {
   return (
     <Grid>
       {filteredCases.map((wpCase) => (
-        <CaseCard wpCase={wpCase} />
+        <CaseCard key={wpCase.id} wpCase={wpCase} />
       ))}
     </Grid>
   );
