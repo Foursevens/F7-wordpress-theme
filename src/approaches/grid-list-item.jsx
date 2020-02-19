@@ -14,7 +14,8 @@ export default function ApproachesGridListItem({ approach }) {
           {approach.title}
         </h3>
         <p className="font-100 my-3">
-          <div
+          <span
+            style={{ display: 'block' }}
             dangerouslySetInnerHTML={{
               __html: approach.approachIntro || approach.approachText,
             }}

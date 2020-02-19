@@ -41,7 +41,10 @@ export default function PostCard({ accentColor, post }) {
             {post.title}
           </div>
           <p className="font-300 leading-normal mb-12">
-            <div dangerouslySetInnerHTML={{ __html: post.intro }} />
+            <span
+              style={{ display: 'block' }}
+              dangerouslySetInnerHTML={{ __html: post.intro }}
+            />
           </p>
         </div>
       </Link>

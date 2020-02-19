@@ -120,7 +120,10 @@ export default function IndexPage({
       </Hero>
       <Section title="Foursevens">
         <p className={styles.intro}>
-          <div dangerouslySetInnerHTML={{ __html: intro.content }} />
+          <span
+            style={{ display: 'block' }}
+            dangerouslySetInnerHTML={{ __html: intro.content }}
+          />
         </p>
       </Section>
       <Section title="Approach" striped>
