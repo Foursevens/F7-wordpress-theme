@@ -31,6 +31,7 @@
     "@fortawesome/pro-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "classnames": "^2.2.6",
+    "f7-mobility-widget": "^1.0.2",
     "gatsby": "^2.19.22",
     "gatsby-background-image": "^0.10.2",
     "gatsby-image": "^2.2.41",
