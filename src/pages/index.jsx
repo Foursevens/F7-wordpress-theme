@@ -130,10 +130,12 @@ export default function IndexPage({
       <Section striped title="Approach">
         <ApproachesGridList approaches={allApproaches} />
       </Section>
-      <MobilityWidget
-        apiKey="AIzaSyDnd5JFd-dvMWTu4R8ntcLYAA0XQqptu5E"
-        background={F7Background}
-      />
+      {['xl', 'xxl'].includes(breakpoint) && (
+        <MobilityWidget
+          apiKey="AIzaSyDnd5JFd-dvMWTu4R8ntcLYAA0XQqptu5E"
+          background={F7Background}
+        />
+      )}
       <Section
         actionMessageId="index.more-cases"
         actionTo="/cases"
