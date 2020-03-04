@@ -55,7 +55,7 @@ function ContactChannel({ className, content, href, icon, label }) {
             {
               className: 'block sm:-my-3 sm:py-3',
               href,
-              ...(href.match(/^http/) && {
+              ...(href.startsWith('http') && {
                 rel: 'noopener noreferrer',
                 target: '_blank',
               }),

@@ -63,8 +63,8 @@ export default function ContentDetailLayout({
 
 ContentDetailLayout.defaultProps = {
   aside: null,
-  date: null,
   centered: false,
+  date: null,
   hero: null,
   heroCopyright: null,
   taxonomy: null,
@@ -72,8 +72,8 @@ ContentDetailLayout.defaultProps = {
 
 ContentDetailLayout.propTypes = {
   aside: PropTypes.node,
-  children: PropTypes.node.isRequired,
   centered: PropTypes.bool,
+  children: PropTypes.node.isRequired,
   date: PropTypes.string,
   hero: imageModel,
   heroCopyright: PropTypes.string,

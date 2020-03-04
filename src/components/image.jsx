@@ -6,7 +6,7 @@ import React from 'react';
 
 export default function Image({ file, ...props }) {
   if (!file) {
-    return <></>;
+    return null;
   }
   if ('fluid' in file.childImageSharp) {
     return <Img fluid={file.childImageSharp.fluid} {...props} />;
@@ -14,7 +14,7 @@ export default function Image({ file, ...props }) {
   if ('fixed' in file.childImageSharp) {
     return <Img fixed={file.childImageSharp.fixed} {...props} />;
   }
-  return <></>;
+  return null;
 }
 
 Image.defaultProps = {

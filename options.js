@@ -1,8 +1,8 @@
 'use strict';
 
 // This is determined by Wordpress. Don't change.
-exports.LOCALE_DEFAULT = 'nl';
+module.exports.LOCALE_DEFAULT = 'nl';
 
-exports.LOCALES = process.env.F7_LOCALES
+module.exports.LOCALES = process.env.F7_LOCALES
   ? process.env.F7_LOCALES.split(',')
   : ['en', 'fr', 'nl'];

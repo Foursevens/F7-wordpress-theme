@@ -59,33 +59,38 @@ export default function BlogPage({
       : Object.entries(categoryFilter)
           .filter(([, value]) => value !== false)
           .map(([key]) => key);
+
   return (
     <MainLayout>
       <SEO pathname={location.pathname} title="Blog" />
       <ContentLayout title="Blog">
         <ul className="text-center mb-8 ">
-          {allCategories.map(({ id, name }) => (
-            <li
-              key={id}
-              className={`inline cursor-pointer select-none mx-2 font-100 ${
-                selectedCategory.includes(name) ? 'focus: text-f7500' : null
-              }`}
-            >
-              <span
-                onClick={() => toggleSection(name)}
-                onKeyPress={(event) => {
-                  if (event.charCode === 13) {
-                    event.preventDefault();
-                    toggleSection(name);
-                  }
-                }}
-                role="button"
-                tabIndex="0"
+          {allCategories.map(({ id, name }) => {
+            const handleClick = () => toggleSection(name);
+            const handleKeyPress = (event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                toggleSection(name);
+              }
+            };
+            return (
+              <li
+                key={id}
+                className={`inline cursor-pointer select-none mx-2 font-100 ${
+                  selectedCategory.includes(name) ? 'focus: text-f7500' : null
+                }`}
               >
-                {name}
-              </span>
-            </li>
-          ))}
+                <span
+                  onClick={handleClick}
+                  onKeyPress={handleKeyPress}
+                  role="button"
+                  tabIndex="0"
+                >
+                  {name}
+                </span>
+              </li>
+            );
+          })}
         </ul>
         <PostsGridList posts={allPosts} selectedCategories={selectedCategory} />
       </ContentLayout>

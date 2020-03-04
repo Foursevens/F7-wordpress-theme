@@ -90,7 +90,7 @@ async function mapWpRemoteFile(helpers, node, { source, target }) {
  * initial sourcing and transformation of nodes plus creation of the GraphQL
  * schema are complete so you can query your data in order to create pages.
  */
-exports.createPages = async function createPages({
+module.exports.createPages = async function createPages({
   actions: { createPage },
   graphql,
 }) {
@@ -138,7 +138,7 @@ exports.createPages = async function createPages({
  * Called when a new node is created. Plugins wishing to extend or transform
  * nodes created by other plugins should implement this API.
  */
-exports.onCreateNode = async function onCreateNode({
+module.exports.onCreateNode = async function onCreateNode({
   actions: { createNode, createNodeField },
   cache,
   createNodeId,
@@ -163,7 +163,7 @@ exports.onCreateNode = async function onCreateNode({
  * Called when a new page is created. This extension API is useful for
  * programmatically manipulating pages created by other plugins.
  */
-exports.onCreatePage = function onCreatePage({
+module.exports.onCreatePage = function onCreatePage({
   page,
   actions: { createPage, deletePage },
 }) {

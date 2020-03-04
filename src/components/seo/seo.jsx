@@ -180,8 +180,8 @@ export default function SEO({
 }
 
 SEO.defaultProps = {
-  author: null,
   article: false,
+  author: null,
   banner: null,
   description: null,
   pathname: null,

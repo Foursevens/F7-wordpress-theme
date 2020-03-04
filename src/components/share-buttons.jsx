@@ -10,7 +10,7 @@ import SideBarItem from './side-bar-item';
 
 export default function ShareButtons() {
   const currentUrl =
-    typeof window !== 'undefined' ? window.location.href : null;
+    typeof window === 'undefined' ? null : window.location.href;
   return (
     <SideBarItem title="Share">
       <ul>

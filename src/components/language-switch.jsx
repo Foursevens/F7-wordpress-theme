@@ -15,11 +15,17 @@ export default function LanguageSwitch() {
         {({ languages, language: currentLocale }) =>
           languages.map((language) => {
             const isActiveLanguage = language === currentLocale;
-            const handleChangeLanguage = () => {
+            function handleChangeLanguage() {
               if (!isActiveLanguage) {
                 changeLocale(language);
               }
-            };
+            }
+            function handleKeypress(event) {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                handleChangeLanguage();
+              }
+            }
             return (
               <li
                 key={language}
@@ -30,12 +36,7 @@ export default function LanguageSwitch() {
                     'cursor-pointer font-300': !isActiveLanguage,
                   })}
                   onClick={handleChangeLanguage}
-                  onKeyPress={(event) => {
-                    if (event.charCode === 13) {
-                      event.preventDefault();
-                      handleChangeLanguage();
-                    }
-                  }}
+                  onKeyPress={handleKeypress}
                   role="link"
                   tabIndex="0"
                 >

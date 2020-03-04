@@ -13,6 +13,8 @@ import { useEffect, useMemo, useState } from 'react';
  * @property {number} [minWidth] eg. 768
  */
 
+const IS_SSR = !('window' in global);
+
 /**
  * Pre-calculate the media query parameters.
  *
@@ -27,6 +29,7 @@ import { useEffect, useMemo, useState } from 'react';
  *     ]
  *
  * @param {object} screenOptions
+ * @param {string} defaultScreenName
  * @return {Screen[]}
  */
 function calculateScreens(screenOptions, defaultScreenName) {
@@ -62,6 +65,9 @@ function calculateScreens(screenOptions, defaultScreenName) {
 }
 
 function createScreenQuery({ maxWidth, minWidth, name }) {
+  if (IS_SSR) {
+    return { name };
+  }
   const maxQuery = maxWidth ? `(max-width: ${maxWidth}px)` : null;
   const minQuery = minWidth ? `(min-width: ${minWidth}px)` : null;
   const mediaQuery = [minQuery, maxQuery].filter(Boolean).join(' and ');
@@ -75,13 +81,12 @@ export default function useBreakpoint(
   const screens = useMemo(() => calculateScreens(screenOptions), [
     screenOptions,
   ]);
-  if (!('window' in global)) {
-    return defaultScreenName;
-  }
   const screenQueries = useMemo(() => screens.map(createScreenQuery), [
     screens,
   ]);
-  const currentScreen = screenQueries.find(({ query }) => query.matches);
+  const currentScreen = IS_SSR
+    ? defaultScreenName
+    : screenQueries.find(({ query }) => query.matches);
   const [breakpoint, setBreakpoint] = useState(
     currentScreen ? currentScreen.name : defaultScreenName,
   );
@@ -103,5 +108,6 @@ export default function useBreakpoint(
     },
     [screenQueries],
   );
+
   return breakpoint;
 }

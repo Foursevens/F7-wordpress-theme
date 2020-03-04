@@ -1,5 +1,5 @@
 import { Link } from 'gatsby-plugin-intl';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 const LINKS = [
   { title: 'Cases', to: '/cases' },
@@ -9,29 +9,29 @@ const LINKS = [
   { title: 'Contact', to: '/contact' },
 ];
 
-export default function Menu() {
-  const handleKeyPress = useCallback((event) => {
-    const menuItemElement = event.target.closest('li');
-    switch (event.key) {
-      default: {
-        break;
-      }
-      case 'ArrowLeft': {
-        const nextFocussedMenuItem =
-          menuItemElement.previousSibling ||
-          menuItemElement.closest('ul').lastChild;
-        nextFocussedMenuItem.querySelector('a').focus();
-        break;
-      }
-      case 'ArrowRight': {
-        const nextFocussedMenuItem =
-          menuItemElement.nextSibling ||
-          menuItemElement.closest('ul').firstChild;
-        nextFocussedMenuItem.querySelector('a').focus();
-        break;
-      }
+function handleKeyPress(event) {
+  const menuItemElement = event.target.closest('li');
+  switch (event.key) {
+    default: {
+      break;
     }
-  });
+    case 'ArrowLeft': {
+      const nextFocussedMenuItem =
+        menuItemElement.previousSibling ||
+        menuItemElement.closest('ul').lastChild;
+      nextFocussedMenuItem.querySelector('a').focus();
+      break;
+    }
+    case 'ArrowRight': {
+      const nextFocussedMenuItem =
+        menuItemElement.nextSibling || menuItemElement.closest('ul').firstChild;
+      nextFocussedMenuItem.querySelector('a').focus();
+      break;
+    }
+  }
+}
+
+export default function Menu() {
   return (
     <nav className="max-w-sm mx-auto">
       <ul

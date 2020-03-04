@@ -62,28 +62,32 @@ export default function CasesPage({
       <SEO pathname={location.pathname} title="Cases" />
       <ContentLayout title="Cases">
         <ul className="text-center mb-8">
-          {allSections.map(({ id, name }) => (
-            <li
-              key={id}
-              className={`inline cursor-pointer select-none mx-2 font-100 ${
-                selectedSections.includes(name) ? 'focus: text-f7500' : null
-              }`}
-            >
-              <span
-                onClick={() => toggleSection(name)}
-                onKeyPress={(event) => {
-                  if (event.charCode === 13) {
-                    event.preventDefault();
-                    toggleSection(name);
-                  }
-                }}
-                role="button"
-                tabIndex="0"
+          {allSections.map(({ id, name }) => {
+            const handleClick = () => toggleSection(name);
+            const handleKeyPress = (event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                toggleSection(name);
+              }
+            };
+            return (
+              <li
+                key={id}
+                className={`inline cursor-pointer select-none mx-2 font-100 ${
+                  selectedSections.includes(name) ? 'focus: text-f7500' : null
+                }`}
               >
-                {name}
-              </span>
-            </li>
-          ))}
+                <span
+                  onClick={handleClick}
+                  onKeyPress={handleKeyPress}
+                  role="button"
+                  tabIndex="0"
+                >
+                  {name}
+                </span>
+              </li>
+            );
+          })}
         </ul>
         <CasesGridList cases={allCases} selectedSections={selectedSections} />
       </ContentLayout>
