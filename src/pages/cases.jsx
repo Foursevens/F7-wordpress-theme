@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
-import React, { useState } from 'react';
+import React from 'react';
 
 import CasesGridList from '../cases/grid-list';
-import { SEO } from '../components';
+import { Filter, SEO } from '../components';
 import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
 
@@ -29,9 +29,8 @@ export const query = graphql`
       filter: { language: { eq: $language } }
     ) {
       nodes {
-        language
-        id
         name
+        slug
       }
     }
   }
@@ -44,52 +43,24 @@ export default function CasesPage({
   },
   location,
 }) {
-  const [sectionFilter, setSectionFilter] = useState({});
-  function toggleSection(name) {
-    setSectionFilter({
-      ...sectionFilter,
-      [name]: !sectionFilter[name],
-    });
-  }
-  const selectedSections =
-    sectionFilter == null
-      ? null
-      : Object.entries(sectionFilter)
-          .filter(([, value]) => value !== false)
-          .map(([key]) => key);
   return (
     <MainLayout>
       <SEO pathname={location.pathname} title="Cases" />
       <ContentLayout title="Cases">
-        <ul className="text-center mb-8">
-          {allSections.map(({ id, name }) => {
-            const handleClick = () => toggleSection(name);
-            const handleKeyPress = (event) => {
-              if (event.key === 'Enter') {
-                event.preventDefault();
-                toggleSection(name);
-              }
-            };
-            return (
-              <li
-                key={id}
-                className={`inline cursor-pointer select-none mx-2 font-100 ${
-                  selectedSections.includes(name) ? 'focus: text-f7500' : null
-                }`}
-              >
-                <span
-                  onClick={handleClick}
-                  onKeyPress={handleKeyPress}
-                  role="button"
-                  tabIndex="0"
-                >
-                  {name}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-        <CasesGridList cases={allCases} selectedSections={selectedSections} />
+        <Filter
+          check={(caze, selectedKeys) =>
+            selectedKeys.some(
+              (selectedKey) => caze.sections.slug === selectedKey,
+            )
+          }
+          input={allCases}
+          messagePrefix="cases.filter"
+          taxonomies={allSections}
+          taxonomyKey="slug"
+          taxonomyLabel="name"
+        >
+          {(output) => <CasesGridList cases={output} />}
+        </Filter>
       </ContentLayout>
     </MainLayout>
   );

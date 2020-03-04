@@ -6,17 +6,10 @@ import PostCard from './card';
 import { postShape } from './model';
 import { ACCENT_COLORS } from './options';
 
-export default function PostsGridList({ posts, selectedCategories }) {
-  const filteredPosts =
-    selectedCategories == null || selectedCategories.length === 0
-      ? posts
-      : posts.filter(
-          ({ category }) =>
-            category && selectedCategories.includes(category.name),
-        );
+export default function PostsGridList({ posts }) {
   return (
     <Grid>
-      {filteredPosts.map((post, index) => (
+      {posts.map((post, index) => (
         <PostCard
           key={post.id}
           accentColor={
@@ -31,11 +24,6 @@ export default function PostsGridList({ posts, selectedCategories }) {
   );
 }
 
-PostsGridList.defaultProps = {
-  selectedCategories: undefined,
-};
-
 PostsGridList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape(postShape).isRequired).isRequired,
-  selectedCategories: PropTypes.arrayOf(PropTypes.string),
 };

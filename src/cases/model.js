@@ -7,6 +7,7 @@ export const caseFragment = graphql`
     customerName
     sections {
       name
+      slug
     }
     slug
     technologies {
@@ -21,7 +22,7 @@ export const caseFragment = graphql`
 
 export const caseShape = {
   id: string,
-  sections: shape({ name: string }),
+  sections: shape({ name: string, slug: string }),
   technologies: shape({ name: string }),
   thumbnailImage: shape({ alt: string }),
   slug: string,

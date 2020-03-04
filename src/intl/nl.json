@@ -1,4 +1,18 @@
 {
+  "blog": {
+    "filter": {
+      "description": "Filter de blog berichten op hun categorie.",
+      "showing-n": "{selected} van de {total} blog berichten zichtbaar",
+      "title": "Filter"
+    }
+  },
+  "cases": {
+    "filter": {
+      "description": "Filter de cases op hun sectie.",
+      "showing-n": "{selected} van de {total} cases zichtbaar",
+      "title": "Filter"
+    }
+  },
   "contact": {
     "address": "Vind ons",
     "email": "E-mail ons",
@@ -9,6 +23,10 @@
       "street": "Aalststraat 7",
       "city": "1000 Brussel",
       "country": "België"
+    },
+    "filter": {
+      "clear-title": "Verwijder filter",
+      "clear-label": "Verwijder alle filters."
     },
     "read-more": "Lees meer"
   },

@@ -1,4 +1,18 @@
 {
+  "blog": {
+    "filter": {
+      "description": "You can filter the blog posts by their category.",
+      "showing-n": "showing {selected} of {total} blog posts",
+      "title": "Filter"
+    }
+  },
+  "cases": {
+    "filter": {
+      "description": "You can filter the cases by their section.",
+      "showing-n": "showing {selected} of {total} cases",
+      "title": "Filter"
+    }
+  },
   "contact": {
     "address": "Trouvons nous",
     "email": "E-mail nous",
@@ -9,6 +23,10 @@
       "street": "Rue d'alost 7",
       "city": "1000 Bruxelles",
       "country": "Belgique"
+    },
+    "filter": {
+      "clear-title": "Clear filter",
+      "clear-label": "Toggle all filters off."
     },
     "read-more": "Lire plus"
   },
