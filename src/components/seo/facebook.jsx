@@ -13,14 +13,14 @@ export default function Facebook({
 }) {
   return (
     <Helmet>
-      <meta property="og:description" content={description} />
-      <meta property="og:image:alt" content={description} />
-      <meta property="og:image" content={image} />
-      <meta property="og:locale" content={locale} />
-      {name && <meta property="og:site_name" content={name} />}
-      <meta property="og:title" content={title} />
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
+      <meta content={description} property="og:description" />
+      <meta content={description} property="og:image:alt" />
+      <meta content={image} property="og:image" />
+      <meta content={locale} property="og:locale" />
+      {name && <meta content={name} property="og:site_name" />}
+      <meta content={title} property="og:title" />
+      <meta content={type} property="og:type" />
+      <meta content={url} property="og:url" />
     </Helmet>
   );
 }

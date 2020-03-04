@@ -12,8 +12,8 @@ export default function CaseCard({ wpCase }) {
       to={`/cases/${wpCase.slug}`}
     >
       <Image
-        className="bg-white"
         alt={wpCase.thumbnailImage.alt}
+        className="bg-white"
         file={wpCase.fields.remoteThumbnailImage}
       />
       <div className="p-4 text-green-900">

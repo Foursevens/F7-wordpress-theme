@@ -34,15 +34,15 @@ function calculateScreens(screenOptions, defaultScreenName) {
     Object.entries(screenOptions)
       // convert { xs: '640px' } to [{ name: 'xs', minWidth: 640 }]
       .reduce(
-        (acc, [name, minWidth]) => {
-          acc.push({
+        (accumulator, [name, minWidth]) => {
+          accumulator.push({
             name,
             minWidth:
               typeof minWidth === 'string'
-                ? Number(minWidth.replace(/[^\d]+$/, ''))
+                ? Number(minWidth.replace(/\D+$/, ''))
                 : minWidth,
           });
-          return acc;
+          return accumulator;
         },
         [{ name: defaultScreenName }], // prepend default screen
       )

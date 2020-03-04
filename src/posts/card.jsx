@@ -31,9 +31,9 @@ export default function PostCard({ accentColor, post }) {
             {' '}
             -{' '}
             <FormattedDate
-              value={post.date}
               day="numeric"
               month="short"
+              value={post.date}
               year="numeric"
             />
           </span>
@@ -42,8 +42,8 @@ export default function PostCard({ accentColor, post }) {
           </div>
           <p className="font-300 leading-normal mb-12">
             <span
-              style={{ display: 'block' }}
               dangerouslySetInnerHTML={{ __html: post.intro }}
+              style={{ display: 'block' }}
             />
           </p>
         </div>

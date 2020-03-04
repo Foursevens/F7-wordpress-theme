@@ -27,8 +27,8 @@ const DIR_REMOTE = process.env.DEPLOY_FTP_DIR_REMOTE;
       password: PASSWORD,
     });
     await client.uploadDir(DIR_LOCAL, DIR_REMOTE);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
     process.exitCode = 1;
   } finally {
     client.end();

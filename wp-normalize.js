@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint no-underscore-dangle: ['error', { allow: ['__type'] }] */
+
 const he = require('he');
 const { camelCase, mapKeys } = require('lodash/fp');
 

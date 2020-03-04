@@ -45,14 +45,14 @@ const WORDPRESS_FILES = {
 };
 
 function flattenObject(object, prefix = '') {
-  return Object.entries(object).reduce((acc, [key, value]) => {
+  return Object.entries(object).reduce((accumulator, [key, value]) => {
     const fullKey = prefix ? `${prefix}.${key}` : key;
     if (typeof value === 'string') {
-      acc[fullKey] = value;
+      accumulator[fullKey] = value;
     } else {
-      Object.assign(acc, flattenObject(value, fullKey));
+      Object.assign(accumulator, flattenObject(value, fullKey));
     }
-    return acc;
+    return accumulator;
   }, {});
 }
 

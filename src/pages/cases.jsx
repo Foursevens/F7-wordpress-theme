@@ -64,10 +64,10 @@ export default function CasesPage({
         <ul className="text-center mb-8">
           {allSections.map(({ id, name }) => (
             <li
+              key={id}
               className={`inline cursor-pointer select-none mx-2 font-100 ${
                 selectedSections.includes(name) ? 'focus: text-f7500' : null
               }`}
-              key={id}
             >
               <span
                 onClick={() => toggleSection(name)}
@@ -85,7 +85,7 @@ export default function CasesPage({
             </li>
           ))}
         </ul>
-        <CasesGridList selectedSections={selectedSections} cases={allCases} />
+        <CasesGridList cases={allCases} selectedSections={selectedSections} />
       </ContentLayout>
     </MainLayout>
   );

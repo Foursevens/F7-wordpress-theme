@@ -22,7 +22,7 @@ export default function Logo() {
   return (
     <h1>
       <Link className="inline-block -m-2 p-2 focusable" to="/">
-        <Image alt={data.metadata.name} loading="eager" file={data.logo} />
+        <Image alt={data.metadata.name} file={data.logo} loading="eager" />
       </Link>
     </h1>
   );

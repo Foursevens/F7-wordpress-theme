@@ -147,8 +147,8 @@ export default function SEO({
     <>
       <Helmet title={seo.title}>
         <html lang={siteLanguage} />
-        <meta name="description" content={seo.description} />
-        <meta name="image" content={seo.image} />
+        <meta content={seo.description} name="description" />
+        <meta content={seo.image} name="image" />
         {article ? (
           <script type="application/ld+json">
             {JSON.stringify(schemaArticle)}

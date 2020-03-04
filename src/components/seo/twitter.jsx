@@ -5,12 +5,12 @@ import Helmet from 'react-helmet';
 export default function Twitter({ description, image, title, type, username }) {
   return (
     <Helmet>
-      <meta name="twitter:card" content={type} />
-      {username && <meta name="twitter:creator" content={username} />}
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
-      <meta name="twitter:image:alt" content={description} />
-      <meta name="twitter:title" content={title} />
+      <meta content={type} name="twitter:card" />
+      {username && <meta content={username} name="twitter:creator" />}
+      <meta content={description} name="twitter:description" />
+      <meta content={image} name="twitter:image" />
+      <meta content={description} name="twitter:image:alt" />
+      <meta content={title} name="twitter:title" />
     </Helmet>
   );
 }

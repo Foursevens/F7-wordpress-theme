@@ -22,8 +22,8 @@ export default function LanguageSwitch() {
             };
             return (
               <li
-                className="text-right sm:inline-block lg:block sm:mx-3 lg:mx-0"
                 key={language}
+                className="text-right sm:inline-block lg:block sm:mx-3 lg:mx-0"
               >
                 <span
                   className={classNames('text-f7800', {

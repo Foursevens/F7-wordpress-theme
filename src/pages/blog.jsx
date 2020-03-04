@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 
 import { SEO } from '../components';
 import { ContentLayout, MainLayout } from '../layout';
-import PostsGridList from '../posts/grid-list';
 import { locationShape } from '../model';
+import PostsGridList from '../posts/grid-list';
 
 export const query = graphql`
   query($language: String!) {
@@ -66,10 +66,10 @@ export default function BlogPage({
         <ul className="text-center mb-8 ">
           {allCategories.map(({ id, name }) => (
             <li
+              key={id}
               className={`inline cursor-pointer select-none mx-2 font-100 ${
                 selectedCategory.includes(name) ? 'focus: text-f7500' : null
               }`}
-              key={id}
             >
               <span
                 onClick={() => toggleSection(name)}
@@ -87,7 +87,7 @@ export default function BlogPage({
             </li>
           ))}
         </ul>
-        <PostsGridList selectedCategories={selectedCategory} posts={allPosts} />
+        <PostsGridList posts={allPosts} selectedCategories={selectedCategory} />
       </ContentLayout>
     </MainLayout>
   );

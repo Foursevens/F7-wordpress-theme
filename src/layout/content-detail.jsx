@@ -36,9 +36,9 @@ export default function ContentDetailLayout({
           >
             <Tag>{taxonomy}</Tag> &ndash;{' '}
             <FormattedDate
-              value={date}
               day="numeric"
               month="long"
+              value={date}
               year="numeric"
             />
           </div>

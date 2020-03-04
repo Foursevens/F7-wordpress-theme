@@ -1,6 +1,6 @@
-import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import React from 'react';
 
 import Image from './image';
 
@@ -29,7 +29,7 @@ export default function FooterDetails() {
       <div className="absolute inset-0 container mx-auto w-full">
         <div className="md:w-1/2 lg:w-1/4">
           <div className="absolute text-white font-300 text-xs leading-loose m-6 z-10">
-            <Image loading="eager" file={whiteLogoImage} />
+            <Image file={whiteLogoImage} loading="eager" />
             <address>
               <div>Rue d&apos;alost 7</div>
               <div>1000 Bruxelles</div>

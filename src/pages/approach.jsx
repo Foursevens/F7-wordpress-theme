@@ -1,9 +1,9 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import ApproachesGridList from '../approaches/grid-list';
 import { SEO } from '../components';
 import { ContentLayout, MainLayout } from '../layout';
-import ApproachesGridList from '../approaches/grid-list';
 import { locationShape } from '../model';
 
 export const query = graphql`

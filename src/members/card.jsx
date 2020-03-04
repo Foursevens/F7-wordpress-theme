@@ -22,8 +22,8 @@ export default function MemberCard({ member, shadow }) {
             { id: 'member.portrait-alt' },
             { name: member.title },
           )}
-          file={member.fields.remotePortret}
           className={styles.img__img}
+          file={member.fields.remotePortret}
         />
         <div
           className={classNames(

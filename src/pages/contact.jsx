@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faAt, faPhone, faMailbox } from '@fortawesome/pro-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { graphql } from 'gatsby';
 import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
@@ -98,6 +98,7 @@ export default function ContactPage({
       <ContentLayout title={title}>
         <ul className="flex flex-wrap space-around sm:-my-3">
           <ContactChannel
+            className="hidden sm:block"
             content={
               <>
                 <FormattedMessage id="general.address.street" />
@@ -107,7 +108,6 @@ export default function ContactPage({
                 <FormattedMessage id="general.address.country" />
               </>
             }
-            className="hidden sm:block"
             icon={faMailbox}
             label={intl.formatMessage({ id: 'contact.address' })}
           />

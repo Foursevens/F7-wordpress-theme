@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { jobShape } from './model';
 import JobsGridListItem from './grid-list-item';
+import { jobShape } from './model';
 
 export default function JobsGridList({ jobs }) {
   return (

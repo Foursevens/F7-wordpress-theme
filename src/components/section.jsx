@@ -3,8 +3,8 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Container from './container';
 import Button from './button';
+import Container from './container';
 import Title from './title';
 
 export default function Section({

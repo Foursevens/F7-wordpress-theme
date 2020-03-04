@@ -15,10 +15,10 @@ export default function ApproachesGridListItem({ approach }) {
         </h3>
         <p className="font-100 my-3">
           <span
-            style={{ display: 'block' }}
             dangerouslySetInnerHTML={{
               __html: approach.approachIntro || approach.approachText,
             }}
+            style={{ display: 'block' }}
           />
         </p>
       </Link>

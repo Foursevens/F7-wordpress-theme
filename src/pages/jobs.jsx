@@ -2,8 +2,8 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import { SEO } from '../components';
-import { ContentLayout, MainLayout } from '../layout';
 import JobsGridList from '../jobs/grid-list';
+import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
 
 export const query = graphql`

@@ -30,9 +30,9 @@ export default function NewMember() {
         <div className="relative border-b-4 border-f7700 ">
           <Image
             alt={intl.formatMessage({ id: 'new-member.portrait-alt' })}
-            loading="eager"
-            file={data.newMember}
             className={styles.img__img}
+            file={data.newMember}
+            loading="eager"
           />
           <div
             className={classNames(
