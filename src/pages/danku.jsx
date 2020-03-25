@@ -24,7 +24,7 @@ export default function ThankYouPage({
   },
 }) {
   return (
-    <MainLayout>
+    <MainLayout showNavigation={false}>
       <SEO title={title} />
       <ContentDetailLayout date={date} title={title}>
         <span
