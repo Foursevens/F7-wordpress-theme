@@ -12,7 +12,6 @@ export const query = graphql`
       slug: { eq: "dank-u" }
     ) {
       content
-      date
       title
     }
   }
@@ -20,13 +19,13 @@ export const query = graphql`
 
 export default function ThankYouPage({
   data: {
-    thanks: { content, date, title },
+    thanks: { content, title },
   },
 }) {
   return (
     <MainLayout showNavigation={false}>
       <SEO title={title} />
-      <ContentDetailLayout date={date} title={title}>
+      <ContentDetailLayout title={title}>
         <span
           dangerouslySetInnerHTML={{ __html: content }}
           style={{ display: 'block' }}
