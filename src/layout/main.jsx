@@ -9,14 +9,14 @@ import NavigationBar from '../components/navigation-bar';
 import './tailwind.css';
 import './main.css';
 
-export default function MainLayout({ children }) {
+export default function MainLayout({ children, showNavigation }) {
   return (
     <div className="h-full flex flex-col">
       <Helmet>
         <style>{dom.css()}</style>
       </Helmet>
       <header>
-        <NavigationBar />
+        <NavigationBar showNavigation={showNavigation} />
       </header>
       <main className="flex-grow">{children}</main>
       <footer className="mt-10">
@@ -37,6 +37,9 @@ export default function MainLayout({ children }) {
   );
 }
 
+MainLayout.defaultProps = { showNavigation: true };
+
 MainLayout.propTypes = {
   children: PropTypes.node.isRequired,
+  showNavigation: PropTypes.bool,
 };
