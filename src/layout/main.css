@@ -16,3 +16,14 @@ body,
 
   outline: dashed theme('colors.f7400');
 }
+
+.skip-to-content {
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transition: transform 0.3s;
+  z-index: 11;
+}
+
+.skip-to-content:focus {
+  transform: translate(-50%, 0);
+}

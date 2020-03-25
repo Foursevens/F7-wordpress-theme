@@ -12,13 +12,21 @@ import './main.css';
 export default function MainLayout({ children, showNavigation }) {
   return (
     <div className="h-full flex flex-col">
+      <a
+        className="skip-to-content absolute bg-f7100 text-f7800 px-3 py-1 border-2 border-t-0 border-f7400"
+        href="#main"
+      >
+        Skip to content
+      </a>
       <Helmet>
         <style>{dom.css()}</style>
       </Helmet>
       <header>
         <NavigationBar showNavigation={showNavigation} />
       </header>
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow" id="main">
+        {children}
+      </main>
       <footer className="mt-10">
         <FooterDetails />
       </footer>
