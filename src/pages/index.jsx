@@ -1,5 +1,3 @@
-import { MobilityWidget } from 'f7-mobility-widget';
-import F7Background from 'f7-mobility-widget/assets/background.jpg';
 import { graphql } from 'gatsby';
 import { useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
@@ -130,12 +128,6 @@ export default function IndexPage({
       <Section striped title="Approach">
         <ApproachesGridList approaches={allApproaches} />
       </Section>
-      {['xl', 'xxl'].includes(breakpoint) && (
-        <MobilityWidget
-          apiKey="AIzaSyDnd5JFd-dvMWTu4R8ntcLYAA0XQqptu5E"
-          background={F7Background}
-        />
-      )}
       <Section
         actionMessageId="index.more-cases"
         actionTo="/cases"
