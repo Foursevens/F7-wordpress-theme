@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "~10.19"
+    "node": "~12.16"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "@fortawesome/pro-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "classnames": "^2.2.6",
-    "f7-mobility-widget": "^1.0.2",
+    "f7-mobility-widget": "^1.0.3",
     "gatsby": "^2.20.6",
     "gatsby-background-image": "^0.10.2",
     "gatsby-image": "^2.3.1",

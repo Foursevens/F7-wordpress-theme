@@ -6009,10 +6009,10 @@ extsprintf@1.3.0, extsprintf@^1.2.0:
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.3.0.tgz#96918440e3041a7a414f8c52e3c574eb3c3e1e05"
   integrity sha1-lpGEQOMEGnpBT4xS48V06zw+HgU=
 
-f7-mobility-widget@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/f7-mobility-widget/-/f7-mobility-widget-1.0.2.tgz#09296982433656c502c4890ea2ffec89d48deef0"
-  integrity sha512-8wD+7eTbqTZ+2Mtmq1gMDST5VjLG4LWe+1Eh44aSHKQa5+YOjro+fMZ5ERlokhw5SvkZdUK5FrVM6UQmdR/XUg==
+f7-mobility-widget@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/f7-mobility-widget/-/f7-mobility-widget-1.0.3.tgz#1024151508681cf2b842560b0ba92672ad7e6dab"
+  integrity sha512-F+WbJIzNweTNBzQz9hFKQylvXuy/xl7vtOihlWf7hmaLxrGwAxjQMpKL7ncDQ97ejXOTuNI8LbW3QUbdQrQpaw==
   dependencies:
     d3-ease "^1.0.6"
     firebase "^7.9.1"
