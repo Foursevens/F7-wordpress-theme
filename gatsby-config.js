@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 const { LOCALE_DEFAULT, LOCALES } = require('./options');
 const wpNormalize = require('./wp-normalize.js');
 
@@ -13,7 +15,7 @@ const config = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/images`,
+        path: path.join(__dirname, 'src/images'),
       },
     },
     'gatsby-transformer-sharp',
@@ -56,7 +58,7 @@ const config = {
       options: {
         defaultLanguage: LOCALE_DEFAULT,
         languages: LOCALES,
-        path: `${__dirname}/src/intl`,
+        path: path.join(__dirname, '/src/intl'),
         redirect: true,
       },
     },

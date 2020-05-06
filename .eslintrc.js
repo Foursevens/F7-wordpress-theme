@@ -1,10 +1,16 @@
 'use strict';
 
+const { pluginImport } = require('eslint-config-noise/rules');
+const { extendRule } = require('eslint-noise-utils');
+
 module.exports = {
   extends: ['noise', 'noise-node'],
   root: true,
   rules: {
-    'import/no-internal-modules': ['error', { allow: ['tailwindcss/*'] }],
+    'import/no-internal-modules': extendRule(
+      pluginImport.rules['import/no-internal-modules'],
+      { allow: ['tailwindcss/*'] },
+    ),
   },
   overrides: [
     {
