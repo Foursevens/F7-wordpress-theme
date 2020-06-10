@@ -28,12 +28,11 @@ export default function MobilityPage({
   return (
     <MainLayout>
       <SEO title="Mobility" />
-      <MobilityWidget
-        apiKey={mobilityWidget.apiKey}
-        background={F7Background}
-      />
-      <ContentLayout>
-        <Title>Mobility</Title>
+      <ContentLayout title="Mobility">
+        <MobilityWidget
+          apiKey={mobilityWidget.apiKey}
+          background={F7Background}
+        />
       </ContentLayout>
     </MainLayout>
   );
