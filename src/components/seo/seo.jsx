@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { useIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 import Facebook from './facebook';
 import Twitter from './twitter';

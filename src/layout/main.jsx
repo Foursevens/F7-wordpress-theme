@@ -1,7 +1,7 @@
 import { dom } from '@fortawesome/fontawesome-svg-core';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 import FooterDetails from '../components/footer';
 import NavigationBar from '../components/navigation-bar';
