@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import { FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import Image from './image';
@@ -17,7 +18,6 @@ export default function FooterDetails() {
       site {
         siteMetadata {
           contact {
-            address
             email
             phone
           }
@@ -36,7 +36,7 @@ export default function FooterDetails() {
     mapImage,
     site: {
       siteMetadata: {
-        contact: { address, email, phone },
+        contact: { email, phone },
       },
     },
     whiteLogoImage,
@@ -48,12 +48,15 @@ export default function FooterDetails() {
           <div className="absolute text-white font-300 text-xs leading-loose m-6 z-10">
             <Image file={whiteLogoImage} loading="eager" />
             <address>
-              {[...address, email, phone].map((line) => (
-                <>
-                  {line}
-                  <br />
-                </>
-              ))}
+              <FormattedMessage id="general.address.street" />
+              <br />
+              <FormattedMessage id="general.address.city" />
+              <br />
+              <FormattedMessage id="general.address.country" />
+              <br />
+              {email}
+              <br />
+              {phone}
             </address>
           </div>
         </div>
