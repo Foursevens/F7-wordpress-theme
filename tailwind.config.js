@@ -3,6 +3,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  plugins: [],
+  purge: ['./src/**/*.jsx'],
   theme: {
     fontWeight: {
       100: 100,
@@ -35,5 +37,4 @@ module.exports = {
   variants: {
     boxShadow: ['hover'],
   },
-  plugins: [],
 };

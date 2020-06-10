@@ -64,14 +64,6 @@ const config = {
     },
     'gatsby-plugin-postcss',
     {
-      resolve: 'gatsby-plugin-purgecss',
-      options: {
-        purgeOnly: ['src/layout/tailwind.css'],
-        tailwind: true,
-        whitelist: ['iframe', 'img'],
-      },
-    },
-    {
       resolve: 'gatsby-plugin-matomo',
       options: {
         matomoUrl: 'https://foursevens.matomo.cloud',
