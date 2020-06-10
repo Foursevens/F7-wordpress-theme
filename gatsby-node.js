@@ -57,7 +57,7 @@ function flattenObject(object, prefix = '') {
 }
 
 function loadMessages(language) {
-  /* eslint global-require: "off", import/no-dynamic-require: "off" */
+  /* eslint-disable-next-line import/no-dynamic-require, node/global-require */
   return flattenObject(require(`./src/intl/${language}.json`));
 }
 
