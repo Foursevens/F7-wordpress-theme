@@ -83,6 +83,7 @@ const config = {
   siteMetadata: {
     author: 'Ines Vanlangendonck',
     contact: {
+      address: ['Rue d’alost 7', '1000 Bruxelles', 'Belgique'],
       email: 'info@foursevens.be',
       linkedin: 'foursevens',
       phone: '+32 3 450 80 30',

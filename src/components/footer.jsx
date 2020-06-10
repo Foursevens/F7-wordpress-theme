@@ -14,6 +14,15 @@ export default function FooterDetails() {
           }
         }
       }
+      site {
+        siteMetadata {
+          contact {
+            address
+            email
+            phone
+          }
+        }
+      }
       whiteLogoImage: file(base: { eq: "logo-w.png" }) {
         childImageSharp {
           fixed(width: 200) {
@@ -23,7 +32,15 @@ export default function FooterDetails() {
       }
     }
   `);
-  const { mapImage, whiteLogoImage } = data;
+  const {
+    mapImage,
+    site: {
+      siteMetadata: {
+        contact: { address, email, phone },
+      },
+    },
+    whiteLogoImage,
+  } = data;
   return (
     <div className="bg-f7500 relative">
       <div className="absolute inset-0 container mx-auto w-full">
@@ -31,11 +48,12 @@ export default function FooterDetails() {
           <div className="absolute text-white font-300 text-xs leading-loose m-6 z-10">
             <Image file={whiteLogoImage} loading="eager" />
             <address>
-              <div>Rue d&apos;alost 7</div>
-              <div>1000 Bruxelles</div>
-              <div>Belgique</div>
-              <div>info@foursevens.be</div>
-              <div>+32 3 450 80 30</div>
+              {[...address, email, phone].map((line) => (
+                <>
+                  {line}
+                  <br />
+                </>
+              ))}
             </address>
           </div>
         </div>
