@@ -3,7 +3,7 @@ import { FormattedDate, Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Image, Tag } from '../components';
+import { HtmlContent, Image, Tag } from '../components';
 import { postShape } from './model';
 
 export function PostCard({ accentColor, post }) {
@@ -41,10 +41,7 @@ export function PostCard({ accentColor, post }) {
             {post.title}
           </div>
           <p className="font-300 leading-normal mb-12">
-            <span
-              dangerouslySetInnerHTML={{ __html: post.intro }}
-              style={{ display: 'block' }}
-            />
+            <HtmlContent content={post.intro} />
           </p>
         </div>
       </Link>

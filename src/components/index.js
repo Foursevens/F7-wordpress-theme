@@ -2,6 +2,7 @@ export { Button } from './button';
 export { Container } from './container';
 export { Filter } from './filter';
 export { Hero } from './hero';
+export { HtmlContent } from './html-content';
 export { Image } from './image';
 export { LanguageSwitch } from './language-switch';
 export { Logo } from './logo';

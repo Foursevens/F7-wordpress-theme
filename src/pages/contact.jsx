@@ -7,7 +7,7 @@ import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { SEO } from '../components';
+import { HtmlContent, SEO } from '../components';
 import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
 
@@ -138,7 +138,7 @@ export default function ContactPage({
         </ul>
         <div className="font-title text-xl my-6">{subtitle}</div>
         <div className="my-6 font-300 text-2xl">
-          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <HtmlContent content={content} />
         </div>
       </ContentLayout>
     </MainLayout>

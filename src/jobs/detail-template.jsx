@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { SEO, ShareButtons } from '../components';
+import { HtmlContent, SEO, ShareButtons } from '../components';
 import { ContentDetailLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
 
@@ -27,7 +27,7 @@ export default function JobDetailTemplate({
     <MainLayout>
       <SEO pathname={location.pathname} title={title} />
       <ContentDetailLayout aside={<ShareButtons />} title={title}>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <HtmlContent content={content} />
       </ContentDetailLayout>
     </MainLayout>
   );

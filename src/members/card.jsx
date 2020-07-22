@@ -3,7 +3,7 @@ import { useIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Image } from '../components';
+import { HtmlContent, Image } from '../components';
 import styles from './card.module.css';
 import { memberShape } from './model';
 
@@ -37,7 +37,7 @@ export function MemberCard({ member, shadow }) {
               'font-300 leading-loose text-lg',
             )}
           >
-            <div dangerouslySetInnerHTML={{ __html: member.skills }} />
+            <HtmlContent content={member.skills} />
           </div>
         </div>
       </div>

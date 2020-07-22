@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import { SEO } from '../components';
+import { HtmlContent, SEO } from '../components';
 import { ContentDetailLayout, MainLayout } from '../layout';
 
 export const query = graphql`
@@ -26,10 +26,7 @@ export default function ThankYouPage({
     <MainLayout showNavigation={false}>
       <SEO title={title} />
       <ContentDetailLayout title={title}>
-        <span
-          dangerouslySetInnerHTML={{ __html: content }}
-          style={{ display: 'block' }}
-        />
+        <HtmlContent content={content} />
       </ContentDetailLayout>
     </MainLayout>
   );

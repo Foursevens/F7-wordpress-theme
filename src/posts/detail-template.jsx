@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import { SEO, ShareButtons, SideBarItem } from '../components';
+import { HtmlContent, SEO, ShareButtons, SideBarItem } from '../components';
 import { ContentDetailLayout, MainLayout } from '../layout';
 import { MemberCard } from '../members';
 import { locationShape } from '../model';
@@ -93,7 +93,7 @@ export default function PostDetailTemplate({
         taxonomy={tag ? tag.name : 'Article'}
         title={title}
       >
-        <div dangerouslySetInnerHTML={{ __html: isVideo ? video : content }} />
+        <HtmlContent content={isVideo ? video : content} />
       </ContentDetailLayout>
     </MainLayout>
   );

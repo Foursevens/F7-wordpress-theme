@@ -2,7 +2,7 @@ import { Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Image } from '../components';
+import { HtmlContent, Image } from '../components';
 import { approachShape } from './model';
 
 export function ApproachesGridListItem({ approach }) {
@@ -14,11 +14,8 @@ export function ApproachesGridListItem({ approach }) {
           {approach.title}
         </h3>
         <p className="font-100 my-3">
-          <span
-            dangerouslySetInnerHTML={{
-              __html: approach.approachIntro || approach.approachText,
-            }}
-            style={{ display: 'block' }}
+          <HtmlContent
+            content={approach.approachIntro || approach.approachText}
           />
         </p>
       </Link>

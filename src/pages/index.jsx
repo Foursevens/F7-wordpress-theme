@@ -4,7 +4,7 @@ import React from 'react';
 
 import { ApproachesGridList } from '../approaches/grid-list';
 import { CasesGridList } from '../cases/grid-list';
-import { Hero, Section, SEO } from '../components';
+import { Hero, HtmlContent, Section, SEO } from '../components';
 import { useBreakpoint } from '../hooks';
 import { MainLayout } from '../layout';
 import { MembersGridList } from '../members/grid-list';
@@ -119,10 +119,7 @@ export default function IndexPage({
       </Hero>
       <Section title="Foursevens">
         <p className={styles.intro}>
-          <span
-            dangerouslySetInnerHTML={{ __html: intro.content }}
-            style={{ display: 'block' }}
-          />
+          <HtmlContent content={intro.content} />
         </p>
       </Section>
       <Section striped title="Approach">
