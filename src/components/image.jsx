@@ -22,5 +22,6 @@ Image.defaultProps = {
 };
 
 Image.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   file: PropTypes.shape({ childImageSharp: PropTypes.object.isRequired }),
 };

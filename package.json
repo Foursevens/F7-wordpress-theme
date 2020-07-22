@@ -2,27 +2,27 @@
   "name": "f7-wordpress-theme",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "~12.16"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Foursevens/f7-wordpress-theme"
+  },
+  "engines": {
+    "node": "~12.16"
   },
   "scripts": {
     "build": "gatsby clean && gatsby build",
     "build:memento": "MEMENTO=true gatsby build",
     "develop": "gatsby develop --host 0.0.0.0",
+    "format": "prettier --write *.js src/**/*.{js,jsx}",
+    "lint": "yarn lint:code && yarn lint:style",
     "lint:code": "eslint --cache --fix '**/*.{js,jsx}'",
     "lint:style": "stylelint --fix 'src/**/*.css'",
-    "lint": "yarn lint:code && yarn lint:style",
-    "format": "prettier --write *.js src/**/*.{js,jsx}",
     "memento": "npx @antoinechalifour/memento",
+    "serve": "gatsby serve",
     "start": "yarn develop",
     "start:memento": "MEMENTO=true yarn develop",
     "start:memento:nl": "F7_LOCALES=nl MEMENTO=true yarn develop",
     "start:nl": "F7_LOCALES=nl yarn develop",
-    "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
@@ -57,26 +57,18 @@
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
-    "@types/react": "^16.9.36",
+    "@types/react": "^16.9.43",
     "dotenv": "^8.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-noise": "^0.0.41",
-    "eslint-config-noise-browser": "^0.0.41",
-    "eslint-config-noise-node": "^0.0.41",
-    "eslint-config-noise-react": "^0.0.41",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-noise-utils": "^0.0.41",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
-    "eslint-plugin-unicorn": "^19.0.1",
-    "prettier": "^2.0.2",
-    "ssh2-sftp-client": "^5.1.2",
-    "stylelint": "^13.6.0",
+    "eslint": "^7.5.0",
+    "eslint-config-noise": "~0.3.0",
+    "eslint-config-noise-browser": "~0.3.0",
+    "eslint-config-noise-node": "~0.3.0",
+    "eslint-config-noise-react": "~0.3.0",
+    "eslint-noise-utils": "^0.3.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "ssh2-sftp-client": "^5.2.1",
+    "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0"
   }
 }
