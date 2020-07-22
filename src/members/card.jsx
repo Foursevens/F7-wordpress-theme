@@ -7,7 +7,7 @@ import { Image } from '../components';
 import styles from './card.module.css';
 import { memberShape } from './model';
 
-export default function MemberCard({ member, shadow }) {
+export function MemberCard({ member, shadow }) {
   const intl = useIntl();
   return (
     <div

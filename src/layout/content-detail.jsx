@@ -5,10 +5,10 @@ import React from 'react';
 
 import { Hero, Tag } from '../components';
 import { imageModel } from '../model';
-import ContentLayout from './content';
+import { ContentLayout } from './content';
 import styles from './content-detail.module.css';
 
-export default function ContentDetailLayout({
+export function ContentDetailLayout({
   aside,
   centered,
   children,

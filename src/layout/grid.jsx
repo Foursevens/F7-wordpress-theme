@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Grid({ children }) {
+export function Grid({ children }) {
   return (
     <ul className="flex flex-wrap items-stretch -mx-3 -mt-3 mb-3">
       {children.map((child) => (

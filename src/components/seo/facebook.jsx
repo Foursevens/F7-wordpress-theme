@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-export default function Facebook({
+export function Facebook({
   description,
   image,
   locale,

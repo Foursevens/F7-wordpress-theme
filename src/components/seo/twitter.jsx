@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-export default function Twitter({ description, image, title, type, username }) {
+export function Twitter({ description, image, title, type, username }) {
   return (
     <Helmet>
       <meta content={type} name="twitter:card" />

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Title({ as, children, className, ...props }) {
+export function Title({ as, children, className, ...props }) {
   return React.createElement(
     as,
     {

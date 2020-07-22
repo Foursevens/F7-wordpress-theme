@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Image({ file, ...props }) {
+export function Image({ file, ...props }) {
   if (!file) {
     return null;
   }

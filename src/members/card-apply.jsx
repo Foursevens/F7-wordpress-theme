@@ -3,13 +3,13 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { FormattedMessage, useIntl, Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import Image from '../components/image';
+import { Image } from '../components';
 import styles from './card.module.css';
 
-export default function NewMember() {
+export function MemberCardApply() {
   const intl = useIntl();
   const data = useStaticQuery(graphql`
-    query NewMemberQuery {
+    query MemberCardApplyQuery {
       newMember: file(base: { eq: "new-member.png" }) {
         childImageSharp {
           fluid(maxWidth: 257) {

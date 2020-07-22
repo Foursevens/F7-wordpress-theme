@@ -4,7 +4,7 @@ import React from 'react';
 import { Filter, SEO } from '../components';
 import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
-import PostsGridList from '../posts/grid-list';
+import { PostsGridList } from '../posts/grid-list';
 
 export const query = graphql`
   query($language: String!) {

@@ -1,4 +1,4 @@
-export { default as ContentLayout } from './content';
-export { default as ContentDetailLayout } from './content-detail';
-export { default as Grid } from './grid';
-export { default as MainLayout } from './main';
+export { ContentLayout } from './content';
+export { ContentDetailLayout } from './content-detail';
+export { Grid } from './grid';
+export { MainLayout } from './main';

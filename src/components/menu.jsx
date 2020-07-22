@@ -31,7 +31,7 @@ function handleKeyPress(event) {
   }
 }
 
-export default function Menu() {
+export function Menu() {
   return (
     <nav className="max-w-sm mx-auto">
       <ul

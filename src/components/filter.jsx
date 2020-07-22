@@ -10,7 +10,7 @@ import { useQueryParameter } from '../use-location';
 const castArray = (value) =>
   value == null ? [] : Array.isArray(value) ? value : [value];
 
-export default function Filter({
+export function Filter({
   check,
   children,
   input,

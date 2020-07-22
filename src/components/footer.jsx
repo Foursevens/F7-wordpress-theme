@@ -3,9 +3,9 @@ import BackgroundImage from 'gatsby-background-image';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import Image from './image';
+import { Image } from './image';
 
-export default function FooterDetails() {
+export function FooterDetails() {
   const data = useStaticQuery(graphql`
     query FooterQuery {
       mapImage: file(base: { eq: "map.png" }) {

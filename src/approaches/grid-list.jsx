@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import ApproachesGridListItem from './grid-list-item';
+import { ApproachesGridListItem } from './grid-list-item';
 import { approachShape } from './model';
 
-export default function ApproachesGridList({ approaches }) {
+export function ApproachesGridList({ approaches }) {
   return (
     <ul className="flex flex-wrap space-between -mx-3">
       {approaches.map((approach) => (

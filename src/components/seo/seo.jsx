@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import Facebook from './facebook';
-import Twitter from './twitter';
+import { Facebook } from './facebook';
+import { Twitter } from './twitter';
 
 const YEAR = new Date().toISOString().slice(0, 'YYYY'.length);
 
@@ -35,14 +35,7 @@ const query = graphql`
   }
 `;
 
-export default function SEO({
-  author,
-  article,
-  banner,
-  description,
-  pathname,
-  title,
-}) {
+export function SEO({ author, article, banner, description, pathname, title }) {
   const {
     hero: {
       childImageSharp: {

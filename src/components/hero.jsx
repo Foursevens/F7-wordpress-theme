@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { imageModel } from '../model';
-import Image from './image';
+import { Image } from './image';
 
-export default function Hero({
+export function Hero({
   children,
   colorize,
   image,

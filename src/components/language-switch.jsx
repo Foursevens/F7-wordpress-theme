@@ -8,7 +8,7 @@ const LANGUAGE_NAME = {
   nl: 'Nederlands',
 };
 
-export default function LanguageSwitch() {
+export function LanguageSwitch() {
   return (
     <ul className="text-sm leading-tight sm:leading-normal sm:-mx-3 lg:mx-0">
       <IntlContextConsumer>

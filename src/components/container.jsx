@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Container({ children }) {
+export function Container({ children }) {
   return (
     <div className="container mx-auto">
       <main className="mx-6">{children}</main>

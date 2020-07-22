@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import FooterDetails from '../components/footer';
-import NavigationBar from '../components/navigation-bar';
+import { FooterDetails } from '../components/footer';
+import { NavigationBar } from '../components/navigation-bar';
 
 import './tailwind.css';
 import './main.css';
 
-export default function MainLayout({ children, showNavigation }) {
+export function MainLayout({ children, showNavigation }) {
   return (
     <div className="h-full flex flex-col">
       <a

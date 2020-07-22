@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Grid } from '../layout';
-import PostCard from './card';
+import { PostCard } from './card';
 import { postShape } from './model';
 import { ACCENT_COLORS } from './options';
 
-export default function PostsGridList({ posts }) {
+export function PostsGridList({ posts }) {
   return (
     <Grid>
       {posts.map((post, index) => (

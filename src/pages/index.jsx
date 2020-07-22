@@ -2,13 +2,13 @@ import { graphql } from 'gatsby';
 import { useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import ApproachesGridList from '../approaches/grid-list';
-import CasesGridList from '../cases/grid-list';
+import { ApproachesGridList } from '../approaches/grid-list';
+import { CasesGridList } from '../cases/grid-list';
 import { Hero, Section, SEO } from '../components';
 import { useBreakpoint } from '../hooks';
 import { MainLayout } from '../layout';
-import MembersGridList from '../members/grid-list';
-import PostsGridList from '../posts/grid-list';
+import { MembersGridList } from '../members/grid-list';
+import { PostsGridList } from '../posts/grid-list';
 import styles from './index.module.css';
 
 const LIMITS = {

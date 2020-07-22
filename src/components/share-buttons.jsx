@@ -6,9 +6,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-import SideBarItem from './side-bar-item';
+import { SideBarItem } from './side-bar-item';
 
-export default function ShareButtons() {
+export function ShareButtons() {
   const currentUrl =
     typeof window === 'undefined' ? null : window.location.href;
   return (

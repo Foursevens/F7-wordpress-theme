@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Container, Title } from '../components';
 
-export default function ContentLayout({ children, title }) {
+export function ContentLayout({ children, title }) {
   return (
     <Container>
       <Title as="h1" className="text-5xl">

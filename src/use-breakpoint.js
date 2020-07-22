@@ -74,7 +74,7 @@ function createScreenQuery({ maxWidth, minWidth, name }) {
   return { name, query: window.matchMedia(mediaQuery) };
 }
 
-export default function useBreakpoint(
+export function useBreakpoint(
   screenOptions,
   defaultScreenName = '__default__',
 ) {

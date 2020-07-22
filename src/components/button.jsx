@@ -3,7 +3,7 @@ import { Link } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Button({ children, className, to }) {
+export function Button({ children, className, to }) {
   return (
     <Link
       className={classNames(

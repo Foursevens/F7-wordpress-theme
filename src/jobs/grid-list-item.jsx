@@ -5,7 +5,7 @@ import React from 'react';
 import { Button } from '../components';
 import { jobShape } from './model';
 
-export default function JobsGridListItem({ job }) {
+export function JobsGridListItem({ job }) {
   return (
     <div className="p-8 sm:p-16 border-4 border-f7700 rounded w-full">
       <div className="text-center uppercase">

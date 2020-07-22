@@ -1,4 +1,4 @@
-export { default as MemberCard } from './card';
-export { default as MemberCardApply } from './card-apply';
-export { default as MemberGridList } from './grid-list';
+export { MemberCard } from './card';
+export { MemberCardApply } from './card-apply';
+export { MembersGridList } from './grid-list';
 export * from './model';

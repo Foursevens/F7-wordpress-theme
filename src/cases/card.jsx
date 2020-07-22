@@ -5,7 +5,7 @@ import React from 'react';
 import { Image, Tag } from '../components';
 import { caseShape } from './model';
 
-export default function CaseCard({ wpCase }) {
+export function CaseCard({ wpCase }) {
   return (
     <Link
       className="block bg-f7200 h-full rounded"

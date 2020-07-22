@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Container from './container';
-import LanguageSwitch from './language-switch';
-import Logo from './logo';
-import Menu from './menu';
+import { Container } from './container';
+import { LanguageSwitch } from './language-switch';
+import { Logo } from './logo';
+import { Menu } from './menu';
 
-export default function NavigationBar({ showNavigation = true }) {
+export function NavigationBar({ showNavigation = true }) {
   return (
     <div className="bg-f7100 border-t-2 border-f7400 shadow-md relative z-10">
       <Container>

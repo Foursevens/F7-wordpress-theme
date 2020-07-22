@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import { SEO } from '../components';
-import JobsGridList from '../jobs/grid-list';
+import { JobsGridList } from '../jobs/grid-list';
 import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';
 

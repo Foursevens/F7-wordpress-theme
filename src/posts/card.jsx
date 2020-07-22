@@ -6,7 +6,7 @@ import React from 'react';
 import { Image, Tag } from '../components';
 import { postShape } from './model';
 
-export default function PostCard({ accentColor, post }) {
+export function PostCard({ accentColor, post }) {
   return (
     <div
       className={classNames(

@@ -2,9 +2,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import Image from './image';
+import { Image } from './image';
 
-export default function Logo() {
+export function Logo() {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       logo: file(base: { eq: "logo-full.png" }) {

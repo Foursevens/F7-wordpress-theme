@@ -5,7 +5,7 @@ import React from 'react';
 import { Image } from '../components';
 import { approachShape } from './model';
 
-export default function ApproachesGridListItem({ approach }) {
+export function ApproachesGridListItem({ approach }) {
   return (
     <div className="bg-white h-full text-center">
       <Link className="block p-6" to="/approach">

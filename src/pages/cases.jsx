@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import CasesGridList from '../cases/grid-list';
+import { CasesGridList } from '../cases/grid-list';
 import { Filter, SEO } from '../components';
 import { ContentLayout, MainLayout } from '../layout';
 import { locationShape } from '../model';

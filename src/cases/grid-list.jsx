@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Grid } from '../layout';
-import CaseCard from './card';
+import { CaseCard } from './card';
 import { caseShape } from './model';
 
-export default function CasesGridList({ cases }) {
+export function CasesGridList({ cases }) {
   return (
     <Grid>
       {cases.map((wpCase) => (
