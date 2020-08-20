@@ -14,15 +14,6 @@ export const query = graphql`
     ) {
       nodes {
         ...PostBaseData
-        fields {
-          remoteThumbnailImage {
-            childImageSharp {
-              fluid(maxWidth: 350) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
       }
     }
     allTags: allWordpressTag(filter: { language: { eq: $language } }) {

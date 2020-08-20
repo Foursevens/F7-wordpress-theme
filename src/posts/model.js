@@ -5,6 +5,15 @@ export const PostBaseData = graphql`
   fragment PostBaseData on wordpress__POST {
     id
     date
+    fields {
+      remoteThumbnailImage {
+        childImageSharp {
+          fluid(maxWidth: 350) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
     intro
     language
     slug

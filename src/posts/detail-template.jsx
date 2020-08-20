@@ -54,7 +54,7 @@ export default function PostDetailTemplate({
       content,
       date,
       excerpt,
-      fields: { remoteHeroImage },
+      fields: { remoteHeroImage, remoteThumbnailImage },
       tag,
       title,
       video,
@@ -77,8 +77,8 @@ export default function PostDetailTemplate({
         article
         author={author ? author.title : undefined}
         banner={
-          remoteHeroImage
-            ? remoteHeroImage.childImageSharp.fluid.src
+          remoteThumbnailImage
+            ? remoteThumbnailImage.childImageSharp.fluid.src
             : undefined
         }
         description={excerpt}
