@@ -5,8 +5,8 @@ const path = require('path');
 const { LOCALE_DEFAULT, LOCALES } = require('./options');
 const wpNormalize = require('./wp-normalize.js');
 
-const siteHost = 'admin.foursevens.be';
-const siteUrl = `https://${siteHost}`;
+const backendHost = 'admin.foursevens.be';
+const frontEndUrl = `https://foursevens.be`;
 
 const config = {
   plugins: [
@@ -40,7 +40,7 @@ const config = {
       options: {
         baseUrl: process.env.MEMENTO
           ? `localhost:3344/${language}`
-          : `${siteHost}/${language}`,
+          : `${backendHost}/${language}`,
         excludedRoutes: [
           '**/search',
           '**/settings',
@@ -68,7 +68,7 @@ const config = {
       options: {
         matomoUrl: 'https://foursevens.matomo.cloud',
         siteId: '1',
-        siteUrl,
+        siteUrl: frontEndUrl,
       },
     },
   ],
@@ -83,7 +83,7 @@ const config = {
     mobilityWidget: {
       apiKey: process.env.F7_MOBILITY_WIDGET_API_KEY,
     },
-    siteUrl,
+    siteUrl: frontEndUrl,
   },
 };
 
