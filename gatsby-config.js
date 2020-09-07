@@ -48,6 +48,7 @@ const config = {
           '**/users/me',
         ],
         hostingWPCOM: false, // It is not hosted on wordpress.com
+        minimizeDeprecationNotice: true,
         normalizer: wpNormalize(language),
         protocol: process.env.MEMENTO ? 'http' : 'https',
         useACF: false, // Don't fetch the "Advanced Custom Fields" fields.
