@@ -43,6 +43,8 @@ const config = {
         options: {
           baseUrl: `${baseUrl}${basePath}`,
           excludedRoutes: [
+            '**/block-types',
+            '**/plugins',
             '**/search',
             '**/settings',
             '**/themes',
