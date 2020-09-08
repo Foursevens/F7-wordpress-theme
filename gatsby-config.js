@@ -35,25 +35,27 @@ const config = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    ...LOCALES.map((language) => ({
-      resolve: 'gatsby-source-wordpress',
-      options: {
-        baseUrl: process.env.MEMENTO
-          ? `localhost:3344/${language}`
-          : `${backendHost}/${language}`,
-        excludedRoutes: [
-          '**/search',
-          '**/settings',
-          '**/themes',
-          '**/users/me',
-        ],
-        hostingWPCOM: false, // It is not hosted on wordpress.com
-        minimizeDeprecationNotice: true,
-        normalizer: wpNormalize(language),
-        protocol: process.env.MEMENTO ? 'http' : 'https',
-        useACF: false, // Don't fetch the "Advanced Custom Fields" fields.
-      },
-    })),
+    ...LOCALES.map((language) => {
+      const baseUrl = process.env.MEMENTO ? 'localhost:3344' : `${backendHost}`;
+      const basePath = language === LOCALE_DEFAULT ? '/' : `/${language}`;
+      return {
+        resolve: 'gatsby-source-wordpress',
+        options: {
+          baseUrl: `${baseUrl}${basePath}`,
+          excludedRoutes: [
+            '**/search',
+            '**/settings',
+            '**/themes',
+            '**/users/me',
+          ],
+          hostingWPCOM: false, // It is not hosted on wordpress.com
+          minimizeDeprecationNotice: true,
+          normalizer: wpNormalize(language),
+          protocol: process.env.MEMENTO ? 'http' : 'https',
+          useACF: false, // Don't fetch the "Advanced Custom Fields" fields.
+        },
+      };
+    }),
     {
       resolve: 'gatsby-plugin-intl',
       options: {
